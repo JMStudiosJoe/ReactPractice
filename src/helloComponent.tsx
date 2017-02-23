@@ -4,10 +4,10 @@ interface HelloProps {
   name: string;
 }
 
-class Hello extends React.Component<HelloProps, {}> {
+class HelloJoey extends React.Component<HelloProps, {}> {
   render() {
     return <div>Hello, {this.props.name}</div>;
   }
 }
 
-export default Hello;
+export default HelloJoey;
