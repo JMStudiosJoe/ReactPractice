@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "jsx": "react",
+    "tsx": "react",
     "module": "commonjs",
     "noImplicitAny": true,
     "outDir": "./build/",
@@ -8,6 +8,10 @@
     "removeComments": true,
     "target": "ES6"
   },
+  "files": [
+    "src/*.tsx",
+    "src/**/*.tsx"
+  ],
   "exclude": [
     "node_modules",
     "typings/browser.d.ts",
