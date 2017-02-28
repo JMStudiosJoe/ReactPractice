@@ -34,6 +34,8 @@ var path = {
     DEST_BUILD: 'build/dist/build',
     DEST: 'build/dist'
 };
+
+//need to understand from this tutorial https://www.typescriptlang.org/docs/handbook/gulp.html
 function bundle() {
     return watchedBrowserify
         .bundle()
