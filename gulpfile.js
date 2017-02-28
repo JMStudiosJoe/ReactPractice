@@ -1,11 +1,6 @@
 var gulp = require('gulp');
 var gulpConcat = require('gulp-concat');
-var uglify = require('gulp-uglify');
-// var gulpReact = require('gulp-react');
-// var htmlReplace = require('gulp-html-replace');
-
 var ts = require("gulp-typescript");
-
 var tslint = require("gulp-tslint");
 
 
@@ -17,6 +12,9 @@ var gutil = require("gulp-util");
 var browserify = require("browserify");
 var source = require('vinyl-source-stream');
 var tsify = require("tsify");
+var uglify = require('gulp-uglify');
+var sourcemaps = require('gulp-sourcemaps');
+var buffer = require('vinyl-buffer');
 
 
 var watchedBrowserify = watchify(browserify({
@@ -41,8 +39,16 @@ var path = {
 //need to understand from this tutorial https://www.typescriptlang.org/docs/handbook/gulp.html
 function bundle() {
     return watchedBrowserify
+        .transform('babelify', {
+            presets: ['es2015'],
+            extensions: ['.ts']
+        })
         .bundle()
         .pipe(source('bundle.js'))
+        .pipe(buffer())
+        .pipe(sourcemaps.init({loadMaps: true}))
+        .pipe(gulpConcat('bundle.js'))
+        .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('build'));
 }
 
@@ -52,6 +58,9 @@ gulp.task('copy-html', function () {
         .pipe(gulp.dest('build'));
 });
 gulp.task("default", ["copy-html"], bundle);
+
+watchedBrowserify.on("update", bundle);
+watchedBrowserify.on("log", gutil.log);
 // gulp.task('default', ['copy-html'], function () {
 //     return browserify({
 //         basedir: '.',
@@ -66,16 +75,15 @@ gulp.task("default", ["copy-html"], bundle);
 //     .pipe(gulp.dest('build'));
 // });
 
-gulp.task("ts:build", function() {
-    return tsProject.src()
-        .pipe(tsProject())
-        .js
-        .pipe(gulpConcat('bundle.js'))
-        .pipe(gulp.dest('build'));
-});
+// gulp.task("ts:build", function() {
+//     return tsProject.src()
+//         .pipe(tsProject())
+//         .js
+//         .pipe(gulpConcat('bundle.js'))
+//         .pipe(gulp.dest('build'));
+// });
 
-watchedBrowserify.on("update", bundle);
-watchedBrowserify.on("log", gutil.log);
+
 // gulp.task("tsbuild", function () {
 //     return tsProject.src()
 //         .pipe(tsProject())
