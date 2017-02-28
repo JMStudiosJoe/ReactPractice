@@ -11,7 +11,9 @@ var tsProject = ts.createProject("tsconfig.json", {});
 var browserify = require("browserify");
 var source = require('vinyl-source-stream');
 var tsify = require("tsify");
-
+/*
+have a working gulpfile on other branch need to understand why this no work
+*/
 
 var path = {
     HTML: 'index.html',
