@@ -5,7 +5,8 @@ var uglify = require('gulp-uglify');
 // var htmlReplace = require('gulp-html-replace');
 
 var ts = require("gulp-typescript");
-var tsProject = ts.createProject("tsconfig.json");
+// var tslint = require("gulp-tslint");
+var tsProject = ts.createProject("tsconfig.json", {});
 
 var browserify = require("browserify");
 var source = require('vinyl-source-stream');
@@ -14,16 +15,27 @@ var tsify = require("tsify");
 
 var path = {
     HTML: 'index.html',
-    ALL: ['src/tsx/*.tsx', 'src/tsx/**/*.tsx', 'index.html'],
-    TS: ['src/tsx/*.tsx', 'src/tsx/**/*.tsx'],
+    ALL: ['src/*.ts', 'src/**/*.ts', 'index.html'],
+    TS: ['src/*.ts', 'src/**/*.ts'],
     MINIFIED_OUT: 'build/build.min.js',
     DEST_SRC: 'build/dist/src',
     DEST_BUILD: 'build/dist/build',
     DEST: 'build/dist'
 };
 
-gulp.task('default', function(){
-    console.log("hello gulp");
+gulp.task("ts:build", function() {
+    return gulp.src(path.TS)
+        // .pipe(tslint({
+        //     formatter: "verbose"
+        // }))
+        // .pipe(tslint.report({
+        //     emitError: true
+        // }))
+        .pipe(tsProject())
+        .js
+        .pipe(gulpConcat("build/bundle.js"))
+        .pipe(gulp.dest('build'))
+        .on("error", function() {});
 });
 
 
