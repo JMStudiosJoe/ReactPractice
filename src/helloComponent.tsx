@@ -4,9 +4,14 @@ interface HelloProps {
   name: string;
 }
 
+
 class HelloJoey extends React.Component<HelloProps, {}> {
   render() {
-    return <div>Hello, {this.props.name}</div>;
+    return (
+        <div>Hello, {this.props.name}
+
+        </div>
+    );
   }
 }
 
