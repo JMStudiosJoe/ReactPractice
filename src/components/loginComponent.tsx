@@ -1,5 +1,5 @@
 import * as React from "react";
-interface LoginProps {
+interface LoginState {
     username?: string,
     password?: string
 }
@@ -9,10 +9,10 @@ var myStyle = {
     padding:"10px"
 };
                                         /*<props passed in, state types? can assign the state type here>*/
-class loginWindow extends React.Component<LoginProps, LoginProps> {
+class loginWindow extends React.Component<{}, LoginState> {
     constructor() {
         super();
-        this.state = ({} as LoginProps);
+        this.state = ({} as LoginState);
 
         this.login = this.login.bind(this);
         this.usernameValidator = this.usernameValidator.bind(this);
