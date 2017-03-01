@@ -4,6 +4,9 @@ import HelloJoey from "./helloComponent";
 import LoginComponent from "./loginComponent";
 
 ReactDOM.render(
-  <LoginComponent username="here we gonen" password="working?" />,
+    <div>
+  <LoginComponent username="here we gonen" password="working?" />
+  <HelloJoey name="my name bitch" />
+  </div>,
   document.getElementById("root")
 );
