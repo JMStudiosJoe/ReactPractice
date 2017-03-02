@@ -5,8 +5,8 @@ import LoginComponent from "./loginComponent";
 
 ReactDOM.render(
     <div>
-  <LoginComponent username="here we gonen" password="working?" />
-  <HelloJoey name="my name bitch" />
-  </div>,
+        <LoginComponent />
+        <HelloJoey name="Joseph" />
+    </div>,
   document.getElementById("root")
 );
