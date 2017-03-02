@@ -29,7 +29,7 @@ class loginWindow extends React.Component<{}, LoginState> {
 
     }
 
-    passwordHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    passwordHandler = (event: React.ChangeEvent<HTMLInputElement>   ) => {
         const password = (event.target as HTMLInputElement).value;
         this.setState({
             password: password,
@@ -44,7 +44,7 @@ class loginWindow extends React.Component<{}, LoginState> {
             <div>
 
                 <label>Username:</label><input name="username" type="text" value={this.state.username} onChange={this.usernameValidator} />
-                <label>Password:</label><input name="password" type="text" value={this.state.password} />
+                <label>Password:</label><input name="password" type="text" value={this.state.password} onChange={this.passwordHandler}/>
                 <button onClick={this.login}>Submit</button>
 
             </div>
