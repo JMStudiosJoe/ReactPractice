@@ -2,7 +2,7 @@ module.exports = {
     entry: "./src/app.tsx",
     output: {
         filename: "bundle.js",
-        path: __dirname + "/build"
+        path: __dirname + "/public/build"
     },
 
     // Enable sourcemaps for debugging webpack's output.
@@ -10,7 +10,7 @@ module.exports = {
 
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
-        extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
+        extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js", ".html"]
     },
 
     module: {
