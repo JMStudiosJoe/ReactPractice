@@ -21,8 +21,6 @@
     "webpack-node-externals": "^1.5.4"
   },
   "dependencies": {
-    "@types/react": "^15.0.14",
-    "@types/react-dom": "^0.14.23",
     "babel-core": "^6.23.1",
     "body-parser": "^1.16.1",
     "cors": "^2.8.1",
