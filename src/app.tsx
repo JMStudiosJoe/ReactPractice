@@ -9,14 +9,16 @@ var active = {
 };
 var helloState = {
   name: 'hello',
-  url: '/',
+  url: '#/login',
   component: LoginComponent
 }
 
 var aboutState = {
   name: 'about',
-  url: '/about',
-  component: () => <h3>Its the UI-Router hello world app!</h3>
+  url: '#/about',
+  component: () => <h3>Its the UI-Router hello world app!</h3>,
+  onEnter: () => {console.log("on enter");},
+  onExit: () => {console.log("neat exiting see ya");}
 }
 ReactDOM.render(
     <div>
