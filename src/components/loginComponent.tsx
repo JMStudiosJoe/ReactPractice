@@ -1,6 +1,5 @@
 import * as React from "react";
 
-
 interface LoginState {
     username?: string,
     password?: string
@@ -22,17 +21,17 @@ class loginWindow extends React.Component<{}, LoginState> {
 
     }
 
-    usernameValidator = (event: React.KeyboardEvent) => {
+    usernameValidator = (event: React.ChangeEvent<HTMLInputElement>) => {
 
         const username = (event.target as HTMLInputElement).value;
-        const newName = username + "da fux";
+
         this.setState({
             username: username,
         });
 
     }
 
-    passwordHandler = (event: React.KeyboardEvent) => {
+    passwordHandler = (event: React.ChangeEvent<HTMLInputElement>   ) => {
         const password = (event.target as HTMLInputElement).value;
         this.setState({
             password: password,

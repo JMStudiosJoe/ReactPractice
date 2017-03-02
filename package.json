@@ -17,17 +17,17 @@
     "ts-loader": "^2.0.1",
     "typescript": "^2.2.1",
     "typings": "^2.1.0",
-    "webpack": "^2.2.1"
+    "webpack": "^2.2.1",
+    "webpack-node-externals": "^1.5.4"
   },
   "dependencies": {
-    "@types/bluebird": "^3.0.37",
-    "bluebird": "^3.4.7",
-    "es6-promise": "^4.0.5",
+    "@types/react": "^15.0.14",
+    "babel-core": "^6.23.1",
+    "body-parser": "^1.16.1",
+    "cors": "^2.8.1",
+    "express": "^4.14.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "react-redux": "^5.0.3",
-    "redux": "^3.6.0",
-    "request": "^2.79.0",
-    "request-promise": "^4.1.1"
+    "ui-router-react": "^0.4.0"
   }
 }

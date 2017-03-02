@@ -9,7 +9,7 @@ class HelloJoey extends React.Component<HelloProps, {}> {
   render() {
     return (
         <div>Hello, {this.props.name}
-
+            THE MAIN PAGE YO
         </div>
     );
   }
