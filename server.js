@@ -1,17 +1,24 @@
+
+
+
 const express = require('express');
-const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
 
+
+const app = express();
+const indexPath = path.join(__dirname, 'index.html');
+const publicPath = express.static(path.join(__dirname, '/'));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
-app.use(express.static(path.join(__dirname, '/public')));
-app.get('/', function(req, res){
-    console.log("ahhhhhh its working");
+// app.use(cors()); what does it do?
+app.use('/', publicPath);
 
-    res.sendFile(__dirname, '/build/index.html');
-})
+app.get('/login', function (_, res) {
+    console.log("ahhhhhh its working");
+    res.sendFile(indexPath)
+});
 
 app.listen(4000);
