@@ -2,7 +2,7 @@
   "compilerOptions": {
     "jsx": "react",
     "module": "commonjs",
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "outDir": "./build/",
     "preserveConstEnums": true,
     "removeComments": true,

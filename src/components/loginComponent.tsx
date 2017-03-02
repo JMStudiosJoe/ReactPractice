@@ -20,7 +20,7 @@ class loginWindow extends React.Component<{}, LoginState> {
 
     }
 
-    usernameValidator = (event: React.KeyboardEvent) => {
+    usernameValidator = (event: React.ChangeEvent<HTMLInputElement>) => {
 
         const username = (event.target as HTMLInputElement).value;
         this.setState({
@@ -29,7 +29,7 @@ class loginWindow extends React.Component<{}, LoginState> {
 
     }
 
-    passwordHandler = (event: React.KeyboardEvent) => {
+    passwordHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
         const password = (event.target as HTMLInputElement).value;
         this.setState({
             password: password,
