@@ -1,5 +1,6 @@
 
 import * as redux from 'redux';
+import {LoginReducer} from '../reducers/loginReducers';
 console.log('this is the redix');
 console.log(redux);
 const mainNav = (state: {}, action: {} ) => {
@@ -8,6 +9,6 @@ const mainNav = (state: {}, action: {} ) => {
 }
 
 
-const store = redux.createStore;
+const store = redux.createStore(LoginReducer);
 
 export default store;
