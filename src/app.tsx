@@ -2,13 +2,12 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import HelloJoey from "./components/helloComponent";
 import LoginComponent from "./components/loginComponent";
-
-import store from "./redux/store/store"
-console.log("---------------");
-console.log(store);
-console.log("---------------");
-store.dispatch({type: "LOG_IN", payload: "DO IT"});
 import {UIRouter, UIView, UISref, UISrefActive, pushStateLocationPlugin} from 'ui-router-react';
+import store from "./redux/store/store"
+
+store.dispatch({type: "LOG_IN", payload: "DO IT"});
+
+
 
 var active = {
     color:"red",
