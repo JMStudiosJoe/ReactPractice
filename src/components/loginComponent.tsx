@@ -1,5 +1,5 @@
 import * as React from "react";
-
+import store from "../redux/store/store"
 interface LoginState {
     username?: string,
     password?: string
@@ -10,7 +10,7 @@ var myStyle = {
     padding:"10px"
 };
                                         /*<props passed in, state types? can assign the state type here>*/
-class loginWindow extends React.Component<{}, LoginState> {
+class LoginComponent extends React.Component<{}, LoginState> {
     constructor() {
         super();
         this.state = ({} as LoginState);
@@ -40,7 +40,7 @@ class loginWindow extends React.Component<{}, LoginState> {
 
     login = (event: any) => {
         console.log(this.state);
-
+        store.dispatch({type: "LOG_IN", payload: "DO IT"});
     }
     render() {
         return (
@@ -55,4 +55,4 @@ class loginWindow extends React.Component<{}, LoginState> {
     }
 }
 
-export default loginWindow;
+export default LoginComponent;
