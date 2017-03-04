@@ -3,12 +3,12 @@ import * as ReactDOM from "react-dom";
 import {ReactStateDeclaration, UIView} from 'ui-router-react';
 import LoginComponent from '../components/loginComponent';
 
-export var loginState:ReactStateDeclaration = {
+export const loginState:ReactStateDeclaration = {
     name: 'login',
     url: '/login',
     component: LoginComponent
 }
-export var aboutState:ReactStateDeclaration = {
+export const aboutState:ReactStateDeclaration = {
     name: 'about',
     url: '/about',
     component: () => <h3>Its the UI-Router hello world app!</h3>,
