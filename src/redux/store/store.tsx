@@ -1,9 +1,11 @@
 
 import * as redux from 'redux';
 import {LoginReducer} from '../reducers/loginReducers';
-console.log('this is the redix');
-console.log(redux);
-const mainNav = (state: {}, action: {} ) => {
+import * as request from 'request-promise';
+console.log("------------------------------------");
+//console.log(request);
+console.log("------------------------------------");
+const mainNav = (state: {} = null, action: {} ) => {
     console.log(state);
     console.log(action);
 }

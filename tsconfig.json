@@ -6,7 +6,8 @@
     "outDir": "./build/",
     "preserveConstEnums": true,
     "removeComments": true,
-    "target": "ES6"
+    "target": "ES6",
+    "skipLibCheck": true
   },
   "exclude": [
     "node_modules",
