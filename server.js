@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(cors()); what does it do?
 app.use('/', publicPath);
 
-app.get('/login', function (_, res) {
+app.get('/*', function (_, res) {
     console.log("ahhhhhh its working");
     res.sendFile(indexPath)
 });

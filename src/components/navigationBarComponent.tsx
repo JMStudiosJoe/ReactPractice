@@ -25,36 +25,13 @@ var navigationBarContainer = {
 };
                                         /*<props passed in, state types? can assign the state type here>*/
 class NavigationBarComponent extends React.Component<NavigationProps, NavigationBarState> {
-    constructor() {
-        super();
-        this.props = ({} as NavigationProps);
+    constructor(props: NavigationProps) {
+        super(props);
+        this.props = props;
         this.state = ({} as NavigationBarState);
         
         console.log("type of user is: ");
         console.log(this.props.userType);
-        
-        this.login = this.login.bind(this);
-        this.usernameValidator = this.usernameValidator.bind(this);
-        this.passwordHandler = this.passwordHandler.bind(this);
-
-    }
-
-    usernameValidator = (event: React.ChangeEvent<HTMLInputElement>) => {
-
-        //const username = (event.target as HTMLInputElement).value;
-
-    }
-
-    passwordHandler = (event: React.ChangeEvent<HTMLInputElement>   ) => {
-        // const password = (event.target as HTMLInputElement).value;
-        // this.setState({
-        //     password: password,
-        // });
-    }
-
-    login = (event: any) => {
-        console.log(this.state);
-        store.dispatch({type: "LOG_IN", payload: "DO IT"});
     }
     render() {
         return (
@@ -74,10 +51,13 @@ class NavigationBarComponent extends React.Component<NavigationProps, Navigation
                             <UISref to="contact"><a>Contact</a></UISref>
                         </UISrefActive>
                         <UISrefActive class="active">
-                            <UISref to="projects"><a>projects</a></UISref>
+                            <UISref to="projects"><a>Projects</a></UISref>
                         </UISrefActive>
-
-                        <UIView/>
+                        
+                        <div>
+                            <h3>This is where the routing html will go, this should stay</h3>
+                            <UIView/>
+                        </div>
                     </div>
                 </UIRouter>
             </div>

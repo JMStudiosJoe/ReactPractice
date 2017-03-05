@@ -32,6 +32,10 @@ module.exports = [{
                 test: /\.js?$/,
                 include: path.join(__dirname, '/node_modules'),
                 loader: 'babel-loader?cacheDirectory',
+            },
+            { 
+                test: /\.json$/,
+                loader: 'json-loader' 
             }
         ]
     },

@@ -2,6 +2,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {ReactStateDeclaration, UIView} from 'ui-router-react';
 import LoginComponent from '../components/loginComponent';
+import ProjectsComponent from '../components/projectsComponent';
 
 export var loginState:ReactStateDeclaration = {
     name: 'login',
@@ -16,20 +17,18 @@ export var aboutState:ReactStateDeclaration = {
     onExit: () => {console.log("neat exiting see ya");}
 }
 
+export var projectsState:ReactStateDeclaration = {
+    name: 'projects',
+    url: '/projects',
+    component: ProjectsComponent
+}
+
 export var contactState:ReactStateDeclaration = {
     name: 'contact',
     url: '/contact',
     component: () => <h3>the contact page</h3>,
     onEnter: () => {console.log("on enter contact");},
     onExit: () => {console.log("neat exiting contact see ya");}
-}
-
-export var projectsState:ReactStateDeclaration = {
-    name: 'projects',
-    url: '/projects',
-    component: () => <h3>the projects page</h3>,
-    onEnter: () => {console.log("projects on enter");},
-    onExit: () => {console.log("neat exiting projects see ya");}
 }
 
 export var homeState:ReactStateDeclaration = {
