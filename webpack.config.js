@@ -10,7 +10,6 @@ module.exports = [{
         path: __dirname + "/public/build"
     },
 
-
     // Enable sourcemaps for debugging webpack's output.
     devtool: "source-map",
 
@@ -46,6 +45,12 @@ module.exports = [{
         "react-dom": "ReactDOM"
 
     },
+    node: {
+        console: true,
+        fs: 'empty',
+        net: 'empty',
+        tls: 'empty'
+    }
 
 }];
 

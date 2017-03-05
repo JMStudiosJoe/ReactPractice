@@ -16,6 +16,29 @@ export var aboutState:ReactStateDeclaration = {
     onExit: () => {console.log("neat exiting see ya");}
 }
 
+export var contactState:ReactStateDeclaration = {
+    name: 'contact',
+    url: '/contact',
+    component: () => <h3>the contact page</h3>,
+    onEnter: () => {console.log("on enter contact");},
+    onExit: () => {console.log("neat exiting contact see ya");}
+}
+
+export var projectsState:ReactStateDeclaration = {
+    name: 'projects',
+    url: '/projects',
+    component: () => <h3>the projects page</h3>,
+    onEnter: () => {console.log("projects on enter");},
+    onExit: () => {console.log("neat exiting projects see ya");}
+}
+
+export var homeState:ReactStateDeclaration = {
+    name: 'home',
+    url: '/home',
+    component: () => <h3>the home page</h3>,
+    onEnter: () => {console.log("home on enter");},
+    onExit: () => {console.log("neat exiting home see ya");}
+}
 // export module States {
 //
 //     var helloState: ReactStateDeclaration  = {
