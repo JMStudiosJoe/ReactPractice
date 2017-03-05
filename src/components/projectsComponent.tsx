@@ -24,10 +24,20 @@ interface ProjectsState {
     currentProjects: Array<Project>;
 }
 const projectItemDisplay = (project: Project) => {
-    console.log("wtf mate?");
+    const projectItemContainerCSS = {
+        padding: "10px",
+        margin: "10px",
+        "font-size": "16px"
+
+    }
     return (
-        <div>
-            {project.name}
+        <div style={projectItemContainerCSS}>
+            <div>{project.name}</div>
+            <div>{project.description}</div>
+            <br />
+            <div>{project.problem}</div>
+            <div><a href={project.github.link}>{project.github.link}</a></div>
+            <hr />
         </div>
     );
 }
@@ -36,19 +46,13 @@ class ProjectsComponent extends React.Component<ProjectsProps, ProjectsState> {
     constructor(props: ProjectsProps) {
         super(props);
         this.props = props;
-        console.log("PROJECTS CONSTRUCTOR LOADING");
-
     }
     
     render() {
 
         return (
             <div>
-                the projects
-                {projectData.projects.length}
                 {projectData.projects.map( function(project: Project, index: number) {
-                    console.log("uh project?");
-                    console.log(index);
                     return projectItemDisplay(project);
                 })}
             </div>

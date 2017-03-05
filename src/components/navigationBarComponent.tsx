@@ -19,10 +19,16 @@ interface NavigationBarState {
     projects?: NavigationBarItem
 }
 
-var navigationBarContainer = {
-    backgroundColor:"red",
-    padding:"10px"
+const navigationBarContainer = {
+    padding:"10px",
+    margin: "20px",
+    textAlign: "center",
 };
+const navItem = {
+
+    marginRight: "20px",
+    fontSize: "24px"
+}
                                         /*<props passed in, state types? can assign the state type here>*/
 class NavigationBarComponent extends React.Component<NavigationProps, NavigationBarState> {
     constructor(props: NavigationProps) {
@@ -37,28 +43,28 @@ class NavigationBarComponent extends React.Component<NavigationProps, Navigation
         return (
             <div>
                 <UIRouter plugins={[pushStateLocationPlugin]} states={[loginState, aboutState, contactState, projectsState, homeState]}>
-                    <div style={navigationBarContainer}>
-                        <UISrefActive class="active">
-                            <UISref to="home"><a>Home</a></UISref>
-                        </UISrefActive>
-                        <UISrefActive class="active">
-                            <UISref to="login"><a>Hello</a></UISref>
-                        </UISrefActive>
-                        <UISrefActive class="active">
-                            <UISref to="about"><a>About</a></UISref>
-                        </UISrefActive>
-                        <UISrefActive class="active">
-                            <UISref to="contact"><a>Contact</a></UISref>
-                        </UISrefActive>
-                        <UISrefActive class="active">
-                            <UISref to="projects"><a>Projects</a></UISref>
-                        </UISrefActive>
-                        
-                        <div>
-                            <h3>This is where the routing html will go, this should stay</h3>
-                            <UIView/>
+                    <div >
+                        <div style={navigationBarContainer}>
+                            <UISrefActive class="active">
+                                <UISref to="home"><a style={navItem}>Home</a></UISref>
+                            </UISrefActive>
+                            <UISrefActive class="active">
+                                <UISref to="login"><a style={navItem}>Hello</a></UISref>
+                            </UISrefActive>
+                            <UISrefActive class="active">
+                                <UISref to="about"><a style={navItem}>About</a></UISref>
+                            </UISrefActive>
+                            <UISrefActive class="active">
+                                <UISref to="contact"><a style={navItem}>Contact</a></UISref>
+                            </UISrefActive>
+                            <UISrefActive class="active">
+                                <UISref to="projects"><a style={navItem}>Projects</a></UISref>
+                            </UISrefActive>
                         </div>
-                    </div>
+                        <h3>This is where the routing html will go, this should stay</h3>
+                        
+                        <UIView/>
+                    </div>  
                 </UIRouter>
             </div>
         );
