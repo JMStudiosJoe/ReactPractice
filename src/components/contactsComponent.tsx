@@ -1,15 +1,15 @@
 import * as React from "react";
 
 
+
 const toggleRendering = (conditions: Boolean) => {
     const projectItemContainerCSS = {
         padding: "10px",
         margin: "10px",
         "font-size": "16px"
-
     }
-    console.log("toggle rending called");
-    //const temp = this.state.toggleConditional;
+
+ 
     if( conditions ) {
         return (
             <div style={projectItemContainerCSS}>
@@ -41,7 +41,7 @@ class ContactsComponent extends React.Component<{}, ContactState> {
     }
     toggleConditionalEvent(event: React.MouseEvent<HTMLButtonElement>) {
         event.preventDefault();
-        console.log("toggle the conditional");
+
         this.setState({
             toggleConditional: !this.state.toggleConditional 
         });
