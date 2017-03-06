@@ -40,7 +40,7 @@ class LoginComponent extends React.Component<{}, LoginState> {
 
     login = (event: any) => {
         console.log(this.state);
-        store.dispatch({type: "LOG_IN", payload: "DO IT"});
+        store.dispatch({type: "LOG_IN", payload: this.state});
     }
     render() {
         return (
