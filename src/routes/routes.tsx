@@ -4,6 +4,7 @@ import {ReactStateDeclaration, UIView} from 'ui-router-react';
 import LoginComponent from '../components/loginComponent';
 import ProjectsComponent from '../components/projectsComponent';
 import ContactComponent from '../components/contactsComponent';
+import TeamComponent from '../components/teamComponent';
 
 export const loginState:ReactStateDeclaration = {
 
@@ -17,6 +18,12 @@ export const aboutState:ReactStateDeclaration = {
     component: () => <h3>Its the UI-Router hello world app!</h3>,
     onEnter: () => {console.log("on enter");},
     onExit: () => {console.log("neat exiting see ya");}
+}
+
+export var teamState:ReactStateDeclaration = {
+    name: 'team',
+    url: '/team',
+    component: TeamComponent
 }
 
 export var projectsState:ReactStateDeclaration = {

@@ -1,9 +1,17 @@
 import * as React from "react";
 
-import {projectData} from "../models/projects";
+import {teamData} from "../models/teamMembers";
 
+interface MemberLinks {
+    name: string,
+    icon: string,
+    url: string
+}
 interface TeamMember {
     name: string,
+    title: string,
+    description: string,
+    links: Array<MemberLinks>
     
 }
 interface TeamProps {
@@ -23,6 +31,8 @@ const teamMemberDisplay = (member: TeamMember) => {
     return (
         <div style={teamMemberContainerCSS}>
             <div>{member.name}</div>
+            <div>{member.title}</div>
+            <div>{member.description}</div>
             
             <hr />
         </div>
@@ -39,7 +49,7 @@ class TeamComponent extends React.Component<TeamProps, TeamState> {
 
         return (
             <div>
-                {projectData.projects.map( function(member: TeamMember, index: number) {
+                {teamData.teamMembers.map( function(member: TeamMember, index: number) {
                     return teamMemberDisplay(member);
                 })}
             </div>
@@ -47,7 +57,7 @@ class TeamComponent extends React.Component<TeamProps, TeamState> {
     }
     componentDidMount() {
         this.setState({
-            currentTeamMebmers: projectData.projects 
+            currentTeamMebmers: teamData.teamMembers 
         });
     }
 }
