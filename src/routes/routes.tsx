@@ -3,7 +3,7 @@ import * as ReactDOM from "react-dom";
 import {ReactStateDeclaration, UIView} from 'ui-router-react';
 import LoginComponent from '../components/loginComponent';
 import ProjectsComponent from '../components/projectsComponent';
-
+import ContactComponent from '../components/contactsComponent';
 export var loginState:ReactStateDeclaration = {
     name: 'login',
     url: '/login',
@@ -26,7 +26,7 @@ export var projectsState:ReactStateDeclaration = {
 export var contactState:ReactStateDeclaration = {
     name: 'contact',
     url: '/contact',
-    component: () => <h3>the contact page</h3>,
+    component: ContactComponent,
     onEnter: () => {console.log("on enter contact");},
     onExit: () => {console.log("neat exiting contact see ya");}
 }
