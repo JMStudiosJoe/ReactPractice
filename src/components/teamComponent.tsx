@@ -1,4 +1,7 @@
+import * as teamStyle from './team.css';
 import * as React from "react";
+import * as ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 
 import {teamData} from "../models/teamMembers";
 
@@ -7,6 +10,7 @@ interface MemberLinks {
     icon: string,
     url: string
 }
+
 interface TeamMember {
     name: string,
     title: string,
@@ -28,8 +32,9 @@ const teamMemberDisplay = (member: TeamMember) => {
         "font-size": "16px"
 
     }
+    console.log(teamStyle);
     return (
-        <div style={teamMemberContainerCSS}>
+        <div className={teamStyle.teamMember}>
             <div>{member.name}</div>
             <div>{member.title}</div>
             <div>{member.description}</div>
@@ -49,9 +54,11 @@ class TeamComponent extends React.Component<TeamProps, TeamState> {
 
         return (
             <div>
-                {teamData.teamMembers.map( function(member: TeamMember, index: number) {
-                    return teamMemberDisplay(member);
-                })}
+                {/*<ReactCSSTransitionGroup transitionName="example" transitionEnterTimeout={1700} transitionLeaveTimeout={1700}>*/}
+                    {teamData.teamMembers.map( function(member: TeamMember, index: number) {
+                        return teamMemberDisplay(member);
+                    })}
+                {/*</ReactCSSTransitionGroup>*/}
             </div>
         );
     }

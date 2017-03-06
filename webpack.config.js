@@ -16,7 +16,7 @@ module.exports = [{
     resolve: {
 
         // Add '.ts' and '.tsx' as resolvable extensions.
-        extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
+        extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js", ".css"]
 
     },
 
@@ -36,6 +36,10 @@ module.exports = [{
             { 
                 test: /\.json$/,
                 loader: 'json-loader' 
+            },
+            {
+                test: /\.css$/,
+                loader: 'css-loader'
             }
         ]
     },
