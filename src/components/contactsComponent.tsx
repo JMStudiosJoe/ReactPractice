@@ -9,7 +9,7 @@ const toggleRendering = (conditions: Boolean) => {
         "font-size": "16px"
     }
 
- 
+
     if( conditions ) {
         return (
             <div style={projectItemContainerCSS}>
@@ -24,7 +24,7 @@ const toggleRendering = (conditions: Boolean) => {
             </div>
         );
     }
-    
+
 }
 interface ContactState {
     toggleConditional: Boolean
@@ -43,7 +43,7 @@ class ContactsComponent extends React.Component<{}, ContactState> {
         event.preventDefault();
 
         this.setState({
-            toggleConditional: !this.state.toggleConditional 
+            toggleConditional: !this.state.toggleConditional
         });
 
     }
@@ -51,7 +51,7 @@ class ContactsComponent extends React.Component<{}, ContactState> {
 
         return (
             <div>
-                {this.state.toggleConditional}
+
                 <button onClick={this.toggleConditionalEvent}>toggle</button>
                 {toggleRendering(!this.state.toggleConditional)}
             </div>

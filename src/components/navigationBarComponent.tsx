@@ -1,5 +1,6 @@
 import * as React from "react";
 import store from "../redux/store/store";
+
 import {UIRouter, UIView, UISref, UISrefActive, pushStateLocationPlugin} from 'ui-router-react';
 import {loginState, aboutState, homeState, contactState, projectsState} from '../routes/routes';
 
@@ -35,7 +36,7 @@ class NavigationBarComponent extends React.Component<NavigationProps, Navigation
         super(props);
         this.props = props;
         this.state = ({} as NavigationBarState);
-        
+
         console.log("type of user is: ");
         console.log(this.props.userType);
     }
@@ -43,6 +44,7 @@ class NavigationBarComponent extends React.Component<NavigationProps, Navigation
         return (
             <div>
                 <UIRouter plugins={[pushStateLocationPlugin]} states={[loginState, aboutState, contactState, projectsState, homeState]}>
+
                     <div >
                         <div style={navigationBarContainer}>
                             <UISrefActive class="active">
@@ -62,9 +64,9 @@ class NavigationBarComponent extends React.Component<NavigationProps, Navigation
                             </UISrefActive>
                         </div>
                         <h3>This is where the routing html will go, this should stay</h3>
-                        
+
                         <UIView/>
-                    </div>  
+                    </div>
                 </UIRouter>
             </div>
         );

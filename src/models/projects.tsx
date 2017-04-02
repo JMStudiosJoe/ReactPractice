@@ -16,6 +16,10 @@ export const projectData = {
             "github": {
                 "icon": "mdi-github-circle small",
                 "link": ""
+            },
+            "sampleProject": {
+                "available": true,
+                "name": "Vote Smart Locally"
             }
         },
         {
@@ -35,6 +39,10 @@ export const projectData = {
             "github": {
                 "icon": "mdi-github-circle small",
                 "link": "https://github.com/JMStudiosJoe/StudyBuddyV2"
+            },
+            "sampleProject": {
+                "available": false,
+                "name": ""
             }
         },
         {
@@ -54,6 +62,10 @@ export const projectData = {
             "github": {
                 "icon": "mdi-github-circle small",
                 "link": "https://github.com/JMStudiosJoe/Peterest"
+            },
+            "sampleProject": {
+                "available": false,
+                "name": ""
             }
         },
         {
@@ -72,6 +84,10 @@ export const projectData = {
             "github": {
                 "icon": "mdi-github-circle small",
                 "link": "#ReelMash"
+            },
+            "sampleProject": {
+                "available": false,
+                "name": ""
             }
     }]
 }
