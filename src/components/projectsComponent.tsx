@@ -2,6 +2,7 @@ import * as React from "react";
 
 import {projectData} from "../models/projects";
 import VoteSmartLocallyComponent from "./sampleProject/voteSmartLocallyComponent";
+import ParallaxComponent from 'react-parallax-component';
 interface Project {
     name: string,
     description: string,
@@ -28,7 +29,7 @@ const SampleProject = (projectName: string) => {
     const projectItemContainerCSS = {
         padding: "10px",
         margin: "10px",
-        "font-size": "16px"
+        fontSize: "16px"
     }
 
 
@@ -47,7 +48,7 @@ const SampleProject = (projectName: string) => {
 
 }
 
-const projectItemDisplay = (project: Project) => {
+const projectItemDisplay = (project: Project, index: number) => {
     const projectItemContainerCSS = {
         padding: "10px",
         margin: "10px",
@@ -55,8 +56,10 @@ const projectItemDisplay = (project: Project) => {
         // backgroundImage: "url('public/images/me.jpg')"
     }
     return (
-        <div style={projectItemContainerCSS}>
-            <div>{project.name}</div>
+        <div key={index} style={projectItemContainerCSS}>
+
+
+			<div>{project.name}</div>
             <div>{project.description}</div>
             <br />
             <div>{project.problem}</div>
@@ -79,8 +82,13 @@ class ProjectsComponent extends React.Component<ProjectsProps, ProjectsState> {
 
         return (
             <div>
+                <ParallaxComponent insertAt="top" top="100" speed="0.003" width="300" >
+                  <div>
+                        Children component
+                  </div>
+                </ParallaxComponent>
                 {projectData.projects.map( function(project: Project, index: number) {
-                    return projectItemDisplay(project);
+                    return projectItemDisplay(project, index);
                 })}
             </div>
         );

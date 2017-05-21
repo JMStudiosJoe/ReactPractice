@@ -5,7 +5,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
-
+const ParallaxComponent = require('react-parallax-component');
 
 const app = express();
 const indexPath = path.join(__dirname, 'index.html');

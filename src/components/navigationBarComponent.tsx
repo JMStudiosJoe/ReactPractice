@@ -4,6 +4,7 @@ import store from "../redux/store/store";
 import {UIRouter, UIView, UISref, UISrefActive, pushStateLocationPlugin} from 'ui-router-react';
 import {loginState, aboutState, homeState, contactState, projectsState} from '../routes/routes';
 
+
 interface NavigationProps {
     userType: string,
 }
