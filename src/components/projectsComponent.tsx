@@ -28,7 +28,7 @@ const SampleProject = (projectName: string) => {
     const projectItemContainerCSS = {
         padding: "10px",
         margin: "10px",
-        "font-size": "16px"
+        fontAize: "16px"
     }
 
 
@@ -47,7 +47,7 @@ const SampleProject = (projectName: string) => {
 
 }
 
-const projectItemDisplay = (project: Project) => {
+const projectItemDisplay = (project: Project, index: number) => {
     const projectItemContainerCSS = {
         padding: "10px",
         margin: "10px",
@@ -55,7 +55,7 @@ const projectItemDisplay = (project: Project) => {
         // backgroundImage: "url('public/images/me.jpg')"
     }
     return (
-        <div style={projectItemContainerCSS}>
+        <div key={index} style={projectItemContainerCSS}>
             <div>{project.name}</div>
             <div>{project.description}</div>
             <br />
@@ -80,7 +80,7 @@ class ProjectsComponent extends React.Component<ProjectsProps, ProjectsState> {
         return (
             <div>
                 {projectData.projects.map( function(project: Project, index: number) {
-                    return projectItemDisplay(project);
+                    return projectItemDisplay(project, index);
                 })}
             </div>
         );

@@ -3,7 +3,7 @@ import store from "../redux/store/store";
 
 import {UIRouter, UIView, UISref, UISrefActive, pushStateLocationPlugin} from 'ui-router-react';
 import {loginState, aboutState, homeState, contactState, projectsState} from '../routes/routes';
-
+import MainHeaderComponent from './mainHeaderComponent';
 interface NavigationProps {
     userType: string,
 }
@@ -19,7 +19,9 @@ interface NavigationBarState {
     contact?: NavigationBarItem,
     projects?: NavigationBarItem
 }
-
+const mainPageCSS = {
+    textAlign: 'center'
+}
 const navigationBarContainer = {
     padding:"10px",
     margin: "20px",
@@ -28,7 +30,9 @@ const navigationBarContainer = {
 const navItem = {
 
     marginRight: "20px",
-    fontSize: "24px"
+    fontSize: "24px",
+    fontFamily: "Arial",
+    display: 'inline-block'
 }
                                         /*<props passed in, state types? can assign the state type here>*/
 class NavigationBarComponent extends React.Component<NavigationProps, NavigationBarState> {
@@ -45,22 +49,23 @@ class NavigationBarComponent extends React.Component<NavigationProps, Navigation
             <div>
                 <UIRouter plugins={[pushStateLocationPlugin]} states={[loginState, aboutState, contactState, projectsState, homeState]}>
 
-                    <div >
+                    <div style={mainPageCSS}>
+                        <MainHeaderComponent />
                         <div style={navigationBarContainer}>
                             <UISrefActive class="active">
-                                <UISref to="home"><a style={navItem}>Home</a></UISref>
+                                <UISref to="home"><div style={navItem}><a>Home</a></div></UISref>
                             </UISrefActive>
                             <UISrefActive class="active">
-                                <UISref to="login"><a style={navItem}>Hello</a></UISref>
+                                <UISref to="login"><div style={navItem}><a style={navItem}>Hello</a></div></UISref>
                             </UISrefActive>
                             <UISrefActive class="active">
-                                <UISref to="about"><a style={navItem}>About</a></UISref>
+                                <UISref to="about"><div style={navItem}><a style={navItem}>About</a></div></UISref>
                             </UISrefActive>
                             <UISrefActive class="active">
-                                <UISref to="contact"><a style={navItem}>Contact</a></UISref>
+                                <UISref to="contact"><div style={navItem}><a style={navItem}>Contact</a></div></UISref>
                             </UISrefActive>
                             <UISrefActive class="active">
-                                <UISref to="projects"><a style={navItem}>Projects</a></UISref>
+                                <UISref to="projects"><div style={navItem}><a>Projects</a></div></UISref>
                             </UISrefActive>
                         </div>
                         <h3>This is where the routing html will go, this should stay</h3>
