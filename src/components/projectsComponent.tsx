@@ -1,5 +1,5 @@
 import * as React from "react";
-
+import { Glyph, Spinner } from 'elemental' 
 import {projectData} from "../models/projects";
 import VoteSmartLocallyComponent from "./sampleProject/voteSmartLocallyComponent";
 interface Project {
@@ -54,12 +54,19 @@ const projectItemDisplay = (project: Project, index: number) => {
         fontSize: "16px"
         // backgroundImage: "url('public/images/me.jpg')"
     }
+    const githubIconLink = {
+        width: '60px',
+        height: '60px'
+    }
     return (
         <div key={index} style={projectItemContainerCSS}>
             <div>{project.name}</div>
             <div>{project.description}</div>
             <br />
             <div>{project.problem}</div>
+            <div style={githubIconLink}>
+                <Glyph style={githubIconLink} icon='mark-github' />
+            </div>
             <div><a href={project.github.link}>{project.github.link}</a></div>
             <div>
                 {SampleProject(project.name)}
