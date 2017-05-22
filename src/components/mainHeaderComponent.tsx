@@ -29,7 +29,10 @@ const toggleRendering = (conditions: Boolean) => {
 const mainHeaderContainer = {
     display: 'inline-block',
     textAlign: 'center',
-    fontFamily: 'Arial'
+    fontFamily: 'Arial',
+    h1: {
+        backgroundColor: 'red'
+    }
 }
 interface MainHeaderState {
     toggleConditional: Boolean

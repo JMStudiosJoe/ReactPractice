@@ -1,7 +1,7 @@
 
 import * as redux from 'redux';
 import {LoginReducer} from '../reducers/loginReducers';
-
-const store = redux.createStore(LoginReducer);
+import {VoteSmartReducer} from '../reducers/voteSmartReducers';
+const store = redux.createStore(VoteSmartReducer);
 
 export default store;

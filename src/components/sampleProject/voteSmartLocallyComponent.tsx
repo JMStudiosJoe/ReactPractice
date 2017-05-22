@@ -1,8 +1,10 @@
 import * as React from "react";
 
+import store from "../../redux/store/store"
 
 const VoteSmartLocallyComponent = ({},{}) => {
 
+    store.dispatch({type: "LOOKUP_ADDRESS", payload: this.state});
     return (
         <div>
             vote smart kids
