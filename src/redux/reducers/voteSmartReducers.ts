@@ -11,20 +11,21 @@ const baseElectionsURL = 'https://www.googleapis.com/civicinfo/v2/elections?alt=
 const address ='1184+Normandy+Drive+Campbell+CA+95008';
 const fullRepURL = baseRepURL+address+endURL;
 const fullElectionsURL = baseElectionsURL+address+endURL;
-
+// try parallaxhttps://www.w3schools.com/howto/howto_css_parallax.asp 
 export const VoteSmartReducer = (state: any = INITIAL_STATE, action: Action) => {
     switch(action.type) {
         case "LOOKUP_ADDRESS":
             console.log("in the vote smart reducer");
             axios.get(fullRepURL).then(function (response) {
-                  console.log(response);
+                console.log(response);
+                return response;
             
             }).catch(function (error) {
                   console.log(error);
             });
             
             
-            return action.payload;
+            return state;
         default:
             return state;
     }
