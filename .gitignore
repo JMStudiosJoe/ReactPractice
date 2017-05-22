@@ -5,3 +5,4 @@ npm-debug.log
 typings/
 .awcache/
 public/
+.*.swp
