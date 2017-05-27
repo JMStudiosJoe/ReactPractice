@@ -1,5 +1,6 @@
 import * as React from "react";
 
+import ParallaxComponent from "./customReactParallax";
 
 
 const toggleRendering = (conditions: Boolean) => {
@@ -54,6 +55,8 @@ class ContactsComponent extends React.Component<{}, ContactState> {
 
                 <button onClick={this.toggleConditionalEvent}>toggle</button>
                 {toggleRendering(!this.state.toggleConditional)}
+                <ParallaxComponent />
+            
             </div>
         );
     }
