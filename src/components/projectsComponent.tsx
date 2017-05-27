@@ -25,12 +25,6 @@ interface ProjectsState {
 }
 
 const SampleProject = (projectName: string) => {
-    const projectItemContainerCSS = {
-        padding: "10px",
-        margin: "10px",
-        fontAize: "16px"
-    }
-
 
     if(projectName == 'Vote Smart Locally' ) {
         return (
@@ -39,7 +33,7 @@ const SampleProject = (projectName: string) => {
     }
     else {
         return (
-            <div style={projectItemContainerCSS}>
+            <div >
                 No project sample available.
             </div>
         );
@@ -50,28 +44,44 @@ const SampleProject = (projectName: string) => {
 const projectItemDisplay = (project: Project, index: number) => {
     const projectItemContainerCSS = {
         padding: "10px",
-        margin: "10px",
-        fontSize: "16px"
-        // backgroundImage: "url('public/images/me.jpg')"
+        fontSize: "16px",
+        textAlign: "left"
     }
+
     const githubIconLink = {
         width: '60px',
         height: '60px'
     }
+    
+    const darkCard = {
+        backgroundColor: "#d9d9d9",
+        borderRadius: "6px",
+        padding: "2px",
+        marginBottom: "30px"    
+    }
+    const lightCard = {
+        backgroundColor: "white",
+        margin: "2px",
+        borderRadius: "6px"
+    }
     return (
-        <div key={index} style={projectItemContainerCSS}>
-            <div>{project.name}</div>
-            <div>{project.description}</div>
-            <br />
-            <div>{project.problem}</div>
-            <div style={githubIconLink}>
-                <Glyph style={githubIconLink} icon='mark-github' />
+        <div style={darkCard}>
+            <div style={lightCard}>
+                <div key={index} style={projectItemContainerCSS}>
+                    <div>{project.name}</div>
+                    <div>{project.description}</div>
+                    <br />
+                    <div>{project.problem}</div>
+                    <div style={githubIconLink}>
+                        <Glyph style={githubIconLink} icon='mark-github' />
+                    </div>
+                    <div><a href={project.github.link}>{project.github.link}</a></div>
+                    <div>
+                        {SampleProject(project.name)}
+                    </div>
+                    <hr />
+                </div>
             </div>
-            <div><a href={project.github.link}>{project.github.link}</a></div>
-            <div>
-                {SampleProject(project.name)}
-            </div>
-            <hr />
         </div>
     );
 }

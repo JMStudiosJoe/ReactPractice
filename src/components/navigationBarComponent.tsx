@@ -68,8 +68,6 @@ class NavigationBarComponent extends React.Component<NavigationProps, Navigation
                                 <UISref to="projects"><div style={navItem}><a>Projects</a></div></UISref>
                             </UISrefActive>
                         </div>
-                        <h3>This is where the routing html will go, this should stay</h3>
-
                         <UIView/>
                     </div>
                 </UIRouter>
