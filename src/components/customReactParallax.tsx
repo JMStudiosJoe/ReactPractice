@@ -1,11 +1,13 @@
 import * as React from "react";
 import * as style from "ts-style";
-const background = '../images/bamboo-forest-by-rolf-hartbrich.jpg';
-
+const background = './src/images/bamboo-forest-by-rolf-hartbrich.jpg';
+const block = style.create({
+    height: "100px",
+    backgroundColor: "white"
+});
 const parallaxClass = style.create({
     backgroundImage: `url(${background})`,
     height: "500px",
-    width: "500px",
     backgroundColor: 'red',
     backgroundAttach: 'fixed',
     backgroundPosition: "center",
@@ -14,14 +16,6 @@ const parallaxClass = style.create({
 
 });
 console.log(parallaxClass);
-const parallaxContainer = {
-    backgroundImage: "url('../images/jmstudiosbackground.jpg')",
-    height: "1500px",
-    width: "1500px",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover"
-}
 
 const toggleRendering = (conditions: Boolean) => {
     const projectItemContainerCSS = {
@@ -47,10 +41,11 @@ class ParallaxComponent extends React.Component<{}, ParallaxComponentState> {
     render() {
 
         return (
-            <div style={parallaxClass}>
-				hello parallax
-                <img src="../images/bamboo-forest-by-rolf-hartbrich.jpg" />
-            </div>
+            <div>
+                <div style={block}></div>
+                <div style={parallaxClass}></div>
+                <div style={block}></div>
+        </div>
         );
     }
     componentDidMount() {
