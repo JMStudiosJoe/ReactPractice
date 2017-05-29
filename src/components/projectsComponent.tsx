@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as style from "ts-style";
 import ParallaxComponent from "./customReactParallax";
 import { Glyph, Spinner } from 'elemental' 
 import {projectData} from "../models/projects";
@@ -53,7 +54,6 @@ const projectItemDisplay = (project: Project, index: number) => {
         padding: "10px",
         margin: "10px",
         fontSize: "16px"
-        // backgroundImage: "url('public/images/me.jpg')"
     }
     const githubIconLink = {
         width: '60px',
