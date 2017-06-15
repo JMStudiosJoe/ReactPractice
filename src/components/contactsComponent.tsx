@@ -1,5 +1,7 @@
 import * as React from "react";
+import * as style from "ts-style";
 
+import ParallaxComponent from "./customReactParallax";
 
 
 const toggleRendering = (conditions: Boolean) => {
@@ -26,6 +28,10 @@ const toggleRendering = (conditions: Boolean) => {
     }
 
 }
+const block = style.create({
+    height: "100px",
+    backgroundColor: "red"
+});
 interface ContactState {
     toggleConditional: Boolean
 }
@@ -52,8 +58,15 @@ class ContactsComponent extends React.Component<{}, ContactState> {
         return (
             <div>
 
+                <ParallaxComponent />
                 <button onClick={this.toggleConditionalEvent}>toggle</button>
                 {toggleRendering(!this.state.toggleConditional)}
+                <div style={block}></div>
+                <div style={block}></div>
+                
+                <ParallaxComponent />
+                <div style={block}></div>
+
             </div>
         );
     }

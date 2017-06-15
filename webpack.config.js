@@ -16,7 +16,7 @@ module.exports = [{
     resolve: {
 
         // Add '.ts' and '.tsx' as resolvable extensions.
-        extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
+        extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js", "jpg", "png"]
 
     },
 
@@ -36,7 +36,13 @@ module.exports = [{
             { 
                 test: /\.json$/,
                 loader: 'json-loader' 
-            }
+            },
+			{
+        		test: /\.(png|jpg|svg)$/,
+        		use: {
+          			loader: 'url-loader'
+        		}
+      		}
         ]
     },
 

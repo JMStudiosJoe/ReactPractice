@@ -1,4 +1,6 @@
 import * as React from "react";
+import * as style from "ts-style";
+import ParallaxComponent from "./customReactParallax";
 import { Glyph, Spinner } from 'elemental' 
 import {projectData} from "../models/projects";
 import VoteSmartLocallyComponent from "./sampleProject/voteSmartLocallyComponent";
@@ -82,6 +84,7 @@ const projectItemDisplay = (project: Project, index: number) => {
                     <hr />
                 </div>
             </div>
+            <ParallaxComponent />
         </div>
     );
 }

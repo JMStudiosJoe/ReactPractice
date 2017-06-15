@@ -16,14 +16,14 @@ export const VoteSmartReducer = (state: any = INITIAL_STATE, action: Action) => 
     switch(action.type) {
         case "LOOKUP_ADDRESS":
             console.log("in the vote smart reducer");
-            axios.get(fullRepURL).then(function (response) {
+/*            axios.get(fullRepURL).then(function (response) {
                 console.log(response);
                 return response;
             
             }).catch(function (error) {
                   console.log(error);
             });
-            
+  */          
             
             return state;
         default:

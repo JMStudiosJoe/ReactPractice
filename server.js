@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', publicPath);
 
 app.get('/*', function (req, res) {
-    console.log(req.rawHeaders);
+    console.log(req.rawHeaders[9]);
     res.sendFile(indexPath)
 });
 

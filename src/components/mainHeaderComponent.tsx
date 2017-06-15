@@ -1,4 +1,5 @@
 import * as React from "react";
+import ParallaxComponent from "./customReactParallax";
 
 
 
@@ -59,6 +60,7 @@ class MainHeaderComponent extends React.Component<{}, MainHeaderState> {
 
         return (
             <div style={mainHeaderContainer}>
+                <ParallaxComponent />
                 <h1>JMStudios</h1>
                 <div>
                     <h3>Just Making Solutions Studios</h3>
