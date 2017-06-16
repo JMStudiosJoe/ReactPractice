@@ -45,9 +45,8 @@ class ParallaxComponent extends React.Component<{}, ParallaxComponentState> {
 
     getParallaxCSS() {
         backgroundNameIndex = Math.floor(Math.random()*10) % imageNamesLength;
-        console.log(backgroundNameIndex)
-        console.log(imageNamesLength)
         background = imageNames[backgroundNameIndex];
+        console.log(background);
         return  style.create({
             backgroundImage: `url(${background})`,
             height: "500px",
@@ -64,6 +63,7 @@ class ParallaxComponent extends React.Component<{}, ParallaxComponentState> {
 
         return (
             <div>
+                <div style={block}></div>
                 <div style={this.getParallaxCSS()}></div>
         </div>
         );
