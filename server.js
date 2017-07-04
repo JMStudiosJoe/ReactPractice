@@ -14,9 +14,9 @@ const publicPath = express.static(path.join(__dirname, '/'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(cors()); what does it do?
-app.use('/', publicPath);
+app.use(publicPath);
 
-app.get('/*', function (req, res) {
+app.get('/', function (req, res) {
     console.log(req.rawHeaders[9]);
     res.sendFile(indexPath)
 });
