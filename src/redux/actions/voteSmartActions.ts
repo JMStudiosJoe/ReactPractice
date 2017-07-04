@@ -1,4 +1,7 @@
-export interface Action {
-    type: string;
-    payload: any;
-};
+import {Action} from 'redux'
+
+interface VoteSmartAction<Action> {
+    type: string
+}
+
+export default VoteSmartAction
