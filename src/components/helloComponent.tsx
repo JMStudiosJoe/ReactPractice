@@ -6,15 +6,16 @@ interface HelloProps {
 }
 
 
-class HelloJoey extends React.Component<HelloProps, {}> {
+class HomeComponent extends React.Component<HelloProps, {}> {
   render() {
     return (
-        <div>Hello, {this.props.name}
+      <div>
+          <ParallaxComponent />
+          Hello, and welcome to JMStudios where my team and I create projects to tackle the problems around us, big or small. Thanks for stopping by hopefully you enjoy the parallax experience.
           <ParallaxComponent />    
-       more text 
         </div>
     );
   }
 }
 
-export default HelloJoey;
+export default HomeComponent;

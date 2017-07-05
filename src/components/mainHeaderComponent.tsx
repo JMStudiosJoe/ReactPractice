@@ -1,6 +1,6 @@
-import * as React from "react";
-import ParallaxComponent from "./customReactParallax";
-
+import * as React from "react"
+import ParallaxComponent from "./customReactParallax"
+import * as style from "react-style"
 
 
 const toggleRendering = (conditions: Boolean) => {
@@ -14,14 +14,14 @@ const toggleRendering = (conditions: Boolean) => {
     if( conditions ) {
         return (
             <div style={projectItemContainerCSS}>
-                almost
+                Toggling effect in react
             </div>
         );
     }
     else {
         return (
             <div style={projectItemContainerCSS}>
-                there
+                Kinda neat tbh.
             </div>
         );
     }

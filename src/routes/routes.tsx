@@ -1,20 +1,15 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {ReactStateDeclaration, UIView} from 'ui-router-react';
-import LoginComponent from '../components/loginComponent';
+import HomeComponent from '../components/helloComponent';
+import AboutComponent from '../components/aboutComponent';
 import ProjectsComponent from '../components/projectsComponent';
 import ContactComponent from '../components/contactsComponent';
 
-export const loginState:ReactStateDeclaration = {
-
-    name: 'login',
-    url: '/login',
-    component: LoginComponent
-}
 export const aboutState:ReactStateDeclaration = {
     name: 'about',
     url: '/about',
-    component: () => <h3>Its the UI-Router hello world app!</h3>,
+    component: AboutComponent,
     onEnter: () => {console.log("on enter");},
     onExit: () => {console.log("neat exiting see ya");}
 }
@@ -36,33 +31,7 @@ export var contactState:ReactStateDeclaration = {
 export var homeState:ReactStateDeclaration = {
     name: 'home',
     url: '/home',
-    component: () => <h3>the home page</h3>,
+    component: HomeComponent,
     onEnter: () => {console.log("home on enter");},
     onExit: () => {console.log("neat exiting home see ya");}
 }
-// export module States {
-//
-//     var helloState: ReactStateDeclaration  = {
-//       name: 'hello',
-//       url: '/login',
-//       component: LoginComponent
-//     }
-//
-//     var aboutState: ReactStateDeclaration = {
-//       name: 'about',
-//       url: '/about',
-//       component: () => <h3>Its the UI-Router hello world app!</h3>,
-//       onEnter: () => {console.log("on enter");},
-//       onExit: () => {console.log("neat exiting see ya");}
-//     }
-// }
-
-// module StateModule {
-//     export class StateClass implements ReactStateDeclaration {
-//         loginState: {
-//             name: 'login',
-//             url: '/login',
-//             component: LoginComponent
-//         }
-//     }
-// }
