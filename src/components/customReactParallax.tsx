@@ -7,6 +7,48 @@ const block = style.create({
     height: "100px",
     backgroundColor: "white"
 });
+interface ParralaxImage {
+    path: string
+    active: boolean
+}
+let imageNameData: ParralaxImage[] = [
+    {
+        path: './src/images/bamboo-forest-by-rolf-hartbrich.jpg',
+        active: false
+    },
+    {
+        path: './src/images/jmstudiosbackground.jpg',
+        active: false
+    },
+    {
+        path: './src/images/milky-way.jpg',
+        active: false
+    },
+    {
+        path: './src/images/space-background.jpg',
+        active: false
+    },
+    {
+        path: './src/images/water-drop-wallpaper-3.jpg',
+        active: false
+    },
+    {
+        path: './src/images/space-earth-stratosphere-wallpaper-1.jpg',
+        active: false
+    },
+    {
+        path: './src/images/autum_trees.jpg',
+        active: false
+    },
+    {
+        path: './src/images/bridge-over-the-river.jpg',
+        active: false
+    },
+    {
+        path: './src/images/mountains_landscape.jpg',
+        active: false
+    }
+];
 
 let imageNames = [
     './src/images/bamboo-forest-by-rolf-hartbrich.jpg',
@@ -23,6 +65,8 @@ let imageNames = [
 
 let background = imageNames[0];
 
+
+//not in use
 const shuffleArray = (array: Array<any>) => {
             for (var i = array.length - 1; i > 0; i--) {
                 var j = Math.floor(Math.random() * (i + 1));
@@ -42,12 +86,33 @@ class ParallaxComponent extends React.Component<{}, ParallaxComponentState> {
     constructor() {
         super();
     }
+    resetPathActivity() {
+        console.log("time to reset")
+        for (let imageData of imageNameData) {
+            imageData.active = false
+        }
+        this.getBackgroundPath()
+    }
+    getBackgroundPath() {
+        for (const imageData of imageNameData) {
+            if (!imageData.active) {
+                console.log("ACTIVATE")
+                imageData.active = true
+                return imageData.path
+            }
+            else {
+                imageData.active = false
+            }
+        }
+        this.resetPathActivity()
+
+
+    }
 
     getParallaxCSS() {
-        backgroundNameIndex = Math.floor(Math.random()*10) % imageNamesLength;
-        console.log(backgroundNameIndex)
-        console.log(imageNamesLength)
-        background = imageNames[backgroundNameIndex];
+        //backgroundNameIndex = Math.floor(Math.random()*10) % imageNamesLength;
+        background = this.getBackgroundPath()//imageNames[backgroundNameIndex];
+        console.log(background)
         return  style.create({
             backgroundImage: `url(${background})`,
             height: "500px",
@@ -64,6 +129,7 @@ class ParallaxComponent extends React.Component<{}, ParallaxComponentState> {
 
         return (
             <div>
+                
                 <div style={this.getParallaxCSS()}></div>
         </div>
         );
