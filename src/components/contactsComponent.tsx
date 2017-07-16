@@ -7,31 +7,29 @@ import ParallaxComponent from "./customReactParallax";
 const toggleRendering = (conditions: Boolean) => {
     const projectItemContainerCSS = {
         padding: "10px",
-        margin: "10px",
-        "font-size": "16px"
+        margin: "30px",
+        fontSize: "26px"
     }
 
 
     if( conditions ) {
         return (
             <div style={projectItemContainerCSS}>
-                almost
+                <ParallaxComponent />
+                To contact Joseph Richardson: <a href="mailto:jrichardson@jmstudios.net" >Send Mail</a>           
             </div>
         );
     }
     else {
         return (
             <div style={projectItemContainerCSS}>
-                there
+                <ParallaxComponent />
+                For consulting contact Joseph Richardson: <a href="mailto:consulting@jmstudios.net" >Send Mail Consulting</a>           
             </div>
         );
     }
 
 }
-const block = style.create({
-    height: "100px",
-    backgroundColor: "red"
-});
 interface ContactState {
     toggleConditional: Boolean
 }
@@ -57,16 +55,8 @@ class ContactsComponent extends React.Component<{}, ContactState> {
 
         return (
             <div>
-
-                <ParallaxComponent />
-                <button onClick={this.toggleConditionalEvent}>toggle</button>
+                <button onClick={this.toggleConditionalEvent}>Toggle</button>
                 {toggleRendering(!this.state.toggleConditional)}
-                <div style={block}></div>
-                <div style={block}></div>
-                
-                <ParallaxComponent />
-                <div style={block}></div>
-
             </div>
         );
     }

@@ -13,15 +13,15 @@ interface ParralaxImage {
 }
 let imageNameData: ParralaxImage[] = [
     {
-        path: './src/images/bamboo-forest-by-rolf-hartbrich.jpg',
-        active: false
-    },
-    {
         path: './src/images/jmstudiosbackground.jpg',
         active: false
     },
     {
         path: './src/images/milky-way.jpg',
+        active: false
+    },
+    {
+        path: './src/images/bamboo-forest-by-rolf-hartbrich.jpg',
         active: false
     },
     {
@@ -87,7 +87,6 @@ class ParallaxComponent extends React.Component<{}, ParallaxComponentState> {
         super();
     }
     resetPathActivity() {
-        console.log("time to reset")
         for (let imageData of imageNameData) {
             imageData.active = false
         }
@@ -96,7 +95,6 @@ class ParallaxComponent extends React.Component<{}, ParallaxComponentState> {
     getBackgroundPath() {
         for (const imageData of imageNameData) {
             if (!imageData.active) {
-                console.log("ACTIVATE")
                 imageData.active = true
                 return imageData.path
             }
@@ -112,7 +110,6 @@ class ParallaxComponent extends React.Component<{}, ParallaxComponentState> {
     getParallaxCSS() {
         //backgroundNameIndex = Math.floor(Math.random()*10) % imageNamesLength;
         background = this.getBackgroundPath()//imageNames[backgroundNameIndex];
-        console.log(background)
         return  style.create({
             backgroundImage: `url(${background})`,
             height: "500px",
@@ -121,7 +118,6 @@ class ParallaxComponent extends React.Component<{}, ParallaxComponentState> {
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover"
-
         });
 
     } 
@@ -129,9 +125,8 @@ class ParallaxComponent extends React.Component<{}, ParallaxComponentState> {
 
         return (
             <div>
-                
                 <div style={this.getParallaxCSS()}></div>
-        </div>
+            </div>
         );
     }
     componentWillMount() {
