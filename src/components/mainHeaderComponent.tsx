@@ -65,7 +65,6 @@ class MainHeaderComponent extends React.Component<{}, MainHeaderState> {
                 <div>
                     <h3>Just Making Solutions Studios</h3>
                 </div>
-                <ParallaxComponent />
             </div>
         );
     }
