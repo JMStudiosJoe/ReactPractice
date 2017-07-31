@@ -8,7 +8,6 @@ const block = style.create({
 const parallaxClass = style.create({
     backgroundImage: `url(${background})`,
     height: "500px",
-    backgroundColor: 'red',
     backgroundAttach: 'fixed',
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
