@@ -5,26 +5,28 @@ import ParallaxComponent from "./customReactParallax";
 
 
 const toggleRendering = (conditions: Boolean) => {
-    const projectItemContainerCSS = {
+    const contactItemContainerCSS = {
         padding: "10px",
         margin: "30px",
         fontSize: "26px"
     }
-
-
     if( conditions ) {
         return (
-            <div style={projectItemContainerCSS}>
+            <div>
                 <ParallaxComponent />
-                To contact Joseph Richardson: <a href="mailto:jrichardson@jmstudios.net" >Send Mail</a>           
+                <div style={contactItemContainerCSS}>
+                    To contact Joseph Richardson: <a href="mailto:jrichardson@jmstudios.net" >Send Mail</a>           
+                </div>
             </div>
         );
     }
     else {
         return (
-            <div style={projectItemContainerCSS}>
+            <div>
                 <ParallaxComponent />
-                For consulting contact Joseph Richardson: <a href="mailto:consulting@jmstudios.net" >Send Mail Consulting</a>           
+                <div style={contactItemContainerCSS}>
+                    For consulting contact Joseph Richardson: <a href="mailto:consulting@jmstudios.net" >Send Mail Consulting</a>           
+                </div>
             </div>
         );
     }

@@ -67,21 +67,23 @@ const projectItemDisplay = (project: Project, index: number) => {
         borderRadius: "6px"
     }
     return (
-        <div style={darkCard}>
-            <div style={lightCard}>
-                <div key={index} style={projectItemContainerCSS}>
-                    <div>{project.name}</div>
-                    <div>{project.description}</div>
-                    <br />
-                    <div>{project.problem}</div>
-                    <div style={githubIconLink}>
-                        <Glyph style={githubIconLink} icon='mark-github' />
+        <div>
+            <div style={darkCard}>
+                <div style={lightCard}>
+                    <div key={index} style={projectItemContainerCSS}>
+                        <div>{project.name}</div>
+                        <div>{project.description}</div>
+                        <br />
+                        <div>{project.problem}</div>
+                        <div style={githubIconLink}>
+                            <Glyph style={githubIconLink} icon='mark-github' />
+                        </div>
+                        <div><a href={project.github.link}>{project.github.link}</a></div>
+                        <div>
+                            {SampleProject(project.name)}
+                        </div>
+                        <hr />
                     </div>
-                    <div><a href={project.github.link}>{project.github.link}</a></div>
-                    <div>
-                        {SampleProject(project.name)}
-                    </div>
-                    <hr />
                 </div>
             </div>
             <ParallaxComponent />

@@ -103,14 +103,13 @@ class ParallaxComponent extends React.Component<{}, ParallaxComponentState> {
             }
         }
         this.resetPathActivity()
-
-
     }
 
     getParallaxCSS() {
-        //backgroundNameIndex = Math.floor(Math.random()*10) % imageNamesLength;
         background = this.getBackgroundPath()//imageNames[backgroundNameIndex];
         return  style.create({
+            marginTop: "10px",
+            marginBottom: "10px",
             backgroundImage: `url(${background})`,
             height: "500px",
             minWidth: "700px",
@@ -119,10 +118,8 @@ class ParallaxComponent extends React.Component<{}, ParallaxComponentState> {
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover"
         });
-
     } 
     render() {
-
         return (
             <div>
                 <div style={this.getParallaxCSS()}></div>
@@ -130,7 +127,8 @@ class ParallaxComponent extends React.Component<{}, ParallaxComponentState> {
         );
     }
     componentWillMount() {
-	}
+
+    }
 }
 
 export default ParallaxComponent;

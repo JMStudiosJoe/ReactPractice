@@ -1,53 +1,38 @@
-import * as React from "react";
-import * as style from "ts-style";
-import ParallaxComponent from "./customReactParallax";
-import { Glyph, Spinner } from 'elemental' 
-import {projectData} from "../models/projects";
-import VoteSmartLocallyComponent from "./sampleProject/voteSmartLocallyComponent";
-interface Project {
+import * as React from "react"
+import * as style from "ts-style"
+import ParallaxComponent from "./customReactParallax"
+import { Glyph, Spinner } from 'elemental'
+import {teamData} from "../models/teamModel"
+import VoteSmartLocallyComponent from "./sampleProject/voteSmartLocallyComponent"
+interface TeamMemberLink {
     name: string,
-    description: string,
-    problem: string,
-    references: Array<string>,
-    solutions: Array<string>,
-    link:string,
-    logo: string,
-    position: number,
-    github: {
-        icon: string,
-        link: string
-    }
+    icon: string,
+    url: string
 }
-interface ProjectsProps {
+
+interface TeamMember {
+    name: string,
+    title: string,
+    description: string,
+    references: Array<string>,
+    links:Array<TeamMemberLink>,
+    imageURL: string,
+    alterEgoImageURL: string
+}
+interface TeamProps {
     name: string;
 }
 
-interface ProjectsState {
-    currentProjects: Array<Project>;
+interface TeamState {
+    team: Array<TeamMember>;
 }
 
-const SampleProject = (projectName: string) => {
-
-    if(projectName == 'Vote Smart Locally' ) {
-        return (
-            <VoteSmartLocallyComponent />
-        );
-    }
-    else {
-        return (
-            <div >
-                No project sample available.
-            </div>
-        );
-    }
-
-}
-
-const projectItemDisplay = (project: Project, index: number) => {
-    const projectItemContainerCSS = {
+const teamMemberDisplay = (teamMember: TeamMember, index: number) => {
+    console.log(teamMember.imageURL)
+    const teamMemberContainerCSS = {
         padding: "10px",
-        fontSize: "16px",
-        textAlign: "left"
+        fontSize: "20px",
+        textAlign: "left",
     }
 
     const githubIconLink = {
@@ -59,29 +44,53 @@ const projectItemDisplay = (project: Project, index: number) => {
         backgroundColor: "#d9d9d9",
         borderRadius: "6px",
         padding: "2px",
-        marginBottom: "30px"    
+        width: "320px",
+        margin: "20px"
     }
     const lightCard = {
         backgroundColor: "white",
         margin: "2px",
         borderRadius: "6px"
     }
+    const teamMemberProfileImage = style.create({
+        backgroundImage: `url(${teamMember.imageURL})`,
+        height: "120px",
+        width: "100px",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        zIndex: 6
+    })
+    const alterEgoProfileImage = style.create({
+        backgroundImage: `url(${teamMember.alterEgoImageURL})`,
+        height: "120px",
+        width: "100px",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        position: "relative",
+        zIndex: 0,
+        bottom: "80px",
+        right: "30px"
+    })
+
     return (
-        <div style={darkCard}>
-            <div style={lightCard}>
-                <div key={index} style={projectItemContainerCSS}>
-                    <div>{project.name}</div>
-                    <div>{project.description}</div>
-                    <br />
-                    <div>{project.problem}</div>
-                    <div style={githubIconLink}>
-                        <Glyph style={githubIconLink} icon='mark-github' />
+        <div>
+            <div style={darkCard}>
+                <div style={lightCard}>
+                    <div key={index} style={teamMemberContainerCSS}>
+                        <div>{teamMember.name}</div>
+                        <div>{teamMember.title}</div>
+                        <div style={teamMemberProfileImage}></div>
+                        <div style={alterEgoProfileImage}></div>
+
+                        <br />
+                        <div style={githubIconLink}>
+                            <Glyph style={githubIconLink} icon='mark-github' />
+                        </div>
+                        <div><a href={teamMember.links[0].url}>{teamMember.links[0].url}</a></div>
+                        <hr />
                     </div>
-                    <div><a href={project.github.link}>{project.github.link}</a></div>
-                    <div>
-                        {SampleProject(project.name)}
-                    </div>
-                    <hr />
                 </div>
             </div>
             <ParallaxComponent />
@@ -89,27 +98,27 @@ const projectItemDisplay = (project: Project, index: number) => {
     );
 }
 
-class ProjectsComponent extends React.Component<ProjectsProps, ProjectsState> {
-    constructor(props: ProjectsProps) {
-        super(props);
-        this.props = props;
+class TeamComponent extends React.Component<TeamProps, TeamState> {
+    constructor(props: TeamProps) {
+        super(props)
+        this.props = props
     }
 
     render() {
 
         return (
             <div>
-                {projectData.projects.map( function(project: Project, index: number) {
-                    return projectItemDisplay(project, index);
+                {teamData.teamMembers.map( function(teamMember: TeamMember, index: number) {
+                    return teamMemberDisplay(teamMember, index);
                 })}
             </div>
-        );
+        )
     }
     componentDidMount() {
         this.setState({
-            currentProjects: projectData.projects
-        });
+            team: teamData.teamMembers
+        })
     }
 }
 
-export default ProjectsComponent;
+export default TeamComponent
