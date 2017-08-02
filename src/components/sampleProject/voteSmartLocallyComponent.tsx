@@ -4,6 +4,7 @@ import store from "../../redux/store/store"
 
 interface VoteSmartState {
     address: string
+    userAddressData: any
 }
 class VoteSmartLocallyComponent extends React.Component<{}, VoteSmartState> {
     constructor() {
@@ -18,9 +19,9 @@ class VoteSmartLocallyComponent extends React.Component<{}, VoteSmartState> {
         const addressData = {
             address: this.removeSpacesAddPluses()
         }
-        const data = store.dispatch({type: "LOOKUP_ADDRESS", payload: addressData})
-        console.log("THE DATA returned")
-        console.log(data)
+        store.subscribe(this.render)
+        store.dispatch({state: this.state, type: "LOOKUP_ADDRESS",  payload: addressData})
+        console.log(this.state)
     }
 
     handleAddress(event: React.ChangeEvent<HTMLInputElement>) {

@@ -69,7 +69,7 @@ const teamMemberDisplay = (teamMember: TeamMember, index: number) => {
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         position: "relative",
-        zIndex: 0,
+        zIndex: -1,
         bottom: "80px",
         right: "30px"
     })
@@ -81,8 +81,9 @@ const teamMemberDisplay = (teamMember: TeamMember, index: number) => {
                     <div key={index} style={teamMemberContainerCSS}>
                         <div>{teamMember.name}</div>
                         <div>{teamMember.title}</div>
-                        <div style={teamMemberProfileImage}></div>
-                        <div style={alterEgoProfileImage}></div>
+                        <div style={teamMemberProfileImage}>
+                            <div style={alterEgoProfileImage}></div>
+                        </div>
 
                         <br />
                         <div style={githubIconLink}>
