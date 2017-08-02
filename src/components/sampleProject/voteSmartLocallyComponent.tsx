@@ -30,8 +30,8 @@ class VoteSmartLocallyComponent extends React.Component<VoteSmartProps, VoteSmar
         const address = this.removeSpacesAddPluses()
         const fullRepURL = baseRepURL + address + endURL
         const fullElectionsURL = baseElectionsURL + address + endURL
-        this.props.fetchAddressData(fullRepURL)
-            /*
+        const temp = this.props.fetchAddressData(fullRepURL)
+        /*
         store.subscribe(this.render)
         store.dispatch({
             type: 'LOOKUP_ADDRESS',

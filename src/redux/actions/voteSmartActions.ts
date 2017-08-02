@@ -10,9 +10,6 @@ const getAddressData = (fullURL: string) => {
     return function(dispatch, getState) {
         if (fullURL !== '') { 
             return axios.get(fullURL).then(function (response) {
-                console.log(dispatch)
-                console.log(getState())
-                console.log("in the axios response")
                 dispatch(addressDataSuccess(response))
             
             }).catch(function (error) {

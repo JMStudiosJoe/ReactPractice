@@ -14,12 +14,6 @@ const baseElectionsURL = 'https://www.googleapis.com/civicinfo/v2/elections?alt=
 
 const VoteSmartReducer = (state: any = INITIAL_STATE, action: VoteSmartAction<Action>): any => {
     switch(action.type) {
-        case "LOOKUP_ADDRESS":
-            const fullRepURL = baseRepURL + action.payload.address + endURL
-            const fullElectionsURL = baseElectionsURL + action.payload.address + endURL
-            console.log(state)
-            getAddressData(fullRepURL)
-        
         case "HANDLE_RETURN_DATA":
             console.log("in reducer handling return payload is")
             const returnData = {
