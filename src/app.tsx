@@ -1,15 +1,16 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-
+import * as React from 'react'
+import * as ReactDOM from 'react-dom'
+import store from './redux/store/store'
+import { Provider } from 'react-redux'
+import { getAddressData } from './redux/actions/voteSmartActions'
 import {UIRouter, UIView, UISref, UISrefActive, pushStateLocationPlugin} from 'ui-router-react';
 import NavigationBarComponent from './components/navigationBarComponent'
 
-var user: {
-    'userType': 'buyer'
-}
+store.dispatch(getAddressData(''))
+
 ReactDOM.render(
-    <div>
+    <Provider store={store}>
         <NavigationBarComponent userType='buyer' />
-    </div>,
+    </Provider>,
     document.getElementById("root")
 );

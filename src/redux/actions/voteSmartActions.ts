@@ -4,17 +4,31 @@ import axios from 'axios'
 
 interface VoteSmartAction<Action> {
     type: string
-    payload: any
+    payload?: any
 }
 const getAddressData = (fullURL: string) => {
-    axios.get(fullURL).then(function (response) {
-        store.dispatch({type: "HANDLE_RETURN_DATA", payload: response.data.offices})
-        return response
-    
-    }).catch(function (error) {
-          console.log(error);
-    });
+    return function(dispatch, getState) {
+        if (fullURL !== '') { 
+            return axios.get(fullURL).then(function (response) {
+                console.log(dispatch)
+                console.log(getState())
+                console.log("in the axios response")
+                dispatch(addressDataSuccess(response))
+            
+            }).catch(function (error) {
+                  console.log(error)
+            })
+        }
+        
+    }
 
+}
+const addressDataSuccess = (addressData: any) => {
+    return {
+        type: 'HANDLE_RETURN_DATA',
+        payload: addressData,
+        addressData
+    }
 }
 
 export {

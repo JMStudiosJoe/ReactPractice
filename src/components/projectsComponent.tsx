@@ -1,9 +1,9 @@
-import * as React from "react";
-import * as style from "ts-style";
-import ParallaxComponent from "./customReactParallax";
+import * as React from "react"
+import * as style from "ts-style"
+import ParallaxComponent from "./customReactParallax"
 import { Glyph, Spinner } from 'elemental' 
-import {projectData} from "../models/projects";
-import VoteSmartLocallyComponent from "./sampleProject/voteSmartLocallyComponent";
+import {projectData} from "../models/projects"
+import VoteSmartLocallyComponent from "./sampleProject/voteSmartLocallyComponent"
 interface Project {
     name: string,
     description: string,
@@ -19,11 +19,11 @@ interface Project {
     }
 }
 interface ProjectsProps {
-    name: string;
+    name: string
 }
 
 interface ProjectsState {
-    currentProjects: Array<Project>;
+    currentProjects: Array<Project>
 }
 
 const SampleProject = (projectName: string) => {
@@ -31,14 +31,14 @@ const SampleProject = (projectName: string) => {
     if(projectName == 'Vote Smart Locally' ) {
         return (
             <VoteSmartLocallyComponent />
-        );
+        )
     }
     else {
         return (
             <div >
                 No project sample available.
             </div>
-        );
+        )
     }
 
 }
@@ -88,13 +88,13 @@ const projectItemDisplay = (project: Project, index: number) => {
             </div>
             <ParallaxComponent />
         </div>
-    );
+    )
 }
 
 class ProjectsComponent extends React.Component<ProjectsProps, ProjectsState> {
     constructor(props: ProjectsProps) {
-        super(props);
-        this.props = props;
+        super(props)
+        this.props = props
     }
 
     render() {
@@ -105,13 +105,13 @@ class ProjectsComponent extends React.Component<ProjectsProps, ProjectsState> {
                     return projectItemDisplay(project, index);
                 })}
             </div>
-        );
+        )
     }
     componentDidMount() {
         this.setState({
             currentProjects: projectData.projects
-        });
+        })
     }
 }
 
-export default ProjectsComponent;
+export default ProjectsComponent
