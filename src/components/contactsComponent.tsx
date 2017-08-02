@@ -1,7 +1,7 @@
-import * as React from "react";
-import * as style from "ts-style";
+import * as React from "react"
+import * as style from "ts-style"
 
-import ParallaxComponent from "./customReactParallax";
+import ParallaxComponent from "./customReactParallax"
 
 
 const toggleRendering = (conditions: Boolean) => {
@@ -18,7 +18,7 @@ const toggleRendering = (conditions: Boolean) => {
                     To contact Joseph Richardson: <a href="mailto:jrichardson@jmstudios.net" >Send Mail</a>           
                 </div>
             </div>
-        );
+        )
     }
     else {
         return (
@@ -28,7 +28,7 @@ const toggleRendering = (conditions: Boolean) => {
                     For consulting contact Joseph Richardson: <a href="mailto:consulting@jmstudios.net" >Send Mail Consulting</a>           
                 </div>
             </div>
-        );
+        )
     }
 
 }
@@ -37,20 +37,20 @@ interface ContactState {
 }
 class ContactsComponent extends React.Component<{}, ContactState> {
     constructor() {
-        super();
+        super()
 
         this.state = ({
             toggleConditional: true
         } as ContactState);
-        this.toggleConditionalEvent = this.toggleConditionalEvent.bind(this);
+        this.toggleConditionalEvent = this.toggleConditionalEvent.bind(this)
 
     }
     toggleConditionalEvent(event: React.MouseEvent<HTMLButtonElement>) {
-        event.preventDefault();
+        event.preventDefault()
 
         this.setState({
             toggleConditional: !this.state.toggleConditional
-        });
+        })
 
     }
     render() {
@@ -65,8 +65,8 @@ class ContactsComponent extends React.Component<{}, ContactState> {
     componentDidMount() {
         this.setState({
             toggleConditional: true
-        });
+        })
     }
 }
 
-export default ContactsComponent;
+export default ContactsComponent

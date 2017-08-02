@@ -4,7 +4,7 @@ import store from "../../redux/store/store"
 
 interface VoteSmartState {
     address: string
-    userAddressData: any
+    userAddressData: Promise<any>
 }
 class VoteSmartLocallyComponent extends React.Component<{}, VoteSmartState> {
     constructor() {

@@ -9,7 +9,6 @@ interface TeamMemberLink {
     icon: string,
     url: string
 }
-
 interface TeamMember {
     name: string,
     title: string,
@@ -20,56 +19,58 @@ interface TeamMember {
     alterEgoImageURL: string
 }
 interface TeamProps {
-    name: string;
+    name: string
 }
-
 interface TeamState {
-    team: Array<TeamMember>;
+    team: Array<TeamMember>
 }
-
 const teamMemberDisplay = (teamMember: TeamMember, index: number) => {
-    console.log(teamMember.imageURL)
-    const teamMemberContainerCSS = {
+    const teamMemberContainerCSS = style.create({
         padding: "10px",
         fontSize: "20px",
         textAlign: "left",
-    }
+    })
 
-    const githubIconLink = {
+    const githubIconLink = style.create({
         width: '60px',
         height: '60px'
-    }
+    })
     
-    const darkCard = {
+    const darkCard = style.create({
         backgroundColor: "#d9d9d9",
         borderRadius: "6px",
         padding: "2px",
-        width: "320px",
+        width: "420px",
         margin: "20px"
-    }
-    const lightCard = {
+    })
+
+    const lightCard = style.create({
         backgroundColor: "white",
         margin: "2px",
         borderRadius: "6px"
-    }
+    })
+
     const teamMemberProfileImage = style.create({
         backgroundImage: `url(${teamMember.imageURL})`,
         height: "120px",
         width: "100px",
+        borderRadius: "25px",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
-        zIndex: 6
+        zIndex: 16
     })
+
     const alterEgoProfileImage = style.create({
         backgroundImage: `url(${teamMember.alterEgoImageURL})`,
         height: "120px",
         width: "100px",
+        borderRadius: "25px",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         position: "relative",
-        zIndex: -1,
+        zIndex: 1,
         bottom: "80px",
         right: "30px"
     })
@@ -81,9 +82,8 @@ const teamMemberDisplay = (teamMember: TeamMember, index: number) => {
                     <div key={index} style={teamMemberContainerCSS}>
                         <div>{teamMember.name}</div>
                         <div>{teamMember.title}</div>
-                        <div style={teamMemberProfileImage}>
-                            <div style={alterEgoProfileImage}></div>
-                        </div>
+                        <div style={teamMemberProfileImage}></div>
+                        <div style={alterEgoProfileImage}></div>
 
                         <br />
                         <div style={githubIconLink}>

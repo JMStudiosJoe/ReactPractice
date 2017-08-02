@@ -15,8 +15,8 @@ class AboutComponent extends React.Component<AboutProps, {}> {
             </div>    
           <ParallaxComponent />    
         </div>
-    );
+    )
   }
 }
 
-export default AboutComponent;
+export default AboutComponent

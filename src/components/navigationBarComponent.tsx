@@ -28,7 +28,7 @@ const navigationBarContainer = {
     padding:"10px",
     margin: "20px",
     textAlign: "center",
-};
+}
 const navItem = style.create({
     base: {
         marginRight: "20px",
@@ -41,12 +41,11 @@ const navItem = style.create({
         }
     }
 })
-                                        /*<props passed in, state types? can assign the state type here>*/
 class NavigationBarComponent extends React.Component<NavigationProps, NavigationBarState> {
     constructor(props: NavigationProps) {
-        super(props);
-        this.props = props;
-        this.state = ({} as NavigationBarState);
+        super(props)
+        this.props = props
+        this.state = ({} as NavigationBarState)
 
     }
     render() {
@@ -81,4 +80,4 @@ class NavigationBarComponent extends React.Component<NavigationProps, Navigation
     }
 }
 
-export default NavigationBarComponent;
+export default NavigationBarComponent
