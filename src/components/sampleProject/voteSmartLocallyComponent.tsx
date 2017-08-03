@@ -5,6 +5,9 @@ import { getAddressData } from '../../redux/actions/voteSmartActions'
 import store from "../../redux/store/store"
 interface VoteSmartState {
     address: string
+    offices?: Array<any>
+    officials?: Array<any>
+    divisions?: Array<any>
     userAddressData?: any
 }
 interface VoteSmartProps {
@@ -19,6 +22,9 @@ const baseElectionsURL = 'https://www.googleapis.com/civicinfo/v2/elections?alt=
 class VoteSmartLocallyComponent extends React.Component<VoteSmartProps, VoteSmartState> {
     constructor(props) {
         super(props)
+        this.state = {
+            address: ''
+        }
     }
     removeSpacesAddPluses() {
         return this.state.address.split(' ').join('+')      
@@ -35,9 +41,11 @@ class VoteSmartLocallyComponent extends React.Component<VoteSmartProps, VoteSmar
     handleAddress(event: React.ChangeEvent<HTMLInputElement>) {
         event.preventDefault()
         const address = event.target.value
-        this.setState({
-            address: address 
-        })
+        if (this.state.address !== address) {
+            this.setState({
+                address: address 
+            })
+        }
     }
 
     render() {
@@ -60,19 +68,29 @@ class VoteSmartLocallyComponent extends React.Component<VoteSmartProps, VoteSmar
         </div>
         )
     }
-    componentWillMount() {
+    componentWillReceiveProps(newProps) {
+        console.log('---newprops---)')
+        console.log(newProps)
+        console.log('---componentWillReceiveProps----')
+        console.log(this.props)
         this.setState({
-            ...this.props.userAddressData
+            ...newProps.userAddressData
         })
+
+    }
+
+    componentWillUpdate() {
 
     }
 
 }
 
 const mapStateToProps = (state) => {
+    console.log('___MSTP____')
+    console.log(state)
     return {
         address: state.address,
-        userAddressData: state.userAddressData
+        userAddressData: state
     }
 }
 const mapDispatchToProps = (dispatch) => {
