@@ -15,14 +15,12 @@ const baseElectionsURL = 'https://www.googleapis.com/civicinfo/v2/elections?alt=
 const VoteSmartReducer = (state: any = INITIAL_STATE, action: VoteSmartAction<Action>): any => {
     switch(action.type) {
         case "HANDLE_RETURN_DATA":
-            console.log("in reducer handling return payload is")
-            const returnData = {
+            return {
                 address: '',
-                userAddressData: action.payload
+                userAddressData: {
+                    ...action.payload
+                }
             }
-            console.log(returnData)
-            
-            return returnData
 
         default:
             return state

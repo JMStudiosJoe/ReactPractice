@@ -10,6 +10,7 @@ interface VoteSmartState {
 interface VoteSmartProps {
     fetchAddressData: any
     goFetch: any
+    userAddressData: any
 }
 const API_KEY = 'AIzaSyCWhwRupMs7IeE4IrGEgHtT0Nt-IGZnP9E'
 const endURL = '&key='+ API_KEY
@@ -18,11 +19,6 @@ const baseElectionsURL = 'https://www.googleapis.com/civicinfo/v2/elections?alt=
 class VoteSmartLocallyComponent extends React.Component<VoteSmartProps, VoteSmartState> {
     constructor(props) {
         super(props)
-        this.props = props
-        this.state = {
-            address: '',
-            userAddressData: {}
-        }
     }
     removeSpacesAddPluses() {
         return this.state.address.split(' ').join('+')      
@@ -33,16 +29,7 @@ class VoteSmartLocallyComponent extends React.Component<VoteSmartProps, VoteSmar
         const fullRepURL = baseRepURL + address + endURL
         const fullElectionsURL = baseElectionsURL + address + endURL
 
-        this.props.fetchAddressData(fullRepURL)
-        /*
-        store.dispatch(getAddressData(fullRepURL))
-        //
-        store.subscribe(this.render)
-        store.dispatch({
-            type: 'LOOKUP_ADDRESS',
-            payload: address
-        })
-             */
+        this.props.fetchAddressData(fullRepURL, this.state.address)
     }
 
     handleAddress(event: React.ChangeEvent<HTMLInputElement>) {
@@ -56,7 +43,7 @@ class VoteSmartLocallyComponent extends React.Component<VoteSmartProps, VoteSmar
     render() {
         return (
         <div>
-            {console.log('log in the render method')}
+            {console.log('---------render---------')}
             {console.log(this.state)}
             vote smart kids
             need to connect the redux and suff to make request
@@ -73,12 +60,16 @@ class VoteSmartLocallyComponent extends React.Component<VoteSmartProps, VoteSmar
         </div>
         )
     }
+    componentWillMount() {
+        this.setState({
+            ...this.props.userAddressData
+        })
+
+    }
 
 }
 
 const mapStateToProps = (state) => {
-    console.log('------map state to props--------')
-    console.log(state)
     return {
         address: state.address,
         userAddressData: state.userAddressData
@@ -86,7 +77,7 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchAddressData: (url) => dispatch(getAddressData(url)),
+        fetchAddressData: (url, address) => dispatch(getAddressData(url, address)),
         goFetch: bindActionCreators(getAddressData, dispatch)
     }
 }
