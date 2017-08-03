@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import { getAddressData } from '../../redux/actions/voteSmartActions'
 import store from "../../redux/store/store"
 interface VoteSmartState {
@@ -7,7 +8,8 @@ interface VoteSmartState {
     userAddressData?: any
 }
 interface VoteSmartProps {
-    fetchAddressData: any 
+    fetchAddressData: any
+    goFetch: any
 }
 const API_KEY = 'AIzaSyCWhwRupMs7IeE4IrGEgHtT0Nt-IGZnP9E'
 const endURL = '&key='+ API_KEY
@@ -16,7 +18,7 @@ const baseElectionsURL = 'https://www.googleapis.com/civicinfo/v2/elections?alt=
 class VoteSmartLocallyComponent extends React.Component<VoteSmartProps, VoteSmartState> {
     constructor(props) {
         super(props)
-        console.log(props)
+        this.props = props
         this.state = {
             address: '',
             userAddressData: {}
@@ -30,8 +32,16 @@ class VoteSmartLocallyComponent extends React.Component<VoteSmartProps, VoteSmar
         const address = this.removeSpacesAddPluses()
         const fullRepURL = baseRepURL + address + endURL
         const fullElectionsURL = baseElectionsURL + address + endURL
-        const temp = this.props.fetchAddressData(fullRepURL)
+
+        this.props.goFetch(fullRepURL).then(
+            function(data) {
+                console.log('fetchAddressData then')
+                console.log(data)
+            }
+        )
         /*
+        store.dispatch(getAddressData(fullRepURL))
+        //
         store.subscribe(this.render)
         store.dispatch({
             type: 'LOOKUP_ADDRESS',
@@ -79,7 +89,8 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchAddressData: (url) => dispatch(getAddressData(url))
+        fetchAddressData: (url) => dispatch(getAddressData(url)),
+        goFetch: bindActionCreators(getAddressData, dispatch)
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(VoteSmartLocallyComponent)

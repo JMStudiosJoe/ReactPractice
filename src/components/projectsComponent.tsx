@@ -67,10 +67,10 @@ const projectItemDisplay = (project: Project, index: number) => {
         borderRadius: "6px"
     }
     return (
-        <div>
+        <div key={index}>
             <div style={darkCard}>
                 <div style={lightCard}>
-                    <div key={index} style={projectItemContainerCSS}>
+                    <div style={projectItemContainerCSS}>
                         <div>{project.name}</div>
                         <div>{project.description}</div>
                         <br />

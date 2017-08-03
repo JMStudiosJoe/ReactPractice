@@ -17,8 +17,8 @@ const VoteSmartReducer = (state: any = INITIAL_STATE, action: VoteSmartAction<Ac
         case "HANDLE_RETURN_DATA":
             console.log("in reducer handling return payload is")
             const returnData = {
-                ...state,
-                userAddressData: action.payload 
+                address: '',
+                userAddressData: action.payload
             }
             console.log(returnData)
             

@@ -6,7 +6,6 @@ import { getAddressData } from './redux/actions/voteSmartActions'
 import {UIRouter, UIView, UISref, UISrefActive, pushStateLocationPlugin} from 'ui-router-react';
 import NavigationBarComponent from './components/navigationBarComponent'
 
-store.dispatch(getAddressData(''))
 
 ReactDOM.render(
     <Provider store={store}>
