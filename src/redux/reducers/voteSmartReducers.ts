@@ -16,7 +16,7 @@ const VoteSmartReducer = (state: any = INITIAL_STATE, action: VoteSmartAction<Ac
     switch(action.type) {
         case "HANDLE_RETURN_DATA":
             return {
-                    ...action.payload
+                ...action.payload
             }
 
         default:

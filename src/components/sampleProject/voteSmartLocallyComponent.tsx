@@ -3,11 +3,14 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { getAddressData } from '../../redux/actions/voteSmartActions'
 import store from "../../redux/store/store"
+import { Office, Official, Division } from '../types/voteSmartTypes'
+
+
 interface VoteSmartState {
     address: string
-    offices?: Array<any>
-    officials?: Array<any>
-    divisions?: Array<any>
+    offices?: Array<Office>
+    officials?: Array<Official>
+    divisions?: Array<Division>
     userAddressData?: any
 }
 interface VoteSmartProps {
@@ -69,28 +72,16 @@ class VoteSmartLocallyComponent extends React.Component<VoteSmartProps, VoteSmar
         )
     }
     componentWillReceiveProps(newProps) {
-        console.log('---newprops---)')
-        console.log(newProps)
-        console.log('---componentWillReceiveProps----')
-        console.log(this.props)
         this.setState({
             ...newProps.userAddressData
         })
 
     }
-
-    componentWillUpdate() {
-
-    }
-
 }
 
 const mapStateToProps = (state) => {
-    console.log('___MSTP____')
-    console.log(state)
     return {
-        address: state.address,
-        userAddressData: state
+        ...state
     }
 }
 const mapDispatchToProps = (dispatch) => {
