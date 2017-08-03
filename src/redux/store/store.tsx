@@ -1,7 +1,7 @@
 
 import {createStore, applyMiddleware} from 'redux'
-import VoteSmartReducer from '../reducers/voteSmartReducers'
+import rootReducer from '../reducers/rootReducer'
 import ReduxThunk from 'redux-thunk'
-const store = createStore(VoteSmartReducer,{}, applyMiddleware(ReduxThunk))
+const store = createStore(rootReducer,{}, applyMiddleware(ReduxThunk))
 
 export default store

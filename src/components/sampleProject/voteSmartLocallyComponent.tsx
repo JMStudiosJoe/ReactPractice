@@ -33,12 +33,7 @@ class VoteSmartLocallyComponent extends React.Component<VoteSmartProps, VoteSmar
         const fullRepURL = baseRepURL + address + endURL
         const fullElectionsURL = baseElectionsURL + address + endURL
 
-        this.props.goFetch(fullRepURL).then(
-            function(data) {
-                console.log('fetchAddressData then')
-                console.log(data)
-            }
-        )
+        this.props.fetchAddressData(fullRepURL)
         /*
         store.dispatch(getAddressData(fullRepURL))
         //
@@ -82,9 +77,11 @@ class VoteSmartLocallyComponent extends React.Component<VoteSmartProps, VoteSmar
 }
 
 const mapStateToProps = (state) => {
+    console.log('------map state to props--------')
+    console.log(state)
     return {
-        address: '',
-        userAddressData: {}
+        address: state.address,
+        userAddressData: state.userAddressData
     }
 }
 const mapDispatchToProps = (dispatch) => {
