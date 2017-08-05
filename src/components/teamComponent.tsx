@@ -1,12 +1,11 @@
-import * as React from "react"
-import * as style from "ts-style"
-import ParallaxComponent from "./customReactParallax"
-import { Glyph, Spinner } from 'elemental'
-import {teamData} from "../models/teamModel"
-import VoteSmartLocallyComponent from "./sampleProject/voteSmartLocallyComponent"
+import * as React from 'react'
+import * as style from 'ts-style'
+import ParallaxComponent from './customReactParallax'
+import * as FA from 'react-icons/lib/fa'
+import {teamData} from '../models/teamModel'
+import VoteSmartLocallyComponent from './sampleProject/voteSmartLocallyComponent'
 interface TeamMemberLink {
     name: string,
-    icon: string,
     url: string
 }
 interface TeamMember {
@@ -26,70 +25,67 @@ interface TeamState {
 }
 const teamMemberDisplay = (teamMember: TeamMember, index: number) => {
     const teamMemberContainerCSS = style.create({
-        padding: "10px",
-        fontSize: "20px",
-        textAlign: "left",
+        padding: '10px',
+        fontSize: '20px',
+        textAlign: 'left',
     })
 
-    const githubIconLink = style.create({
-        width: '60px',
-        height: '60px'
-    })
     
     const darkCard = style.create({
-        backgroundColor: "#d9d9d9",
-        borderRadius: "6px",
-        padding: "2px",
-        width: "420px",
-        margin: "20px"
+        backgroundColor: '#d9d9d9',
+        borderRadius: '6px',
+        padding: '2px',
+        width: '420px',
+        margin: '20px'
     })
 
     const lightCard = style.create({
-        backgroundColor: "white",
-        margin: "2px",
-        borderRadius: "6px"
+        backgroundColor: 'white',
+        margin: '2px',
+        borderRadius: '6px',
+        textAlign: 'center',
+        position: 'relative',
+        zIndex: 2
     })
 
     const teamMemberProfileImage = style.create({
         backgroundImage: `url(${teamMember.imageURL})`,
-        height: "120px",
-        width: "100px",
-        borderRadius: "25px",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
+        height: '160px',
+        width: '150px',
+        borderRadius: '50px',
+        position: 'relative',
         zIndex: 16
     })
 
     const alterEgoProfileImage = style.create({
         backgroundImage: `url(${teamMember.alterEgoImageURL})`,
-        height: "120px",
-        width: "100px",
-        borderRadius: "25px",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        position: "relative",
-        zIndex: 1,
-        bottom: "80px",
-        right: "30px"
+        height: '10px',
+        width: '80px',
+        borderRadius: '50px',
+        position: 'relative',
+        zIndex: 3,
+        top: '40px',
+        left: '80px'
     })
 
     return (
-        <div>
+        <div key={index}>
             <div style={darkCard}>
                 <div style={lightCard}>
-                    <div key={index} style={teamMemberContainerCSS}>
+                    <div style={teamMemberContainerCSS}>
                         <div>{teamMember.name}</div>
                         <div>{teamMember.title}</div>
-                        <div style={teamMemberProfileImage}></div>
-                        <div style={alterEgoProfileImage}></div>
+                        <div >
+                            <img style={alterEgoProfileImage} src={teamMember.alterEgoImageURL} />
+                            <img style={teamMemberProfileImage} src={teamMember.imageURL} />
+                        </div>
 
                         <br />
-                        <div style={githubIconLink}>
-                            <Glyph style={githubIconLink} icon='mark-github' />
+                        <div>
+                            {
+                                displayLinksWithIcons(teamMember.links)
+                            }
                         </div>
-                        <div><a href={teamMember.links[0].url}>{teamMember.links[0].url}</a></div>
                         <hr />
                     </div>
                 </div>
@@ -98,6 +94,30 @@ const teamMemberDisplay = (teamMember: TeamMember, index: number) => {
         </div>
     );
 }
+const displayLinksWithIcons = (links: Array<TeamMemberLink>) => {
+    const iconLink = style.create({
+        width: '60px',
+        height: '60px',
+        display: 'inline-block'
+    })
+    return links.map( (link: TeamMemberLink, index: number) => {
+        if (link.name === 'github') {
+            return (
+                <div style={iconLink} key={index}>
+                    <a href={link.url} ><FA.FaGithub /></a>
+                </div>
+            )
+        }
+        else if (link.name === 'linkedin') {
+            return (
+                <div style={iconLink} key={index}>
+                    <a href={link.url} ><FA.FaLinkedin /></a>
+                </div>
+            )
+        }
+    })
+}
+
 
 class TeamComponent extends React.Component<TeamProps, TeamState> {
     constructor(props: TeamProps) {

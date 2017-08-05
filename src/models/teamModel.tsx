@@ -5,8 +5,11 @@ export const teamData = {
         "description": "I make solutions for the challenges I take on.",
         "links": [
             {
-                "name": "Github",
-                "icon": "",
+                "name": "github",
+                "url": "https://github.com/JMStudiosJoe"
+            },
+            {
+                "name": "linkedin",
                 "url": "https://www.linkedin.com/in/joseph-richardson-97206953"
             }
         ],

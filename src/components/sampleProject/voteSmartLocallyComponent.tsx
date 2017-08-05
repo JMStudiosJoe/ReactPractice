@@ -106,8 +106,14 @@ const displayOfficial = (official: Official, index: number) => {
             width: '50px' 
         })
     }
+    const officialInfoContainer = () => {
+        return style.create({
+            height: '200px',
+            width: '150px'
+        })
+    }
     return(
-        <div key={index}>
+        <div style={officialInfoContainer()} key={index}>
             <div>
                 <div>{official.name}</div>
             </div>
@@ -116,10 +122,39 @@ const displayOfficial = (official: Official, index: number) => {
 
 }
 const displayOfficialForOffice = (office: Office, index: number, officials: Array<Official>) => {
+    const officeContainer = () => {
+        return style.create({
+            height: '220px',
+            width: '170px'
+        })
+    }
+
     const officialsForOffice: Array<Official> = getOfficialsForOffice(office, officials) 
     return officialsForOffice.map( (official: Official, index: number) => {
-        return displayOfficial(official, index)
+        return (
+            <div style={officeContainer()}>
+                <h4>{office.name}</h4>
+                {displayOfficial(official, index)}
+            </div>
+
+        )
     })
+}
+
+const displayDivisionInfo = (division: Division, officesInDivision: Array<Office>, officials: Array<Official>, index: number) => {
+    return (
+        <div key={index}>
+            <h3>{division.name}</h3>
+            <div>
+            {
+                officesInDivision.map( (office: Office, index: number) => {
+                    return displayOfficialForOffice(office, index, officials)
+                })
+            }
+            </div>
+        </div>
+    )
+    
 }
 
 const displayOfficialsByDivisions = (divisions: any, offices: Array<Office>, officials: Array<Official>) => {
@@ -132,18 +167,7 @@ const displayOfficialsByDivisions = (divisions: any, offices: Array<Office>, off
             return offices[index]
         })
         if (division.name !== 'United States')
-            return (
-                <div key={index}>
-                    <h3>{division.name}</h3>
-                    <div>
-                    {
-                        officesInDivision.map( (office: Office, index: number) => {
-                            return displayOfficialForOffice(office, index, officials)
-                        })
-                    }
-                    </div>
-                </div>
-            )
+            return displayDivisionInfo(division, officesInDivision, officials, index)
     })
 }
 
