@@ -32,7 +32,7 @@ const teamMemberDisplay = (teamMember: TeamMember, index: number) => {
     })
 
     const teamMemberProfileImage = style.create({
-        backgroundImage: `url(${teamMember.imageURL})`,
+        backgroundImage: 'url(${teamMember.imageURL})',
         height: '160px',
         width: '150px',
         borderRadius: '50px',
@@ -41,7 +41,7 @@ const teamMemberDisplay = (teamMember: TeamMember, index: number) => {
     })
 
     const alterEgoProfileImage = style.create({
-        backgroundImage: `url(${teamMember.alterEgoImageURL})`,
+        backgroundImage: 'url(${teamMember.alterEgoImageURL})',
         height: '100px',
         width: '80px',
         borderRadius: '50px',
@@ -69,13 +69,12 @@ const teamMemberDisplay = (teamMember: TeamMember, index: number) => {
                                 displayLinksWithIcons(teamMember.links)
                             }
                         </div>
-                        <hr />
                     </div>
                 </div>
             </div>
             <ParallaxComponent />
         </div>
-    );
+    )
 }
 const displayLinksWithIcons = (links: Array<TeamMemberLink>) => {
     const iconLink = style.create({
