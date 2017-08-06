@@ -2,6 +2,7 @@ import * as React from "react"
 import * as style from "ts-style"
 import ParallaxComponent from "./customReactParallax"
 import { Glyph, Spinner } from 'elemental' 
+import { darkCard, lightCard, cardsContainer } from './scss/common'
 import {projectData} from "../models/projects"
 import VoteSmartLocallyComponent from "./sampleProject/voteSmartLocallyComponent"
 interface Project {
@@ -55,21 +56,10 @@ const projectItemDisplay = (project: Project, index: number) => {
         height: '60px'
     }
     
-    const darkCard = {
-        backgroundColor: "#d9d9d9",
-        borderRadius: "6px",
-        padding: "2px",
-        marginBottom: "30px"    
-    }
-    const lightCard = {
-        backgroundColor: "white",
-        margin: "2px",
-        borderRadius: "6px"
-    }
     return (
         <div key={index}>
-            <div style={darkCard}>
-                <div style={lightCard}>
+            <div style={darkCard()}>
+                <div style={lightCard()}>
                     <div style={projectItemContainerCSS}>
                         <div>{project.name}</div>
                         <div>{project.description}</div>
@@ -82,7 +72,6 @@ const projectItemDisplay = (project: Project, index: number) => {
                         <div>
                             {SampleProject(project.name)}
                         </div>
-                        <hr />
                     </div>
                 </div>
             </div>
@@ -100,7 +89,7 @@ class ProjectsComponent extends React.Component<ProjectsProps, ProjectsState> {
     render() {
 
         return (
-            <div>
+            <div style={cardsContainer()}>
                 {projectData.projects.map( function(project: Project, index: number) {
                     return projectItemDisplay(project, index);
                 })}

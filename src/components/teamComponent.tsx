@@ -3,6 +3,7 @@ import * as style from 'ts-style'
 import ParallaxComponent from './customReactParallax'
 import * as FA from 'react-icons/lib/fa'
 import {teamData} from '../models/teamModel'
+import { darkCard, lightCard, cardsContainer } from './scss/common'
 import VoteSmartLocallyComponent from './sampleProject/voteSmartLocallyComponent'
 interface TeamMemberLink {
     name: string,
@@ -30,24 +31,6 @@ const teamMemberDisplay = (teamMember: TeamMember, index: number) => {
         textAlign: 'left',
     })
 
-    
-    const darkCard = style.create({
-        backgroundColor: '#d9d9d9',
-        borderRadius: '6px',
-        padding: '2px',
-        width: '420px',
-        margin: '20px'
-    })
-
-    const lightCard = style.create({
-        backgroundColor: 'white',
-        margin: '2px',
-        borderRadius: '6px',
-        textAlign: 'center',
-        position: 'relative',
-        zIndex: 2
-    })
-
     const teamMemberProfileImage = style.create({
         backgroundImage: `url(${teamMember.imageURL})`,
         height: '160px',
@@ -59,7 +42,7 @@ const teamMemberDisplay = (teamMember: TeamMember, index: number) => {
 
     const alterEgoProfileImage = style.create({
         backgroundImage: `url(${teamMember.alterEgoImageURL})`,
-        height: '10px',
+        height: '100px',
         width: '80px',
         borderRadius: '50px',
         position: 'relative',
@@ -70,8 +53,8 @@ const teamMemberDisplay = (teamMember: TeamMember, index: number) => {
 
     return (
         <div key={index}>
-            <div style={darkCard}>
-                <div style={lightCard}>
+            <div style={darkCard()}>
+                <div style={lightCard()}>
                     <div style={teamMemberContainerCSS}>
                         <div>{teamMember.name}</div>
                         <div>{teamMember.title}</div>
@@ -128,7 +111,7 @@ class TeamComponent extends React.Component<TeamProps, TeamState> {
     render() {
 
         return (
-            <div>
+            <div style={cardsContainer()}>
                 {teamData.teamMembers.map( function(teamMember: TeamMember, index: number) {
                     return teamMemberDisplay(teamMember, index);
                 })}

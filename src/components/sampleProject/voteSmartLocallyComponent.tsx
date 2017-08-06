@@ -79,7 +79,6 @@ class VoteSmartLocallyComponent extends React.Component<VoteSmartProps, VoteSmar
                         this.state.officials
                     )
                 }
-                <hr />
             </div>
         </div>
         )

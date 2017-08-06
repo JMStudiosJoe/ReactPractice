@@ -48,7 +48,7 @@ export const projectData = {
         {
             "name": "Peterest",
             "description": "Peterest is the Pinterest for you pets. Also acts as a animal lost and found using algorithms to match uploaded lost pet information with found pet information by your local community.",
-            "problem": "Every student needs a computer and internet to access Google to ask questions. Many services such as Google, Yahoo, Yelp, and many more have a one to many relationship, student asks one question recieves many related search results.",
+            "problem": "",
             "references": [
                 "site"
             ],
