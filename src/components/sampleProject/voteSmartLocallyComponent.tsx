@@ -5,13 +5,15 @@ import { bindActionCreators } from 'redux'
 import { getAddressData } from '../../redux/actions/voteSmartActions'
 import store from "../../redux/store/store"
 import { Office, Official, Division, Election } from '../types/voteSmartTypes'
+import { displayOfficial } from './displayOfficial'
+import { displayDivision } from './displayDivision'
 
 
 const API_KEY = 'AIzaSyCWhwRupMs7IeE4IrGEgHtT0Nt-IGZnP9E'
 const endURL = '&key='+ API_KEY
 const baseRepURL = 'https://www.googleapis.com/civicinfo/v2/representatives?address='
 const baseElectionsURL = 'https://www.googleapis.com/civicinfo/v2/elections?alt=json&prettyPrint=true'
-//const baseElectionsURL = 'https://www.googleapis.com/civicinfo/v2/voterInfo?returnAllAvailableData=true'
+//const baseElectionsURL = 'https://www.googleapis.com/civicinfo/v2/voterinfo?address='
 
 
 interface VoteSmartState {
@@ -39,16 +41,16 @@ class VoteSmartLocallyComponent extends React.Component<VoteSmartProps, VoteSmar
             elections: []
         }
     }
-    removeSpacesAddPluses() {
-        return this.state.address.split(' ').join('+')      
-    }
     lookupAddress(event: React.MouseEvent<HTMLButtonElement>) {
         event.preventDefault()
-        const address = this.removeSpacesAddPluses()
+        const address = this.state.address.split(' ').join('+')      
+        const electAddress = this.state.address.split(' ').join('%20')
+        const reqAllData = '&returnAllAvailableData=true&alt=json'
         const fullRepURL = baseRepURL + address + endURL
-        const fullElectionsURL = baseElectionsURL + '?' + address + endURL
+        const fullElectionsURL = baseElectionsURL + electAddress + reqAllData + endURL
+        const electionsURL = baseElectionsURL + endURL
 
-        this.props.fetchAddressData(fullRepURL, fullElectionsURL, this.state.address)
+        this.props.fetchAddressData(fullRepURL, electionsURL, this.state.address)
     }
 
     handleAddress(event: React.ChangeEvent<HTMLInputElement>) {
@@ -96,96 +98,6 @@ class VoteSmartLocallyComponent extends React.Component<VoteSmartProps, VoteSmar
 }
 
 
-const getOfficialsForOffice = (office: Office, officials: Array<Official>): Array<Official> => {
-    const indicies: Array<number> = office.officialIndices
-    const officialsForOffice = indicies.map( (index: number) => {
-        return officials[index]
-    })
-    return officialsForOffice
-}
-const displayOfficial = (official: Official, index: number) => {
-    const officialImageCSS = () => {
-        return style.create({
-            height: '60px',
-            width: '50px' 
-        })
-    }
-    const officialInfoContainer = () => {
-        return style.create({
-            height: '200px',
-            width: '150px'
-        })
-    }
-    return(
-        <div style={officialInfoContainer()} key={index}>
-            <div>
-                <div>{official.name}</div>
-            </div>
-        </div>
-    )
-
-}
-const displayOfficialForOffice = (office: Office, index: number, officials: Array<Official>) => {
-    const officeContainer = () => {
-        return style.create({
-            height: '220px',
-            width: '170px'
-        })
-    }
-
-    const officialsForOffice: Array<Official> = getOfficialsForOffice(office, officials) 
-    return officialsForOffice.map( (official: Official, index: number) => {
-        return (
-            <div style={officeContainer()}>
-                <h4>{office.name}</h4>
-                {displayOfficial(official, index)}
-            </div>
-
-        )
-    })
-}
-
-const displayElection = (election: Election) => {
-    console.log(election)
-    return (
-        <div >
-            {election.electionDay}
-            {election.name}
-        </div>
-    )
-}
-const displayElectionForDivision = (divisionId: string, elections: Array<Election>) => {
-    console.log(divisionId)
-    
-    const election: Election = elections.map( (election: Election) => {
-        console.log(election.ocdDivisionId)
-        if (divisionId === election.ocdDivisionId) {
-            return election 
-        }
-    })[0]
-    if (election) {
-        return displayElection(election)
-    }
-    else {
-        return (<div>No Election coming up</div>)
-    }
-}
-
-const displayDivisionInfo = (division: Division, officesInDivision: Array<Office>, officials: Array<Official>, elections: Array<Election>, index: number) => {
-    return (
-        <div key={index}>
-            <h3>{division.name}</h3>{displayElectionForDivision(division.divisionId, elections)}
-            <div>
-            {
-                officesInDivision.map( (office: Office, index: number) => {
-                    return displayOfficialForOffice(office, index, officials)
-                })
-            }
-            </div>
-            <hr />
-        </div>
-    )
-}
 
 const displayElectionsAndOfficialsByDivisions = (divisions: any, offices: Array<Office>, officials: Array<Official>, elections: Array<Election>) => {
     const divisionIDS = Object.keys(divisions)
@@ -202,7 +114,7 @@ const displayElectionsAndOfficialsByDivisions = (divisions: any, offices: Array<
             return offices[index]
         })
         if (division.name !== 'United States')
-            return displayDivisionInfo(division, officesInDivision, officials, elections, index)
+            return displayDivision(division, officesInDivision, officials, elections, index)
     })
 }
 
