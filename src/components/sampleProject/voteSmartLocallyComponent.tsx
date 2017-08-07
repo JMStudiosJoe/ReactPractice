@@ -4,13 +4,14 @@ import * as style from 'ts-style' //ts-style is correct one
 import { bindActionCreators } from 'redux'
 import { getAddressData } from '../../redux/actions/voteSmartActions'
 import store from "../../redux/store/store"
-import { Office, Official, Division } from '../types/voteSmartTypes'
+import { Office, Official, Division, Election } from '../types/voteSmartTypes'
 
 
 const API_KEY = 'AIzaSyCWhwRupMs7IeE4IrGEgHtT0Nt-IGZnP9E'
 const endURL = '&key='+ API_KEY
 const baseRepURL = 'https://www.googleapis.com/civicinfo/v2/representatives?address='
 const baseElectionsURL = 'https://www.googleapis.com/civicinfo/v2/elections?alt=json&prettyPrint=true'
+//const baseElectionsURL = 'https://www.googleapis.com/civicinfo/v2/voterInfo?returnAllAvailableData=true'
 
 
 interface VoteSmartState {
@@ -18,6 +19,7 @@ interface VoteSmartState {
     offices?: Array<Office>
     officials?: Array<Official>
     divisions?: any
+    elections?: Array<Election>
     userAddressData?: any
 }
 interface VoteSmartProps {
@@ -33,7 +35,8 @@ class VoteSmartLocallyComponent extends React.Component<VoteSmartProps, VoteSmar
             address: '',
             officials: [],
             offices: [],
-            divisions: []
+            divisions: [],
+            elections: []
         }
     }
     removeSpacesAddPluses() {
@@ -43,9 +46,9 @@ class VoteSmartLocallyComponent extends React.Component<VoteSmartProps, VoteSmar
         event.preventDefault()
         const address = this.removeSpacesAddPluses()
         const fullRepURL = baseRepURL + address + endURL
-        const fullElectionsURL = baseElectionsURL + address + endURL
+        const fullElectionsURL = baseElectionsURL + '?' + address + endURL
 
-        this.props.fetchAddressData(fullRepURL, this.state.address)
+        this.props.fetchAddressData(fullRepURL, fullElectionsURL, this.state.address)
     }
 
     handleAddress(event: React.ChangeEvent<HTMLInputElement>) {
@@ -73,10 +76,11 @@ class VoteSmartLocallyComponent extends React.Component<VoteSmartProps, VoteSmar
             </button>
             <div>
                 {
-                    displayOfficialsByDivisions(
+                    displayElectionsAndOfficialsByDivisions(
                         this.state.divisions, 
                         this.state.offices, 
-                        this.state.officials
+                        this.state.officials,
+                        this.state.elections
                     )
                 }
             </div>
@@ -87,6 +91,7 @@ class VoteSmartLocallyComponent extends React.Component<VoteSmartProps, VoteSmar
         this.setState({
             ...newProps.userAddressData
         })
+        console.log(this.state)
     }
 }
 
@@ -140,10 +145,36 @@ const displayOfficialForOffice = (office: Office, index: number, officials: Arra
     })
 }
 
-const displayDivisionInfo = (division: Division, officesInDivision: Array<Office>, officials: Array<Official>, index: number) => {
+const displayElection = (election: Election) => {
+    console.log(election)
+    return (
+        <div >
+            {election.electionDay}
+            {election.name}
+        </div>
+    )
+}
+const displayElectionForDivision = (divisionId: string, elections: Array<Election>) => {
+    console.log(divisionId)
+    
+    const election: Election = elections.map( (election: Election) => {
+        console.log(election.ocdDivisionId)
+        if (divisionId === election.ocdDivisionId) {
+            return election 
+        }
+    })[0]
+    if (election) {
+        return displayElection(election)
+    }
+    else {
+        return (<div>No Election coming up</div>)
+    }
+}
+
+const displayDivisionInfo = (division: Division, officesInDivision: Array<Office>, officials: Array<Official>, elections: Array<Election>, index: number) => {
     return (
         <div key={index}>
-            <h3>{division.name}</h3>
+            <h3>{division.name}</h3>{displayElectionForDivision(division.divisionId, elections)}
             <div>
             {
                 officesInDivision.map( (office: Office, index: number) => {
@@ -151,22 +182,27 @@ const displayDivisionInfo = (division: Division, officesInDivision: Array<Office
                 })
             }
             </div>
+            <hr />
         </div>
     )
-    
 }
 
-const displayOfficialsByDivisions = (divisions: any, offices: Array<Office>, officials: Array<Official>) => {
+const displayElectionsAndOfficialsByDivisions = (divisions: any, offices: Array<Office>, officials: Array<Official>, elections: Array<Election>) => {
+    const divisionIDS = Object.keys(divisions)
     const divisionList = Object.keys(divisions).map( (key: string) => {
-        return divisions[key]
+        return {
+            ...divisions[key],
+            divisionId: key
+        }
     })
+
     return divisionList.reverse().map( (division: Division, index: number) => {
         const officeIndices = division.officeIndices
         const officesInDivision = officeIndices.map( (index: number) => {
             return offices[index]
         })
         if (division.name !== 'United States')
-            return displayDivisionInfo(division, officesInDivision, officials, index)
+            return displayDivisionInfo(division, officesInDivision, officials, elections, index)
     })
 }
 
@@ -178,8 +214,7 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchAddressData: (url, address) => dispatch(getAddressData(url, address)),
-        goFetch: bindActionCreators(getAddressData, dispatch)
+        fetchAddressData: (repURL, electionsURL, address) => dispatch(getAddressData(repURL, electionsURL, address)),
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(VoteSmartLocallyComponent)

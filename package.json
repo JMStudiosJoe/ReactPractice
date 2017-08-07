@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "@types/axios": "^0.14.0",
+    "@types/lodash": "^4.14.71",
     "@types/react": "^15.0.14",
     "@types/react-addons-css-transition-group": "^15.0.2",
     "@types/react-dom": "^0.14.23",
@@ -41,6 +42,7 @@
     "elemental": "^0.6.1",
     "express": "^4.14.1",
     "json-loader": "^0.5.4",
+    "lodash": "^4.17.4",
     "react": "^15.4.2",
     "react-addons-css-transition-group": "^15.5.2",
     "react-dom": "^15.4.2",

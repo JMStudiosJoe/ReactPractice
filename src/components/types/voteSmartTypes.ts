@@ -29,9 +29,17 @@ interface Office {
   roles: Array<string>
 }
 
+interface Election {
+  electionDay: string
+  id: string | number
+  name: string
+  ocdDivisionId: string
+}
+
 interface Division {
   name: string
   officeIndices: Array<number>
+  divisionId?: string
 }
 
 interface DivisionData {
@@ -42,5 +50,6 @@ interface DivisionData {
 export {
   Official, 
   Office, 
-  Division
+  Division,
+  Election
 }

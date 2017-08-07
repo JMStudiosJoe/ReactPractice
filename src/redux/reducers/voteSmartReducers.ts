@@ -1,5 +1,6 @@
 import {Action} from 'redux'
 import {VoteSmartAction, getAddressData} from '../actions/voteSmartActions'
+import { HANDLE_ELECTION_BY_ADDRESS, HANDLE_REPRESENTATIVE, HANDLE_ADDRESS_LOOKUP } from '../actions/actionTypes'
 import axios from 'axios'
 const INITIAL_STATE: any = {
     address: '',
@@ -14,7 +15,7 @@ const baseElectionsURL = 'https://www.googleapis.com/civicinfo/v2/elections?alt=
 
 const VoteSmartReducer = (state: any = INITIAL_STATE, action: VoteSmartAction<Action>): any => {
     switch(action.type) {
-        case "HANDLE_RETURN_DATA":
+        case HANDLE_ADDRESS_LOOKUP:
             return {
                 ...action.payload
             }
