@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { CSSProperties } from 'react'
 import * as style from 'ts-style'
 import ParallaxComponent from './customReactParallax'
 import * as FA from 'react-icons/lib/fa'
@@ -24,6 +25,7 @@ interface TeamProps {
 interface TeamState {
     team: Array<TeamMember>
 }
+type positionTypes =  'fixed' | 'initial' | 'inherit' | 'unset' | 'relative' | 'static' | 'absolute' | 'sticky'
 const teamMemberDisplay = (teamMember: TeamMember, index: number) => {
     const teamMemberContainerCSS = style.create({
         padding: '10px',
@@ -36,7 +38,7 @@ const teamMemberDisplay = (teamMember: TeamMember, index: number) => {
         height: '160px',
         width: '150px',
         borderRadius: '50px',
-        position: 'relative',
+        position: 'relative' as positionTypes,
         zIndex: 16
     })
 

@@ -1,4 +1,5 @@
 import * as style from 'ts-style'
+type positionTypes =  'fixed' | 'initial' | 'inherit' | 'unset' | 'relative' | 'static' | 'absolute' | 'sticky'
 const cardsContainer = () => {
     return style.create({
         textAlign: 'center',
@@ -22,7 +23,7 @@ const lightCard = () => {
         margin: '2px',
         borderRadius: '6px',
         textAlign: 'center',
-        position: 'relative',
+        position: 'relative' as positionTypes,
         zIndex: 2
     })
 }

@@ -1,5 +1,6 @@
-import * as React from "react";
-import ParallaxComponent from "./customReactParallax";
+import * as React from 'react'
+import ParallaxComponent from './customReactParallax'
+import { cardsContainer, darkCard, lightCard } from './scss/common'
 
 interface HelloProps {
   name: string;
@@ -9,12 +10,17 @@ interface HelloProps {
 class HomeComponent extends React.Component<HelloProps, {}> {
   render() {
     return (
-      <div>
-          Hello, and welcome to JMStudios where my team and I create projects to tackle the problems around us, big or small. Thanks for stopping by hopefully you enjoy the parallax experience.
+      <div style={cardsContainer()}>
+
+          <div style={darkCard()}>
+              <div style={lightCard()}>
+              Hello, and welcome to JMStudios where my team and I create projects to tackle the problems around us, big or small. Thanks for stopping by hopefully you enjoy the parallax experience.
+              </div>
+          </div>
           <ParallaxComponent />    
-        </div>
-    );
+      </div>
+    )
   }
 }
 
-export default HomeComponent;
+export default HomeComponent
