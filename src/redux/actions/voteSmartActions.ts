@@ -1,4 +1,5 @@
-import {Action} from 'redux'
+import { Action } from 'redux'
+import { HANDLE_REPRESENTATIVE, HANDLE_ELECTION_BY_ADDRESS } from './actionTypes'
 import store from '../store/store'
 import axios from 'axios'
 
@@ -9,6 +10,7 @@ interface VoteSmartAction<Action> {
 const getAddressData = (fullURL: string, address: string) => {
     return function(dispatch, getState) {
         if (fullURL !== '') { 
+            console.log(getState())
             return axios.get(fullURL).then(function (response) {
                 const requestedData = {
                     offices: response.data.offices,

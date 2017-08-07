@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom'
 import store from './redux/store/store'
 import { Provider } from 'react-redux'
 import { getAddressData } from './redux/actions/voteSmartActions'
-import {UIRouter, UIView, UISref, UISrefActive, pushStateLocationPlugin} from 'ui-router-react';
+import {UIRouter, UIView, UISref, UISrefActive, pushStateLocationPlugin} from 'ui-router-react'
 import NavigationBarComponent from './components/navigationBarComponent'
 
 
@@ -12,4 +12,4 @@ ReactDOM.render(
         <NavigationBarComponent userType='buyer' />
     </Provider>,
     document.getElementById("root")
-);
+)

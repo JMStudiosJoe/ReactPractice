@@ -25,6 +25,8 @@ interface TeamProps {
 interface TeamState {
     team: Array<TeamMember>
 }
+// TODO: needing this type for deploying to aws for some reason webpack errors with type issue
+// and position, need to test if will work on aws now
 type positionTypes =  'fixed' | 'initial' | 'inherit' | 'unset' | 'relative' | 'static' | 'absolute' | 'sticky'
 const teamMemberDisplay = (teamMember: TeamMember, index: number) => {
     const teamMemberContainerCSS = style.create({
@@ -47,7 +49,7 @@ const teamMemberDisplay = (teamMember: TeamMember, index: number) => {
         height: '100px',
         width: '80px',
         borderRadius: '50px',
-        position: 'relative',
+        position: 'relative' as positionTypes,
         zIndex: 3,
         top: '40px',
         left: '80px'

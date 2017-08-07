@@ -1,5 +1,5 @@
-import * as React from "react"
-import * as ReactDOM from "react-dom"
+import * as React from 'react'
+import * as ReactDOM from 'react-dom'
 import {ReactStateDeclaration, UIView} from 'ui-router-react'
 import HomeComponent from '../components/helloComponent'
 import AboutComponent from '../components/aboutComponent'
