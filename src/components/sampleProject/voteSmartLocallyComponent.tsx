@@ -5,9 +5,7 @@ import { bindActionCreators } from 'redux'
 import { getAddressData } from '../../redux/actions/voteSmartActions'
 import store from "../../redux/store/store"
 import { Office, Official, Division, Election } from '../types/voteSmartTypes'
-import { displayOfficial } from './displayOfficial'
-import { displayDivision } from './displayDivision'
-
+import { displayElectionsAndOfficialsByDivision } from './displayElectionsAndOfficialsByDivision'
 
 const API_KEY = 'AIzaSyCWhwRupMs7IeE4IrGEgHtT0Nt-IGZnP9E'
 const endURL = '&key='+ API_KEY
@@ -78,7 +76,7 @@ class VoteSmartLocallyComponent extends React.Component<VoteSmartProps, VoteSmar
             </button>
             <div>
                 {
-                    displayElectionsAndOfficialsByDivisions(
+                    displayElectionsAndOfficialsByDivision(
                         this.state.divisions, 
                         this.state.offices, 
                         this.state.officials,
@@ -95,27 +93,6 @@ class VoteSmartLocallyComponent extends React.Component<VoteSmartProps, VoteSmar
         })
         console.log(this.state)
     }
-}
-
-
-
-const displayElectionsAndOfficialsByDivisions = (divisions: any, offices: Array<Office>, officials: Array<Official>, elections: Array<Election>) => {
-    const divisionIDS = Object.keys(divisions)
-    const divisionList = Object.keys(divisions).map( (key: string) => {
-        return {
-            ...divisions[key],
-            divisionId: key
-        }
-    })
-
-    return divisionList.reverse().map( (division: Division, index: number) => {
-        const officeIndices = division.officeIndices
-        const officesInDivision = officeIndices.map( (index: number) => {
-            return offices[index]
-        })
-        if (division.name !== 'United States')
-            return displayDivision(division, officesInDivision, officials, elections, index)
-    })
 }
 
 
