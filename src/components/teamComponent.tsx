@@ -50,8 +50,8 @@ const teamMemberDisplay = (teamMember: TeamMember, index: number) => {
         borderRadius: '50px',
         position: 'relative' as positionTypes,
         zIndex: 3,
-        top: '40px',
-        left: '80px'
+        top: '30px',
+        left: '60px'
     })
 
     return (
@@ -61,16 +61,10 @@ const teamMemberDisplay = (teamMember: TeamMember, index: number) => {
                     <div style={teamMemberContainerCSS}>
                         <div>{teamMember.name}</div>
                         <div>{teamMember.title}</div>
+                        <div>{ displayLinksWithIcons(teamMember.links) }</div>
                         <div >
                             <img style={alterEgoProfileImage} src={teamMember.alterEgoImageURL} />
                             <img style={teamMemberProfileImage} src={teamMember.imageURL} />
-                        </div>
-
-                        <br />
-                        <div>
-                            {
-                                displayLinksWithIcons(teamMember.links)
-                            }
                         </div>
                     </div>
                 </div>

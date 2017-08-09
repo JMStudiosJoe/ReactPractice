@@ -16,7 +16,7 @@ const displayOfficialsForOffice = (office: Office, index: number, officials: Arr
     const officeContainer = () => {
         return style.create({
             height: '220px',
-            width: '170px'
+            display: 'inline-block'
         })
     }
 

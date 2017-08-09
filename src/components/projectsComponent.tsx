@@ -2,7 +2,7 @@ import * as React from "react"
 import * as style from "ts-style"
 import ParallaxComponent from "./customReactParallax"
 import * as FA from 'react-icons/lib/fa'
-import { darkCard, lightCard, cardsContainer } from './scss/common'
+import { darkCard, lightCard, cardsContainer, fontWeightTypes } from './scss/common'
 import {projectData} from "../models/projects"
 import LocalVoteMattersComponent from './sampleProject/localVoteMattersComponent'
 interface Project {
@@ -10,14 +10,11 @@ interface Project {
     description: string,
     problem: string,
     references: Array<string>,
-    solutions: Array<string>,
+    solutions: string,
     link:string,
     logo: string,
     position: number,
-    github: {
-        icon: string,
-        link: string
-    }
+    github: string
 }
 interface ProjectsProps {
     name: string
@@ -37,7 +34,7 @@ const SampleProject = (projectName: string) => {
     else {
         return (
             <div >
-                No project sample available.
+                Coming soon...
             </div>
         )
     }
@@ -53,7 +50,14 @@ const projectItemDisplay = (project: Project, index: number) => {
 
     const githubIconLink = {
         width: '60px',
-        height: '60px'
+        height: '60px',
+        display: 'inline-block'
+    }
+    const projectHeader = () => {
+        return style.create({
+            fontSize: '26px',
+            fontWeight: 'bold' as fontWeightTypes
+        })
     }
     
     return (
@@ -61,14 +65,14 @@ const projectItemDisplay = (project: Project, index: number) => {
             <div style={darkCard()}>
                 <div style={lightCard()}>
                     <div style={projectItemContainerCSS}>
-                        <div>{project.name}</div>
-                        <div>{project.description}</div>
-                        <div style={githubIconLink}>
-                            <a href={project.github.link} ><FA.FaGithub /></a>
-                        </div>
+                        <div style={projectHeader()}>{project.name} <a style={githubIconLink} href={project.github} ><FA.FaGithub /></a></div>
+                        <div><h4>Summary</h4>{project.description}</div>
                         <br />
-                        <div>{project.problem}</div>
+                        <div><h4>Problem</h4>{project.problem}</div>
+                        <br />
+                        <div><h4>Possible Solutions</h4>{project.solutions}</div>
                         <div>
+                            <h4>Sample</h4>
                             {SampleProject(project.name)}
                         </div>
                     </div>

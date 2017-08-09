@@ -64,6 +64,7 @@ class LocalVoteMattersComponent extends React.Component<VoteSmartProps, VoteSmar
     render() {
         return (
         <div>
+            <span>ex: 1184 normandy drive campbell ca 95008</span>
             <input 
                 type='text' 
                 placeholder='Address'

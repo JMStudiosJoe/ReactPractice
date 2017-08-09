@@ -6,17 +6,11 @@ export const projectData = {
             "references": [
                 "site"
             ],
-            "solutions": [
-                "A Web App/Mobile app using Google Civic API to gather local election information and who is running for the position.",
-                "Find other APIs for information about person running for  campain funds and where they came from, their plan in the time of office, and party information."
-            ],
+            "solutions": "A Web App/Mobile app using Google Civic API to gather local election information and who is running for the position. Find other APIs for information about person running for  campain funds and where they came from, their plan in the time of office, and party information.",
             "link":"",
             "logo": "",
             "position": 0,
-            "github": {
-                "icon": "mdi-github-circle small",
-                "link": ""
-            },
+            "github": "",
             "sampleProject": {
                 "available": true,
                 "name": "Vote Smart Locally"
@@ -29,17 +23,11 @@ export const projectData = {
             "references": [
                 "site"
             ],
-            "solutions": [
-                "Text message based bot that only requires a phone to have SMS messaging capailities to learn the complex concepts of Computer Science, or any subject matter StudyBuddy could be trained in.",
-                "Students as one question and recieve one answer if StudyBuddy knows the answer, if not StudyBuddy will store that unaswered question for the admins to answer later."
-            ],
+            "solutions": "Text message based bot that only requires a phone to have SMS messaging capailities to learn the complex concepts of Computer Science, or any subject matter StudyBuddy could be trained in.Students as one question and recieve one answer if StudyBuddy knows the answer, if not StudyBuddy will store that unaswered question for the admins to answer later.",
             "link":"http://studybuddy.mybluemix.net/",
             "logo": "",
             "position": 1,
-            "github": {
-                "icon": "mdi-github-circle small",
-                "link": "https://github.com/JMStudiosJoe/StudyBuddyV2"
-            },
+            "github": "https://github.com/JMStudiosJoe/StudyBuddyV2",
             "sampleProject": {
                 "available": false,
                 "name": ""
@@ -52,37 +40,28 @@ export const projectData = {
             "references": [
                 "site"
             ],
-            "solutions": [
-            ],
+            "solutions": "A small web app to upload pet information to. When a pet is upload as found, will execute fast SQL querys to compare and try to match uploaded found pet with a lost pet, then notify the lost pet user of a possible match.",
             "link":"",
             "logo": "",
             "position": 2,
-            "github": {
-                "icon": "mdi-github-circle small",
-                "link": "https://github.com/JMStudiosJoe/Peterest"
-            },
+            "github": "https://github.com/JMStudiosJoe/Peterest",
             "sampleProject": {
                 "available": false,
                 "name": ""
             }
         },
         {
-            "name": "ReelMash",
-            "description": "Mobile game matching celebrities through the media content they have starred in.",
-            "problem": "I am pretty bad at it.",
+            "name": "Jester",
+            "description": "My first app I made, to tell jokes and riddles in categories or at random.",
+            "problem": "Not enough laughter in the world",
             "references": [
 
             ],
-            "solutions": [
-
-            ],
+            "solutions": "Have all kinds of jokes and riddles uploaded for all to view and laugh at.",
             "link":"",
             "logo": "",
             "position": 3,
-            "github": {
-                "icon": "mdi-github-circle small",
-                "link": "#ReelMash"
-            },
+            "github": "https://github.com/JMStudiosJoe/Jester",
             "sampleProject": {
                 "available": false,
                 "name": ""

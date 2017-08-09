@@ -1,8 +1,8 @@
 import * as React from 'react'
 import * as style from 'ts-style'
 import { imageData } from '../models/imageData'
+import { attachments } from './scss/common'
 let imageNameData = imageData.imageData
-type attachments = 'fixed'| 'initial'| 'inherit'| 'unset'| 'scroll'| 'local'
 
 interface ParralaxImage {
     path: string
@@ -41,7 +41,7 @@ class ParallaxComponent extends React.Component<{}, ParallaxComponentState> {
             marginTop: '10px',
             marginBottom: '10px',
             backgroundImage: `url(${background})`,
-            height: '500px',
+            height: '300px',
             minWidth: '700px',
             backgroundAttachment:'fixed' as attachments,
             backgroundPosition: 'center',

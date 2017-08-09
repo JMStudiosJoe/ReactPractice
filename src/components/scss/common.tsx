@@ -1,9 +1,11 @@
 import * as style from 'ts-style'
 type positionTypes =  'fixed' | 'initial' | 'inherit' | 'unset' | 'relative' | 'static' | 'absolute' | 'sticky'
+type fontWeightTypes = 'initial' | 'inherit' | 'unset' | 'bold' | 'normal' | 'bolder' | 'lighter' | 100 | 200 | 300 | 400
+type attachments = 'fixed'| 'initial'| 'inherit'| 'unset'| 'scroll'| 'local'
+
 const cardsContainer = () => {
     return style.create({
         textAlign: 'center',
-        
     })
 }
 const darkCard = () =>{
@@ -12,7 +14,7 @@ const darkCard = () =>{
         backgroundColor: '#d9d9d9',
         borderRadius: '6px',
         padding: '2px',
-        width: '620px',
+        width: '720px',
         margin: '20px'
     })
 }
@@ -21,8 +23,9 @@ const lightCard = () => {
     return style.create({
         backgroundColor: 'white',
         margin: '2px',
+        fontFamily: 'arial',
+        fontSize: '24px',
         borderRadius: '6px',
-        textAlign: 'center',
         position: 'relative' as positionTypes,
         zIndex: 2
     })
@@ -31,5 +34,8 @@ const lightCard = () => {
 export {
     darkCard,
     lightCard,
-    cardsContainer
+    cardsContainer,
+    positionTypes,
+    fontWeightTypes,
+    attachments
 }
