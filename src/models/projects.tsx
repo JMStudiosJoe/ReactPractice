@@ -1,6 +1,6 @@
 export const projectData = {
     "projects":[{
-            "name": "Vote Smart Locally",
+            "name": "Local Vote Matters",
             "description": "A voting information tool to inform voters of their local elections and who is running for them, their supporters, what their plan is and their goals to inform voters of their local elections.",
             "problem": "Many people are not informed about their local elections, where they take place, on what date, what elected position, and who is running for the position.",
             "references": [
@@ -46,15 +46,13 @@ export const projectData = {
             }
         },
         {
-            "name": "Peterest",
-            "description": "Peterest is the Pinterest for you pets. Also acts as a animal lost and found using algorithms to match uploaded lost pet information with found pet information by your local community.",
+            "name": "Pet Finder",
+            "description": "Pet Finder is the animal lost and found using algorithms to match uploaded lost pet information with found pet information by your local community.",
             "problem": "",
             "references": [
                 "site"
             ],
             "solutions": [
-                "Text message based bot that only requires a phone to have SMS messaging capailities to learn the complex concepts of Computer Science, or any subject matter StudyBuddy could be trained in.",
-                "Students as one question and recieve one answer if StudyBuddy knows the answer, if not StudyBuddy will store that unaswered question for the admins to answer later."
             ],
             "link":"",
             "logo": "",

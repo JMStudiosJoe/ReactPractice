@@ -13,7 +13,9 @@ const displayOfficial = (official: Official, index: number) => {
     const officialInfoContainer = () => {
         return style.create({
             height: '200px',
-            width: '150px'
+            width: '150px',
+            display: 'inline-block',
+            margin: '6px'
         })
     }
     return(

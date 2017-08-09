@@ -6,6 +6,9 @@ import { displayOfficialsForOffice } from './displayOfficialsForOffice'
 import { displayElectionForDivision } from './displayElectionForDivision'
 
 
+const divisionContainer = () => {
+
+}
 const displayDivision = (division: Division, officesInDivision: Array<Office>, officials: Array<Official>, elections: Array<Election>, index: number) => {
     return (
         <div key={index}>

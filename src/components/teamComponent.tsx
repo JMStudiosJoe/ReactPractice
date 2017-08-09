@@ -5,7 +5,6 @@ import ParallaxComponent from './customReactParallax'
 import * as FA from 'react-icons/lib/fa'
 import {teamData} from '../models/teamModel'
 import { darkCard, lightCard, cardsContainer } from './scss/common'
-import VoteSmartLocallyComponent from './sampleProject/voteSmartLocallyComponent'
 interface TeamMemberLink {
     name: string,
     url: string

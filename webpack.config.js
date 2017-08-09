@@ -29,12 +29,17 @@ module.exports = [{
                 test: /\.json$/,
                 use: 'json-loader' 
             },
-			{
-        		test: /\.(png|jpg|svg)$/,
-        		use: {
-          			loader: 'url-loader'
-        		}
-      		}
+            {
+                test: /\.(png|jpg|svg)$/,
+                include: __dirname + '/src/images/',
+                use: {
+                    loader: 'url-loader',
+                    options: {
+                        limit: 15000,
+                        name: '[name].[ext]'
+                    }
+                }
+            }
         ]
     },
 

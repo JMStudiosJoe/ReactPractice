@@ -28,7 +28,7 @@ interface VoteSmartProps {
     userAddressData: any
 }
 
-class VoteSmartLocallyComponent extends React.Component<VoteSmartProps, VoteSmartState> {
+class LocalVoteMattersComponent extends React.Component<VoteSmartProps, VoteSmartState> {
     constructor(props) {
         super(props)
         this.state = {
@@ -106,4 +106,4 @@ const mapDispatchToProps = (dispatch) => {
         fetchAddressData: (repURL, electionsURL, address) => dispatch(getAddressData(repURL, electionsURL, address)),
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(VoteSmartLocallyComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(LocalVoteMattersComponent)

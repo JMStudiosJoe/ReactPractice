@@ -1,10 +1,10 @@
 import * as React from "react"
 import * as style from "ts-style"
 import ParallaxComponent from "./customReactParallax"
-import { Glyph, Spinner } from 'elemental' 
+import * as FA from 'react-icons/lib/fa'
 import { darkCard, lightCard, cardsContainer } from './scss/common'
 import {projectData} from "../models/projects"
-import VoteSmartLocallyComponent from "./sampleProject/voteSmartLocallyComponent"
+import LocalVoteMattersComponent from './sampleProject/localVoteMattersComponent'
 interface Project {
     name: string,
     description: string,
@@ -29,9 +29,9 @@ interface ProjectsState {
 
 const SampleProject = (projectName: string) => {
 
-    if(projectName == 'Vote Smart Locally' ) {
+    if(projectName === 'Local Vote Matters' ) {
         return (
-            <VoteSmartLocallyComponent />
+            <LocalVoteMattersComponent />
         )
     }
     else {
@@ -63,12 +63,11 @@ const projectItemDisplay = (project: Project, index: number) => {
                     <div style={projectItemContainerCSS}>
                         <div>{project.name}</div>
                         <div>{project.description}</div>
+                        <div style={githubIconLink}>
+                            <a href={project.github.link} ><FA.FaGithub /></a>
+                        </div>
                         <br />
                         <div>{project.problem}</div>
-                        <div style={githubIconLink}>
-                            <Glyph style={githubIconLink} icon='mark-github' />
-                        </div>
-                        <div><a href={project.github.link}>{project.github.link}</a></div>
                         <div>
                             {SampleProject(project.name)}
                         </div>
