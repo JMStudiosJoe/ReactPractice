@@ -46,12 +46,12 @@ const teamMemberDisplay = (teamMember: TeamMember, index: number) => {
     const alterEgoProfileImage = style.create({
         backgroundImage: 'url(${teamMember.alterEgoImageURL})',
         height: '100px',
-        width: '80px',
+        width: '100px',
         borderRadius: '50px',
         position: 'relative' as positionTypes,
         zIndex: 3,
-        top: '30px',
-        left: '60px'
+        bottom: '30px',
+        left: '50px'
     })
 
     return (

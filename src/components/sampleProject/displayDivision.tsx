@@ -7,13 +7,15 @@ import { displayElectionForDivision } from './displayElectionForDivision'
 
 
 const divisionContainer = () => {
-
+    return style.create({
+        textAlign: 'center'
+    })
 }
 const displayDivision = (division: Division, officesInDivision: Array<Office>, officials: Array<Official>, elections: Array<Election>, index: number) => {
     return (
         <div key={index}>
             <h3>{division.name}</h3>{displayElectionForDivision(division.divisionId, elections)}
-            <div>
+            <div style={divisionContainer()}>
             {
                 officesInDivision.map( (office: Office, index: number) => {
                     return displayOfficialsForOffice(office, index, officials)

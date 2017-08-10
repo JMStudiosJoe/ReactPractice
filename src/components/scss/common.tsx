@@ -14,7 +14,7 @@ const darkCard = () =>{
         backgroundColor: '#d9d9d9',
         borderRadius: '6px',
         padding: '2px',
-        width: '720px',
+        width: '780px',
         margin: '20px'
     })
 }

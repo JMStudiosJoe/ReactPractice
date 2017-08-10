@@ -3,17 +3,36 @@ import * as React from 'react'
 import { Official } from '../types/voteSmartTypes'
 
 
-const displayOfficial = (official: Official, index: number) => {
-    const officialImageCSS = () => {
-        return style.create({
-            height: '60px',
-            width: '50px' 
+const officialImageCSS = () => {
+    return style.create({
+        height: '60px',
+        width: '50px',
+        boarder: '1px solid #AAA'
+    })
+}
+
+const handleOfficialImage = (official: Official) => {
+    if (official.photoUrl) {
+        return (
+            <div>
+                <img style={officialImageCSS()} src={official.photoUrl} />
+            </div>
+        )
+    }
+    else {
+        return official.urls.map( (url: string, index: number) => {
+            return (
+                <a key={index} target={'_blank'} href={url}>Info Page</a>
+            )
         })
     }
+    
+}
+
+const displayOfficial = (official: Official, index: number) => {
     const officialInfoContainer = () => {
         return style.create({
-            height: '200px',
-            width: '150px',
+            width: '160px',
             display: 'inline-block',
             margin: '6px'
         })
@@ -23,6 +42,7 @@ const displayOfficial = (official: Official, index: number) => {
             <div>
                 <div>{official.name}</div>
                 <div>{official.party}</div>
+                { handleOfficialImage(official) }
             </div>
         </div>
     )
