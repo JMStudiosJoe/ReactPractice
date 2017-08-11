@@ -1,30 +1,34 @@
 import * as style from 'ts-style'
 import * as React from 'react'
 import { Official } from '../types/voteSmartTypes'
+import * as FA from 'react-icons/lib/fa'
 
-
-const officialImageCSS = () => {
+const officialImageCSS = (photoURL: string) => {
     return style.create({
-        height: '60px',
-        width: '50px',
-        boarder: '1px solid #AAA'
+        backgroundImage: `url(${photoURL})`,
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'contain',
+        height: '140px',
+        borderRadius: '16px'
     })
 }
-
+const NO_IMAGE_AVALABLE = '../src/images/no_image.jpeg'
 const handleOfficialImage = (official: Official) => {
     if (official.photoUrl) {
         return (
-            <div>
-                <img style={officialImageCSS()} src={official.photoUrl} />
-            </div>
+            <a target={'_blank'} href={official.urls[0]}>
+                <div style={officialImageCSS(official.photoUrl)}></div>
+            </a>
         )
     }
     else {
-        return official.urls.map( (url: string, index: number) => {
-            return (
-                <a key={index} target={'_blank'} href={url}>Info Page</a>
-            )
-        })
+        return (
+            <a target={'_blank'} href={official.urls[0]}>
+                <div style={officialImageCSS(NO_IMAGE_AVALABLE)}>
+                </div>
+            </a>
+        )
     }
     
 }
@@ -32,18 +36,34 @@ const handleOfficialImage = (official: Official) => {
 const displayOfficial = (official: Official, index: number) => {
     const officialInfoContainer = () => {
         return style.create({
-            width: '160px',
+            width: '150px',
             display: 'inline-block',
             margin: '6px'
         })
     }
+    const officialHeader = () => {
+        return style.create({
+            width: '150px',
+            display: 'block',
+            margin: '6px',
+            fontSize: '14px',
+            height: '40px'
+        })
+    }
+
+    const officialName = () => {
+        return style.create({
+            fontSize: '14px'
+        })
+    }
     return(
         <div style={officialInfoContainer()} key={index}>
-            <div>
+            <div style={officialHeader()}>
                 <div>{official.name}</div>
                 <div>{official.party}</div>
-                { handleOfficialImage(official) }
             </div>
+            { handleOfficialImage(official) }
+            
         </div>
     )
 }

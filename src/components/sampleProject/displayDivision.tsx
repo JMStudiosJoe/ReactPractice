@@ -22,7 +22,6 @@ const displayDivision = (division: Division, officesInDivision: Array<Office>, o
                 })
             }
             </div>
-            <hr />
         </div>
     )
 }

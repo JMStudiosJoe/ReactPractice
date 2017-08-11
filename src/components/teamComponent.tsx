@@ -4,7 +4,7 @@ import * as style from 'ts-style'
 import ParallaxComponent from './customReactParallax'
 import * as FA from 'react-icons/lib/fa'
 import {teamData} from '../models/teamModel'
-import { darkCard, lightCard, cardsContainer } from './scss/common'
+import { darkCard, lightCard, cardsContainer, positionTypes } from './scss/common'
 interface TeamMemberLink {
     name: string,
     url: string
@@ -26,7 +26,6 @@ interface TeamState {
 }
 // TODO: needing this type for deploying to aws for some reason webpack errors with type issue
 // and position, need to test if will work on aws now
-type positionTypes =  'fixed' | 'initial' | 'inherit' | 'unset' | 'relative' | 'static' | 'absolute' | 'sticky'
 const teamMemberDisplay = (teamMember: TeamMember, index: number) => {
     const teamMemberContainerCSS = style.create({
         padding: '10px',
