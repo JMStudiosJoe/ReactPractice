@@ -8,8 +8,8 @@ const officialImageCSS = (photoURL: string) => {
         backgroundImage: `url(${photoURL})`,
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        backgroundSize: 'contain',
-        height: '140px',
+        backgroundSize: 'cover',
+        height: '200px',
         borderRadius: '16px'
     })
 }

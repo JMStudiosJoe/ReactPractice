@@ -28,6 +28,12 @@ interface VoteSmartProps {
     userAddressData: any
 }
 
+const addressInput = () => {
+    return style.create({
+        margin: '10px',
+        textAlign: 'center'
+    })
+}
 class LocalVoteMattersComponent extends React.Component<VoteSmartProps, VoteSmartState> {
     constructor(props) {
         super(props)
@@ -63,29 +69,32 @@ class LocalVoteMattersComponent extends React.Component<VoteSmartProps, VoteSmar
 
     render() {
         return (
-        <div>
-            <span>ex: 1184 normandy drive campbell ca 95008</span>
-            <input 
-                type='text' 
-                placeholder='Address'
-                onChange={ e => this.handleAddress(e) }
-            />
-            <button
-                onClick={ e => this.lookupAddress(e) }
-            >
-            Submit for info
-            </button>
             <div>
-                {
-                    displayElectionsAndOfficialsByDivision(
-                        this.state.divisions, 
-                        this.state.offices, 
-                        this.state.officials,
-                        this.state.elections
-                    )
-                }
+                <div style={addressInput()}>
+                    <span>ex: 1184 normandy drive campbell ca 95008</span>
+                    <br />
+                    <input 
+                        type='text' 
+                        placeholder='Address'
+                        onChange={ e => this.handleAddress(e) }
+                    />
+                    <button
+                        onClick={ e => this.lookupAddress(e) }
+                    >
+                    Submit for info
+                    </button>
+                </div>
+                <div>
+                    {
+                        displayElectionsAndOfficialsByDivision(
+                            this.state.divisions, 
+                            this.state.offices, 
+                            this.state.officials,
+                            this.state.elections
+                        )
+                    }
+                </div>
             </div>
-        </div>
         )
     }
     componentWillReceiveProps(newProps) {

@@ -31,7 +31,7 @@ const displayOfficialsForOffice = (office: Office, index: number, officials: Arr
                 break
         }
         return style.create({
-            height: '260px',
+            height: '300px',
             display: 'inline-block',
             margin: '6px',
             border: '1px solid black',
