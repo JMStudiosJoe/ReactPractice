@@ -5,6 +5,8 @@ import ParallaxComponent from './customReactParallax'
 import * as FA from 'react-icons/lib/fa'
 import {teamData} from '../models/teamModel'
 import { darkCard, lightCard, cardsContainer, positionTypes } from './scss/common'
+const TEAM_MEMBER_CONTAINER_WIDTH = '500px'
+
 interface TeamMemberLink {
     name: string,
     url: string
@@ -32,6 +34,11 @@ const teamMemberDisplay = (teamMember: TeamMember, index: number) => {
         fontSize: '20px',
         textAlign: 'left',
     })
+    const imagesContainer = () => {
+        return style.create({
+            textAlign: 'center'
+        })
+    }
 
     const teamMemberProfileImage = style.create({
         backgroundImage: 'url(${teamMember.imageURL})',
@@ -50,18 +57,19 @@ const teamMemberDisplay = (teamMember: TeamMember, index: number) => {
         position: 'relative' as positionTypes,
         zIndex: 3,
         bottom: '30px',
-        left: '50px'
+        left: '60px'
     })
 
     return (
         <div key={index}>
-            <div style={darkCard()}>
+            <div style={darkCard(TEAM_MEMBER_CONTAINER_WIDTH)}>
                 <div style={lightCard()}>
                     <div style={teamMemberContainerCSS}>
                         <div>{teamMember.name}</div>
                         <div>{teamMember.title}</div>
+                        <div>{teamMember.description}</div>
                         <div>{ displayLinksWithIcons(teamMember.links) }</div>
-                        <div >
+                        <div style={imagesContainer()}>
                             <img style={alterEgoProfileImage} src={teamMember.alterEgoImageURL} />
                             <img style={teamMemberProfileImage} src={teamMember.imageURL} />
                         </div>

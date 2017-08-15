@@ -8,13 +8,13 @@ const cardsContainer = () => {
         textAlign: 'center',
     })
 }
-const darkCard = () =>{
+const darkCard = (width = '780px') =>{
     return style.create({
         display: 'inline-block',
         backgroundColor: '#d9d9d9',
         borderRadius: '6px',
         padding: '2px',
-        width: '780px',
+        width: width,
         margin: '20px'
     })
 }
@@ -23,6 +23,7 @@ const lightCard = () => {
     return style.create({
         backgroundColor: 'white',
         margin: '2px',
+        padding: '6px',
         fontFamily: 'arial',
         fontSize: '24px',
         borderRadius: '6px',
