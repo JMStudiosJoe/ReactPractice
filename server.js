@@ -21,8 +21,8 @@ app.get('/*', function (req, res) {
     res.sendFile(indexPath)
 })
 if (production) {
-    app.listen(80)
-    console.log("listening at port 80")
+    app.listen(8080)
+    console.log("listening at port 8080")
 }
 else {
     app.listen(4000)
