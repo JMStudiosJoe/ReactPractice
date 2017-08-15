@@ -20,9 +20,11 @@ app.get('/*', function (req, res) {
     console.log(req.rawHeaders[9])
     res.sendFile(indexPath)
 })
-if (production)
+if (production) {
     app.listen(80)
-    console.log("listening at port 80");
-else
+    console.log("listening at port 80")
+}
+else {
     app.listen(4000)
-    console.log("listening at port 4000");
+    console.log("listening at port 4000")
+}
