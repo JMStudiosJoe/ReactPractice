@@ -22,6 +22,7 @@ app.get('/*', function (req, res) {
 })
 if (production)
     app.listen(80)
+    console.log("listening at port 80");
 else
     app.listen(4000)
-console.log("listening at port 4000");
+    console.log("listening at port 4000");
