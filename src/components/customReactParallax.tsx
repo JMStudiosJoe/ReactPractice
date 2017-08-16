@@ -6,10 +6,11 @@ let imageNameData = imageData.imageData
 
 interface ParralaxImage {
     path: string
-    active: boolean
+    active: boolean,
+    image: string
 }
 
-let background = imageNameData[0].path
+let background = imageNameData[0].image
 
 
 interface ParallaxComponentState {
@@ -30,7 +31,7 @@ class ParallaxComponent extends React.Component<{}, ParallaxComponentState> {
         for (const imageData of imageNameData) {
             if (!imageData.active) {
                 imageData.active = true
-                return imageData.path
+                return imageData.image
             }
         }
         this.resetPathActivity()

@@ -2,23 +2,26 @@ var path = require('path');
 var webpack = require('webpack');
 var SRC = path.join(__dirname, 'src/');
 var NODE_MODULES = path.join(__dirname, 'node_modules/');
-
+console.log(__dirname)
 module.exports = [{
-    entry: "./src/app.tsx",
+    entry: './src/app.tsx',
     output: {
-        filename: "bundle.js",
-        path: __dirname + "/public/build"
+        filename: 'bundle.js',
+        path: __dirname + '/public/build'
     },
-    devtool: "source-map",
+    devtool: 'source-map',
     resolve: {
-        extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js", "jpg", "png"]
+        extensions: ['.webpack.js', '.web.js', '.ts', '.tsx', '.js', 'jpg', 'png'],
+        alias: {
+            Common: path.resolve(__dirname, 'src/components/scss/')
+        }
     },
 
     module: {
         rules: [
             {
                 test: /\.tsx?$/,
-                use: "awesome-typescript-loader"
+                use: 'awesome-typescript-loader'
             },
             {
                 test: /\.js?$/,
@@ -33,10 +36,10 @@ module.exports = [{
                 test: /\.(png|jpg|svg)$/,
                 include: __dirname + '/src/images/',
                 use: {
-                    loader: 'url-loader',
+                    loader: 'file-loader',
                     options: {
-                        limit: 15000,
-                        name: '[name].[ext]'
+                        name: '[name].[ext]',
+                        outputPath: './build/images/'
                     }
                 }
             }
@@ -49,8 +52,8 @@ module.exports = [{
     // dependencies, which allows browsers to cache those libraries between builds.
     // nned to research this more sounds close to cache busting
     externals: {
-        "react": "React",
-        "react-dom": "ReactDOM"
+        'react': 'React',
+        'react-dom': 'ReactDOM'
 
     },
     node: {

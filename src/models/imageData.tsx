@@ -1,40 +1,58 @@
+const autumTrees = require('../images/autum_trees.jpg')
+const jmstudios = require('../images/jmstudiosbackground.jpg')
+const milkyWay = require('../images/milky-way.jpg')
+const bambooForest = require('../images/bamboo-forest-by-rolf-hartbrich.jpg')
+const space = require('../images/space-background.jpg')
+const waterDrop = require('../images/water-drop-wallpaper-3.jpg')
+const earthAtmos = require('../images/space-earth-stratosphere-wallpaper-1.jpg')
+const bridgeOverRiver = require('../images/bridge-over-the-river.jpg')
+const mountains = require('../images/mountains_landscape.jpg')
+
 export const imageData = {
     'imageData':[
     {
-        'path': './src/images/jmstudiosbackground.jpg',
-        'active': false
+        'active': false,
+        'image': jmstudios
     },
     {
-        'path': './src/images/milky-way.jpg',
-        'active': false
+        'active': false,
+        'image': milkyWay
+
     },
     {
-        'path': './src/images/bamboo-forest-by-rolf-hartbrich.jpg',
-        'active': false
+        'active': false,
+        'image': bambooForest
+
     },
     {
-        'path': './src/images/space-background.jpg',
-        'active': false
+        'active': false,
+        'image': space
+
     },
     {
-        'path': './src/images/water-drop-wallpaper-3.jpg',
-        'active': false
+        'active': false,
+        'image': waterDrop
+
     },
     {
-        'path': './src/images/space-earth-stratosphere-wallpaper-1.jpg',
-        'active': false
+        'active': false,
+        'image': earthAtmos
+
     },
     {
-        'path': './src/images/autum_trees.jpg',
-        'active': false
+        'active': false,
+        'image': autumTrees
+
     },
     {
-        'path': './src/images/bridge-over-the-river.jpg',
-        'active': false
+        'active': false,
+        'image': bridgeOverRiver
+
     },
     {
-        'path': './src/images/mountains_landscape.jpg',
-        'active': false
+        'active': false,
+        'image': mountains
+
     }
 ]
 }

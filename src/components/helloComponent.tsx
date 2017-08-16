@@ -2,6 +2,7 @@ import * as React from 'react'
 import ParallaxComponent from './customReactParallax'
 import { cardsContainer, darkCard, lightCard } from './scss/common'
 
+//import { Common } from 'Common/common'
 interface HelloProps {
   name: string;
 }

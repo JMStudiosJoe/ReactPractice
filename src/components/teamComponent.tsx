@@ -26,8 +26,6 @@ interface TeamProps {
 interface TeamState {
     team: Array<TeamMember>
 }
-// TODO: needing this type for deploying to aws for some reason webpack errors with type issue
-// and position, need to test if will work on aws now
 const teamMemberDisplay = (teamMember: TeamMember, index: number) => {
     const teamMemberContainerCSS = style.create({
         padding: '10px',
