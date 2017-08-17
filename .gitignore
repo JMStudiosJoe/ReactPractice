@@ -6,3 +6,5 @@ typings/
 .awcache/
 public/
 .*.swp
+/__pycache__/
+/venv/
