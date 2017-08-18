@@ -7,7 +7,17 @@ interface VoteSmartAction<Action> {
     type: string
     payload?: any
 }
+const pingBackend = () => {
+    const url: string = 'http://localhost:5000/'
+    return axios.get(url).then(function (response) {
+        console.log(response)
+
+    }).catch(function (error) {
+          console.log(error)
+    })
+}
 const getElectionWithaddress = (electionsURL: string, repResponseData: any, address: string, dispatch: any) => {
+    pingBackend()
     return axios.get(electionsURL).then(function (response) {
         const addressLookupResponse = {
             ...repResponseData,

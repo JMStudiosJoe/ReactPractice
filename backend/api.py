@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    con, meta = db.connect('jmtudios', 'jmstudios', 'jmstudios')
+    con, meta = db.connect('jmstudios', 'jmstudios', 'jmstudios')
     data = {
         'mesg': 'hello'
     }
