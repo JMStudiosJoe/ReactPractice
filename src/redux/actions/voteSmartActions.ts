@@ -8,7 +8,8 @@ interface VoteSmartAction<Action> {
     payload?: any
 }
 const pingBackend = () => {
-    const url: string = 'http://localhost:5000/'
+    const url: string = 'http://localhost:5000/hello'
+
     return axios.get(url).then(function (response) {
         console.log(response)
 
