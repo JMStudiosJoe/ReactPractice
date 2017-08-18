@@ -7,10 +7,20 @@ interface VoteSmartAction<Action> {
     type: string
     payload?: any
 }
-const pingBackend = () => {
+const pingBackend = (elections: string, repURL: string, address: string) => {
     const url: string = 'http://localhost:5000/hello'
-
-    return axios.get(url).then(function (response) {
+    const data = {
+        electionsURL: elections,
+        representativesURL: repURL,
+        address: address
+    }
+    const headers ={ 
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    }
+    return axios.post(url, data, headers).then(function (response) {
         console.log(response)
 
     }).catch(function (error) {
@@ -18,7 +28,6 @@ const pingBackend = () => {
     })
 }
 const getElectionWithaddress = (electionsURL: string, repResponseData: any, address: string, dispatch: any) => {
-    pingBackend()
     return axios.get(electionsURL).then(function (response) {
         const addressLookupResponse = {
             ...repResponseData,
@@ -31,6 +40,7 @@ const getElectionWithaddress = (electionsURL: string, repResponseData: any, addr
     })
 }
 const getAddressData = (repURL: string, electionsURL: string, address: string) => {
+    pingBackend(electionsURL, repURL, address)
     return function(dispatch, getState) {
         if (repURL !== '') { 
             return axios.get(repURL).then(function (response) {
