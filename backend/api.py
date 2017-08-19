@@ -3,9 +3,9 @@ import json
 from database import db
 app = Flask(__name__)
 
-@app.route('/hello', methods=['POST', 'OPTIONS'])
+@app.route('/api/hello', methods=['POST'])
 def index():
-    import pdb; pdb.set_trace()
+    print(request.form)
     repURL = request.form['representativesURl']
     electionsURL = request.form['electionsURl']
     address = request.form['address']

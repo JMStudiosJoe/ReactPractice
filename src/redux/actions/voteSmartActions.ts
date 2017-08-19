@@ -8,12 +8,13 @@ interface VoteSmartAction<Action> {
     payload?: any
 }
 const pingBackend = (elections: string, repURL: string, address: string) => {
-    const url: string = 'http://localhost:5000/hello'
+    const url: string = 'http://localhost:5000/api/hello'
     const data = {
         electionsURL: elections,
         representativesURL: repURL,
         address: address
     }
+    //'Content-Type': 'multipart/form-data'
     const headers ={ 
         headers: {
             'Accept': 'application/json',
