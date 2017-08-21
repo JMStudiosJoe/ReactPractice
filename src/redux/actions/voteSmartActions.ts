@@ -15,10 +15,10 @@ const pingBackend = (elections: string, repURL: string, address: string) => {
         address: address
     }
     //'Content-Type': 'multipart/form-data'
+    //application/x-www-form-urlencoded
     const headers ={ 
         headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/x-www-form-urlencoded'
         }
     }
     return axios.post(url, data, headers).then(function (response) {

@@ -3,7 +3,7 @@ import json
 from database import db
 app = Flask(__name__)
 
-@app.route('/api/hello', methods=['POST'])
+@app.route('/api/hello', methods=['POST', 'OPTIONS'])
 def index():
     print(request.form)
     repURL = request.form['representativesURl']
@@ -11,11 +11,7 @@ def index():
     address = request.form['address']
 
     resp = make_response(json.dumps(request.form))
-    resp.headers['Access-Control-Allow-Origin'] = 'http://localhost:8080'
-    resp.headers['Access-Control-Allow-Headers'] = '*'
-    resp.headers['Access-Control-Allow-Methods'] = 'POST'
     return resp
 
 if __name__ == '__main__':
-    print('------------------how often do i get called?')
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5050, debug=True)
