@@ -2,34 +2,16 @@ import { Action } from 'redux'
 import { HANDLE_ADDRESS_LOOKUP, HANDLE_REPRESENTATIVE, HANDLE_ELECTION_BY_ADDRESS } from './actionTypes'
 import store from '../store/store'
 import axios from 'axios'
+import { postToBackend, getFromBackend } from '../../api/api'
 
 interface VoteSmartAction<Action> {
     type: string
     payload?: any
 }
-const pingBackend = (elections: string, repURL: string, address: string) => {
-    const url: string = 'http://localhost:5000/api/hello'
-    const data = {
-        electionsURL: elections,
-        representativesURL: repURL,
-        address: address
-    }
-    //'Content-Type': 'multipart/form-data'
-    //application/x-www-form-urlencoded
-    const headers ={ 
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        }
-    }
-    return axios.post(url, data, headers).then(function (response) {
-        console.log(response)
+const getElectionWithaddress = (repResponseData: any, address: string, dispatch: any) => {
+    const url: string = 'http://localhost:5000/api/local_vote_matters/elections_info'
 
-    }).catch(function (error) {
-          console.log(error)
-    })
-}
-const getElectionWithaddress = (electionsURL: string, repResponseData: any, address: string, dispatch: any) => {
-    return axios.get(electionsURL).then(function (response) {
+    return getFromBackend(url).then(function (response) {
         const addressLookupResponse = {
             ...repResponseData,
             ...response.data
@@ -40,18 +22,21 @@ const getElectionWithaddress = (electionsURL: string, repResponseData: any, addr
           console.log(error)
     })
 }
-const getAddressData = (repURL: string, electionsURL: string, address: string) => {
-    pingBackend(electionsURL, repURL, address)
+const getAddressData = (address: string) => {
+    const url: string = 'http://localhost:5000/api/local_vote_matters/representative_info'
+    const data = {
+        address: address
+    }
     return function(dispatch, getState) {
-        if (repURL !== '') { 
-            return axios.get(repURL).then(function (response) {
+        if (address !== '') { 
+            return postToBackend(url, data).then(function (response) {
                 const repData = {
                     offices: response.data.offices,
                     officials: response.data.officials,
                     divisions: response.data.divisions,
                     address: address
                 }
-                getElectionWithaddress(electionsURL, repData, address, dispatch) 
+                getElectionWithaddress(repData, address, dispatch) 
 
             }).catch(function (error) {
                   console.log(error)

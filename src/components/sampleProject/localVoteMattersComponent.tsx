@@ -7,12 +7,6 @@ import store from "../../redux/store/store"
 import { Office, Official, Division, Election } from '../types/voteSmartTypes'
 import { displayElectionsAndOfficialsByDivision } from './displayElectionsAndOfficialsByDivision'
 
-const API_KEY = 'AIzaSyCWhwRupMs7IeE4IrGEgHtT0Nt-IGZnP9E'
-const endURL = '&key='+ API_KEY
-const baseRepURL = 'https://www.googleapis.com/civicinfo/v2/representatives?address='
-const baseElectionsURL = 'https://www.googleapis.com/civicinfo/v2/elections?alt=json&prettyPrint=true'
-//const baseElectionsURL = 'https://www.googleapis.com/civicinfo/v2/voterinfo?address='
-
 
 interface VoteSmartState {
     address: string
@@ -47,14 +41,7 @@ class LocalVoteMattersComponent extends React.Component<VoteSmartProps, VoteSmar
     }
     lookupAddress(event: React.MouseEvent<HTMLButtonElement>) {
         event.preventDefault()
-        const address = this.state.address.split(' ').join('+')      
-        const electAddress = this.state.address.split(' ').join('%20')
-        const reqAllData = '&returnAllAvailableData=true&alt=json'
-        const fullRepURL = baseRepURL + address + endURL
-        const fullElectionsURL = baseElectionsURL + electAddress + reqAllData + endURL
-        const electionsURL = baseElectionsURL + endURL
-
-        this.props.fetchAddressData(fullRepURL, electionsURL, this.state.address)
+        this.props.fetchAddressData(this.state.address)
     }
 
     handleAddress(event: React.ChangeEvent<HTMLInputElement>) {
@@ -113,7 +100,7 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchAddressData: (repURL, electionsURL, address) => dispatch(getAddressData(repURL, electionsURL, address)),
+        fetchAddressData: (address) => dispatch(getAddressData(address)),
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(LocalVoteMattersComponent)

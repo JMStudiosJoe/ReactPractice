@@ -11,8 +11,11 @@ const displayElectionsAndOfficialsByDivision = (division: any, offices: Array<Of
             divisionId: key
         }
     })
+    const sortedDivisionList = divisionList.sort( (divisionOne, divisionTwo) => {
+        return divisionTwo.divisionId.length - divisionOne.divisionId.length
+    })
 
-    return divisionList.reverse().map( (division: Division, index: number) => {
+    return sortedDivisionList.map( (division: Division, index: number) => {
         const officeIndices = division.officeIndices
         const officesInDivision = officeIndices.map( (index: number) => {
             return offices[index]
