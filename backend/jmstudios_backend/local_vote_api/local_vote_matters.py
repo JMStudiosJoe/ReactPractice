@@ -1,4 +1,4 @@
-from request_handler.request_handler import RequestHandler
+from jmstudios_backend.request_handler.request_handler import RequestHandler
 
 
 class LocalVoteMattersAPI():
