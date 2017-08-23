@@ -10,49 +10,41 @@ const mountains = require('../images/mountains_landscape.jpg')
 
 export const imageData = {
     'imageData':[
-    {
-        'active': false,
-        'image': jmstudios
-    },
-    {
-        'active': false,
-        'image': milkyWay
-
-    },
-    {
-        'active': false,
-        'image': bambooForest
-
-    },
-    {
-        'active': false,
-        'image': space
-
-    },
-    {
-        'active': false,
-        'image': waterDrop
-
-    },
-    {
-        'active': false,
-        'image': earthAtmos
-
-    },
-    {
-        'active': false,
-        'image': autumTrees
-
-    },
-    {
-        'active': false,
-        'image': bridgeOverRiver
-
-    },
-    {
-        'active': false,
-        'image': mountains
-
-    }
-]
+        {
+            'active': false,
+            'image': jmstudios
+        },
+        {
+            'active': false,
+            'image': milkyWay
+        },
+        {
+            'active': false,
+            'image': bambooForest
+        },
+        {
+            'active': false,
+            'image': space
+        },
+        {
+            'active': false,
+            'image': waterDrop
+        },
+        {
+            'active': false,
+            'image': earthAtmos
+        },
+        {
+            'active': false,
+            'image': autumTrees
+        },
+        {
+            'active': false,
+            'image': bridgeOverRiver
+        },
+        {
+            'active': false,
+            'image': mountains
+        }
+    ]
 }

@@ -11,7 +11,7 @@ module.exports = [{
     },
     devtool: 'source-map',
     resolve: {
-        extensions: ['.webpack.js', '.web.js', '.ts', '.tsx', '.js', 'jpg', 'png'],
+        extensions: ['.webpack.js', '.web.js', '.ts', '.tsx', '.js', 'jpg','.css', 'png'],
         alias: {
             Common: path.resolve(__dirname, 'src/components/scss/')
         }
@@ -31,6 +31,10 @@ module.exports = [{
             { 
                 test: /\.json$/,
                 use: 'json-loader' 
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
             },
             {
                 test: /\.(png|jpg|svg)$/,

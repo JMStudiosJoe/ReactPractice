@@ -6,10 +6,11 @@ import { displayElection } from './displayElection'
 
 const displayElectionForDivision = (divisionId: string, elections: Array<Election>) => {
     const election: Election = elections.map( (election: Election) => {
-        if (divisionId === election.ocdDivisionId) {
+        //if (divisionId === election.ocdDivisionId) {
             return election 
-        }
+        //}
     })[0]
+
     if (election) {
         return displayElection(election)
     }
