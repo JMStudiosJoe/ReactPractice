@@ -4,7 +4,6 @@ from sqlalchemy.orm import sessionmaker
 from jmstudios_backend.database.models.team_member import TeamMember
 
 Session = sessionmaker()
-session = None
 
 def connect(user, password, db, host='localhost', port=5432):
     url = 'postgresql://{}:{}@{}:{}/{}'
@@ -16,19 +15,21 @@ def connect(user, password, db, host='localhost', port=5432):
     Session.configure(bind=con)
     session = Session()
     member = TeamMember(first_name='joseph')
-    import pdb; pdb.set_trace()
+    # when added and commited here it saves to db but with global 
+    # is being more difficult
+    # import pdb; pdb.set_trace()
 
     db_engine = Engine(meta, con)
     return con, meta
 
 
 def get_session():
-    return session
+    return Session()
 
 
 def add_to_session(data):
-    session.add(data)
+    get_session().add(data)
 
 
 def commit_session():
-    session.commit()
+    get_session().commit()

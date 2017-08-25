@@ -7,4 +7,7 @@ class Engine():
         self.meta = meta
         self.con = con
 
+        member = TeamMember(first_name='erika')
+        # import pdb; pdb.set_trace()
+
 
