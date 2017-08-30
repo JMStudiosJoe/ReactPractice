@@ -11,7 +11,9 @@ const TEAM_MEMBER_CONTAINER_WIDTH = '500px'
 import { getFromBackend } from '../api/api'
 const moveToActionAndReducer = () => {
     const teamURL: string = 'http://localhost:5000/api/team_members/get_team'
-    getFromBackend(teamURL)
+    getFromBackend(teamURL).then( (response) => {
+        console.log(response)
+    })
 }
 
 moveToActionAndReducer()
