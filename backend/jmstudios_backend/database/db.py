@@ -3,7 +3,6 @@ from jmstudios_backend.database.engine import Engine
 from sqlalchemy.orm import sessionmaker
 from jmstudios_backend.database.models.team_member import TeamMember
 
-Session = sessionmaker()
 
 def connect(user, password, db, host='localhost', port=5432):
     url = 'postgresql://{}:{}@{}:{}/{}'
@@ -12,24 +11,35 @@ def connect(user, password, db, host='localhost', port=5432):
     con = sqlalchemy.create_engine(url, client_encoding='utf8')
     meta = sqlalchemy.MetaData(bind=con, reflect=True)
 
-    Session.configure(bind=con)
-    session = Session()
-    member = TeamMember(first_name='joseph')
+    member = TeamMember(first_name='Scott')
+    Session(con)
+    Session.add_to_session(member)
     # when added and commited here it saves to db but with global 
     # is being more difficult
-    # import pdb; pdb.set_trace()
 
     db_engine = Engine(meta, con)
     return con, meta
 
 
-def get_session():
-    return Session()
+class Session(object):
+    session = None
 
+    def __init__(self, connection):
+        print(connection)
+        if self.session is None:
+            session = sessionmaker(bind=connection)
+            self.session = session()
+            print(self.session)
 
-def add_to_session(data):
-    get_session().add(data)
+    @classmethod
+    def get_session(cls):
+        return cls.session
 
+    @classmethod
+    def add_to_session(cls, data):
+        #import pdb; pdb.set_trace()
+        cls.session.add(data)
 
-def commit_session():
-    get_session().commit()
+    @classmethod
+    def commit_session(cls):
+        cls.session.commit()
