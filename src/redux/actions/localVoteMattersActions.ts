@@ -1,7 +1,6 @@
 import { Action } from 'redux'
 import { HANDLE_ADDRESS_LOOKUP, HANDLE_REPRESENTATIVE, HANDLE_ELECTION_BY_ADDRESS } from './actionTypes'
 import store from '../store/store'
-import axios from 'axios'
 import { postToBackend, getFromBackend } from '../../api/api'
 
 interface LocalVoteMattersAction<Action> {

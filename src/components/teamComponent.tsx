@@ -7,6 +7,17 @@ import {teamData} from '../models/teamModel'
 import { darkCard, lightCard, cardsContainer, positionTypes } from './scss/common'
 const TEAM_MEMBER_CONTAINER_WIDTH = '500px'
 
+
+import { getFromBackend } from '../api/api'
+const moveToActionAndReducer = () => {
+    const teamURL: string = 'http://localhost:5000/api/team_members/get_team'
+    getFromBackend(teamURL)
+}
+
+moveToActionAndReducer()
+
+
+
 interface TeamMemberLink {
     name: string,
     url: string
