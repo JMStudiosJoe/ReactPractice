@@ -2,7 +2,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import * as style from 'ts-style' //ts-style is correct one
 import { bindActionCreators } from 'redux'
-import { getAddressData } from '../../redux/actions/voteSmartActions'
+import { getAddressData } from '../../redux/actions/localVoteMattersActions'
 import store from "../../redux/store/store"
 import { Office, Official, Division, Election } from '../types/voteSmartTypes'
 import { displayElectionsAndOfficialsByDivision } from './displayElectionsAndOfficialsByDivision'

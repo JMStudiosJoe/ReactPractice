@@ -4,7 +4,7 @@ import store from '../store/store'
 import axios from 'axios'
 import { postToBackend, getFromBackend } from '../../api/api'
 
-interface VoteSmartAction<Action> {
+interface LocalVoteMattersAction<Action> {
     type: string
     payload?: any
 }
@@ -52,5 +52,5 @@ const addressDataSuccess = (addressData: any, address: string) => {
 }
 
 export {
-    getAddressData, VoteSmartAction
+    getAddressData, LocalVoteMattersAction
 }
