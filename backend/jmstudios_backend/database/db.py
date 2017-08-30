@@ -12,7 +12,7 @@ def connect(user, password, db, host='localhost', port=5432):
     meta = sqlalchemy.MetaData(bind=con, reflect=True)
 
     member = TeamMember(first_name='Scott')
-    Session(con)
+    Session.initialize(con)
     Session.add_to_session(member)
     # when added and commited here it saves to db but with global 
     # is being more difficult
@@ -23,13 +23,16 @@ def connect(user, password, db, host='localhost', port=5432):
 
 class Session(object):
     session = None
+    connection = ''
 
-    def __init__(self, connection):
+    @classmethod
+    def initialize(cls, connection):
         print(connection)
-        if self.session is None:
+        if cls.session is None:
             session = sessionmaker(bind=connection)
-            self.session = session()
-            print(self.session)
+            cls.connection = connection
+            cls.session = session()
+            print(cls.session)
 
     @classmethod
     def get_session(cls):
@@ -37,7 +40,7 @@ class Session(object):
 
     @classmethod
     def add_to_session(cls, data):
-        #import pdb; pdb.set_trace()
+        import pdb; pdb.set_trace()
         cls.session.add(data)
 
     @classmethod
