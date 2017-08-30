@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import voteSmartReducer from './voteSmartReducers'
+import LocalVoteMattersReducer from './localVoteMattersReducer'
 
 const rootReducer = combineReducers({
-    userAddressData: voteSmartReducer
+    userAddressData: LocalVoteMattersReducer
 })
 
 export default rootReducer
