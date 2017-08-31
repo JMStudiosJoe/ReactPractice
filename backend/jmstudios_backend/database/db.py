@@ -3,6 +3,8 @@ from jmstudios_backend.database.engine import Engine
 from jmstudios_backend.database.session import Session
 from jmstudios_backend.database.models.team_member import TeamMember
 from jmstudios_backend.database.models.images import Image
+from jmstudios_backend.database.models.enigmas import Enigma
+from jmstudios_backend.database.models.projects import Project
 
 
 def connect(user, password, db, host='localhost', port=5432):
@@ -15,5 +17,3 @@ def connect(user, password, db, host='localhost', port=5432):
 
     db_engine = Engine(meta, con)
     return con, meta
-
-
