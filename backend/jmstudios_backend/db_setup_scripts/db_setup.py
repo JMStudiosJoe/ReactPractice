@@ -19,7 +19,7 @@ def initialize_team_members():
         description='',
         linked_in_url='',
         github_url=''
-        #image=Image()
+        image=Image.get_by_name('me.jpg')
     )
 
 def initialize_images():

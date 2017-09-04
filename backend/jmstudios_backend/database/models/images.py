@@ -14,11 +14,18 @@ class Image(Base):
     @classmethod
     def create_new_image(cls, name, type, path):
         print(type)
-        cls.upload_image_to_s3(name, path)
+        url = cls.upload_image_to_s3(name, path)
+        new_image = cls(type=type, name=name, image_url=url)
+        return new_image.id
 
     @classmethod
     def get_by_id(cls, image_id):
         image = Session.get_session().query(cls).filter(self.id == image_id).first()
+        return image.json()
+
+    @classmethod
+    def get_by_name(cls, name):
+        image = Session.get_session().query(cls).filter(self.name == name).first()
         return image.json()
 
     @classmethod
@@ -32,10 +39,12 @@ class Image(Base):
         import boto3
         bucket_name = 'jmstudiosimages'
         s3 = boto3.resource('s3')
+        image_url = cls.generate_s3_url(name, bucket_name)
         try:
             s3.meta.client.upload_file(path, bucket_name, name)
             object_acl = s3.ObjectAcl(bucket_name, name)
             response = object_acl.put(ACL='public-read')
+            return image_url
         except e:
             print(e)
 

@@ -13,8 +13,12 @@ class TeamMember(Base):
     description = Column(String(30))
     linked_in_url = Column(String(60))
     github_url = Column(String(60))
+    image_name = Column(String(20))
     image_id = Column(Integer, ForeignKey('image.id'))
 
+    @classmethod
+    def create(cls, **args)
+        print(args)
 
     @classmethod
     def get_all(cls):
