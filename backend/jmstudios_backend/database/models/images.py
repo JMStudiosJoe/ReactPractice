@@ -7,25 +7,28 @@ class Image(Base):
     __tablename__ = 'image'
 
     id = Column(Integer, primary_key=True)
-    type = Column(String(30))
-    name = Column(String(30))
-    image_url = Column(String(100))
+    type = Column(String(60))
+    name = Column(String(60))
+    image_url = Column(String(200))
 
     @classmethod
     def create_new_image(cls, name, type, path):
-        print(type)
         url = cls.upload_image_to_s3(name, path)
         new_image = cls(type=type, name=name, image_url=url)
+
+        Session.add_to_session(new_image)
+        Session.commit_session()
+
         return new_image.id
 
     @classmethod
     def get_by_id(cls, image_id):
-        image = Session.get_session().query(cls).filter(self.id == image_id).first()
+        image = Session.get_session().query(cls).filter(cls.id == image_id).first()
         return image.json()
 
     @classmethod
     def get_by_name(cls, name):
-        image = Session.get_session().query(cls).filter(self.name == name).first()
+        image = Session.get_session().query(cls).filter(cls.name == name).first()
         return image.json()
 
     @classmethod
@@ -45,7 +48,7 @@ class Image(Base):
             object_acl = s3.ObjectAcl(bucket_name, name)
             response = object_acl.put(ACL='public-read')
             return image_url
-        except e:
+        except Exception as e:
             print(e)
 
     @classmethod

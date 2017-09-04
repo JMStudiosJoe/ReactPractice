@@ -10,15 +10,20 @@ class TeamMember(Base):
     first_name = Column(String(30))
     last_name = Column(String(30))
     title = Column(String(30))
-    description = Column(String(30))
+    description = Column(String(100))
     linked_in_url = Column(String(60))
     github_url = Column(String(60))
-    image_name = Column(String(20))
+    image_name = Column(String(60))
     image_id = Column(Integer, ForeignKey('image.id'))
 
     @classmethod
-    def create(cls, **args)
-        print(args)
+    def create(cls, **args):
+        member = cls(**args)
+
+        Session.add_to_session(member)
+        Session.commit_session()
+
+        return member.id
 
     @classmethod
     def get_all(cls):
