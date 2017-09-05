@@ -9,9 +9,9 @@ class Project(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(60))
     position = Column(Integer)
-    description = Column(String(300))
-    problem = Column(String(300))
-    solutions = Column(String(300))
+    description = Column(String(600))
+    problem = Column(String(600))
+    solutions = Column(String(600))
     github_url = Column(String(100))
     sample_project_name = Column(String(60))
 

@@ -1,15 +1,16 @@
 from jmstudios_backend.database.base import Base
 from jmstudios_backend.database.models.team_member import TeamMember
 from jmstudios_backend.database.models.images import Image
+from jmstudios_backend.database.models.projects import Project
 from jmstudios_backend.database import db
 from jmstudios_backend.db_setup_scripts.setup_data.image_data import images
+from jmstudios_backend.db_setup_scripts.setup_data.projects_data import projects
 
 
 meta, con = db.connect('jmstudios', 'jmstudios', 'jmstudios')
-image_path = 'jmstudios_backend/db_setup_scripts/setup_data/autum_trees.jpg'
 
-#Base.metadata.drop_all(meta)
-#Base.metadata.create_all(meta)
+Base.metadata.drop_all(meta)
+Base.metadata.create_all(meta)
 
 def initialize_team_members():
     image_name = 'me.jpg'
@@ -29,6 +30,11 @@ def initialize_images():
     for data in images:
         Image.create_new_image(**data)
 
+def initialize_projects():
+    for data in projects:
+        Project.create(**data)
 
-initialize_images()
+
+# initialize_images()
+initialize_projects()
 initialize_team_members()
