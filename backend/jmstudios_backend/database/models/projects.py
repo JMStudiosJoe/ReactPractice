@@ -16,6 +16,15 @@ class Project(Base):
     sample_project_name = Column(String(60))
 
     @classmethod
+    def create(cls, **args):
+        project = cls(**args)
+
+        Session.add_to_session(project)
+        Session.commit_session()
+
+        return project.id
+
+    @classmethod
     def get_all(cls):
         all_projects = Session.get_session().query(cls).all()
         projects = [project.json() for project in all_projects]
@@ -27,6 +36,7 @@ class Project(Base):
             'name': self.name,
             'description': self.description,
             'problem': self.problem,
+            'position': self.position,
             'solutions': self.solutions,
             'sample_project_name': self.sample_project_name,
             'github_url': self.github_url
