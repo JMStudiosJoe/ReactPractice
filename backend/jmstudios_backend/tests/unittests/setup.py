@@ -1,4 +1,5 @@
 import unittest
+from jmstudios_backend.tests.unittests.test_cases.team_test import TeamUnitTests
 
 class UnitTests(unittest.TestCase):
 
