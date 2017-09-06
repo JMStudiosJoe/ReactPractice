@@ -35,6 +35,6 @@ def initialize_projects():
         Project.create(**data)
 
 
-# initialize_images()
+initialize_images()
 initialize_projects()
 initialize_team_members()
