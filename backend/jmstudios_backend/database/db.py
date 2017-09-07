@@ -7,9 +7,13 @@ from jmstudios_backend.database.models.enigmas import Enigma
 from jmstudios_backend.database.models.projects import Project
 
 
-def connect(user, password, db, host='localhost', port=5432):
+def connect(user, password, db, host='localhost', port=5432, test=False):
     url = 'postgresql://{}:{}@{}:{}/{}'
-    url = url.format(user, password, host, port, db)
+    if test:
+        url = 'sqlite:///:memory:'
+    else:
+        url = url.format(user, password, host, port, db)
+
     con = sqlalchemy.create_engine(url, client_encoding='utf8')
     meta = sqlalchemy.MetaData(bind=con, reflect=True)
 
