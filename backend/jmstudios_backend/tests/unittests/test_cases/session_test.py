@@ -1,13 +1,14 @@
 from jmstudios_backend.database.session import Session
-import  jmstudios_backend.database.db
+from jmstudios_backend.database.models.team_member import TeamMember
+from jmstudios_backend.tests.mock_data.mock_team import MockData
+import jmstudios_backend.database.db
 import unittest
 
 
 class SessionUnitTests(unittest.TestCase):
 
-    def setup(self):
-        print('setup session')
-        db.connect(test=True)
 
     def test_add_to_session(self):
-        print(Session)
+        data = TeamMember(**MockData.get_team_member_mock())
+
+        Session.add_to_session(data)
