@@ -12,3 +12,6 @@ class SessionUnitTests(unittest.TestCase):
         data = TeamMember(**MockData.get_team_member_mock())
 
         Session.add_to_session(data)
+        Session.commit_session()
+        test = Session.get_session().query(TeamMember).first()
+        import pdb;pdb.set_trace()
