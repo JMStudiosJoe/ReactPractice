@@ -24,16 +24,13 @@ itsdangerous==0.24
 jellyfish==0.5.1
 Jinja2==2.9.6
 jmespath==0.9.3
--e git+https://github.com/JMStudiosJoe/ReactPractice@e99b16493fb2978e4766caeb7a9f4ef08072e357#egg=jmstudios_backend&subdirectory=backend
 jsonschema==2.6.0
 jupyter-core==4.3.0
 MarkupSafe==1.0
 matplotlib==2.0.2
 nbformat==4.3.0
 numpy==1.13.0
-pandas==0.20.3
 paramiko==2.2.1
-plotly==2.0.12
 psycopg2==2.7.3
 pyasn1==0.3.2
 pycparser==2.18
