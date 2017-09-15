@@ -27,7 +27,6 @@ jmespath==0.9.3
 jsonschema==2.6.0
 jupyter-core==4.3.0
 MarkupSafe==1.0
-matplotlib==2.0.2
 nbformat==4.3.0
 numpy==1.13.0
 paramiko==2.2.1
