@@ -1,4 +1,5 @@
-from jmstudios_backend import app
+from jmstudios_backend import app as application
 
 if __name__ == "__main__":
-    app.run()
+    print(application)
+    application.run(port=5050)

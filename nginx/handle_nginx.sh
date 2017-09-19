@@ -1,3 +1,3 @@
 #!/bin/bash
-cp nginx.conf /etc/nginx/
-cat /etc/nginx/nginx.conf
+cp nginx.conf /usr/local/etc/nginx
+cat /usr/local/etc/nginx/nginx.conf

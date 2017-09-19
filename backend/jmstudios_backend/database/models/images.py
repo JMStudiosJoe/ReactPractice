@@ -23,8 +23,12 @@ class Image(Base):
 
     @classmethod
     def get_by_id(cls, image_id):
+        print(image_id)
         image = Session.get_session().query(cls).filter(cls.id == image_id).first()
-        return image.json()
+        if image:
+            return image.json()
+        else:
+            return {}
 
     @classmethod
     def get_by_name(cls, name):
