@@ -24,7 +24,6 @@ itsdangerous==0.24
 jellyfish==0.5.1
 Jinja2==2.9.6
 jmespath==0.9.3
--e git+https://github.com/JMStudiosJoe/ReactPractice@fe27a18e43cb2ca3a85a7d82e84d164d0f32605d#egg=jmstudios_backend&subdirectory=backend
 jsonschema==2.6.0
 jupyter-core==4.3.0
 MarkupSafe==1.0
