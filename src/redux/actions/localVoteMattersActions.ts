@@ -2,13 +2,14 @@ import { Action } from 'redux'
 import { HANDLE_ADDRESS_LOOKUP, HANDLE_REPRESENTATIVE, HANDLE_ELECTION_BY_ADDRESS } from './actionTypes'
 import store from '../store/store'
 import { postToBackend, getFromBackend } from '../../api/api'
+import projectConfig from '../../../project.config'
 
 interface LocalVoteMattersAction<Action> {
     type: string
     payload?: any
 }
 const getElectionWithaddress = (repResponseData: any, address: string, dispatch: any) => {
-    const url: string = 'http://localhost:5000/api/local_vote_matters/elections_info'
+    const url: string = 'http://' + projectConfig['baseURL'] + ':5000/api/local_vote_matters/elections_info'
 
     return getFromBackend(url).then(function (response) {
         const addressLookupResponse = {
@@ -22,7 +23,7 @@ const getElectionWithaddress = (repResponseData: any, address: string, dispatch:
     })
 }
 const getAddressData = (address: string) => {
-    const url: string = 'http://localhost:5000/api/local_vote_matters/representative_info'
+    const url: string = 'http://' + projectConfig['baseURL'] + ':5000/api/local_vote_matters/representative_info'
     const data = {
         address: address
     }
