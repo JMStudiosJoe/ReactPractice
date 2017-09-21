@@ -40,6 +40,7 @@ class ParallaxComponent extends React.Component<{}, ParallaxComponentState> {
     }
 
     getParallaxCSS() {
+        console.log(background)
         return  style.create({
             marginTop: '10px',
             marginBottom: '10px',
