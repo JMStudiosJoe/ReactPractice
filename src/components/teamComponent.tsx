@@ -5,13 +5,12 @@ import ParallaxComponent from './customReactParallax'
 import * as FA from 'react-icons/lib/fa'
 import {teamData} from '../models/teamModel'
 import { darkCard, lightCard, cardsContainer, positionTypes } from './scss/common'
-import projectConfig from '../../project.config'
 const TEAM_MEMBER_CONTAINER_WIDTH = '500px'
 
 
 import { getFromBackend } from '../api/api'
 const moveToActionAndReducer = () => {
-    const teamURL: string = 'http://' + projectConfig['baseURL'] + ':5000/api/team_members/get_team'
+    const teamURL: string = '/team_members/get_team'
     getFromBackend(teamURL).then( (response) => {
         console.log(response)
     })

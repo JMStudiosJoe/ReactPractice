@@ -9,7 +9,7 @@ interface LocalVoteMattersAction<Action> {
     payload?: any
 }
 const getElectionWithaddress = (repResponseData: any, address: string, dispatch: any) => {
-    const url: string = 'http://' + projectConfig['baseURL'] + ':5000/api/local_vote_matters/elections_info'
+    const url: string = '/local_vote_matters/elections_info'
 
     return getFromBackend(url).then(function (response) {
         const addressLookupResponse = {
@@ -23,7 +23,7 @@ const getElectionWithaddress = (repResponseData: any, address: string, dispatch:
     })
 }
 const getAddressData = (address: string) => {
-    const url: string = 'http://' + projectConfig['baseURL'] + ':5000/api/local_vote_matters/representative_info'
+    const url: string = '/local_vote_matters/representative_info'
     const data = {
         address: address
     }

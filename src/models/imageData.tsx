@@ -8,51 +8,14 @@ const earthAtmos = require('../images/space-earth-stratosphere-wallpaper-1.jpg')
 const bridgeOverRiver = require('../images/bridge-over-the-river.jpg')
 const mountains = require('../images/mountains_landscape.jpg')
 
-export const imageData = {
-    'imageData':[
-    {
-        'active': false,
-        'image': jmstudios
-    },
-    {
-        'active': false,
-        'image': milkyWay
-
-    },
-    {
-        'active': false,
-        'image': bambooForest
-
-    },
-    {
-        'active': false,
-        'image': space
-
-    },
-    {
-        'active': false,
-        'image': waterDrop
-
-    },
-    {
-        'active': false,
-        'image': earthAtmos
-
-    },
-    {
-        'active': false,
-        'image': autumTrees
-
-    },
-    {
-        'active': false,
-        'image': bridgeOverRiver
-
-    },
-    {
-        'active': false,
-        'image': mountains
-
-    }
-]
+import { getFromBackend } from '../api/api'
+const parallaxImagesURL = '/images/get_all_parallax'
+const imageData = {
+    'imageData':[]
 }
+
+
+export { 
+    imageData
+}
+
