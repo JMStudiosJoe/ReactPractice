@@ -3,8 +3,8 @@ from jmstudios_backend.database.models.team_member import TeamMember
 from jmstudios_backend.database.models.images import Image
 from jmstudios_backend.database.models.projects import Project
 from jmstudios_backend.database import db
-from jmstudios_backend.db_setup_scripts.setup_data.image_data import images
-from jmstudios_backend.db_setup_scripts.setup_data.projects_data import projects
+from db_setup_scripts.setup_data.image_data import images
+from db_setup_scripts.setup_data.projects_data import projects
 
 
 meta, con = db.connect('jmstudios', 'jmstudios', 'jmstudios')
