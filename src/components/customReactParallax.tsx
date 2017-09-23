@@ -28,7 +28,7 @@ class ParallaxComponent extends React.Component<{}, ParallaxComponentState> {
         this.getBackgroundPath()
     }
     getBackgroundPath() {
-        if (imageNameData != null || imageNameData.length > 0) {
+        if (imageNameData != null && imageNameData.length != 0) {
             for (const imageData of imageNameData) {
                 if (!imageData.active) {
                     imageData.active = true
@@ -40,7 +40,6 @@ class ParallaxComponent extends React.Component<{}, ParallaxComponentState> {
     }
 
     getParallaxCSS() {
-        console.log(background)
         return  style.create({
             marginTop: '10px',
             marginBottom: '10px',

@@ -8,12 +8,24 @@ const earthAtmos = require('../images/space-earth-stratosphere-wallpaper-1.jpg')
 const bridgeOverRiver = require('../images/bridge-over-the-river.jpg')
 const mountains = require('../images/mountains_landscape.jpg')
 
-import { getFromBackend } from '../api/api'
-const parallaxImagesURL = '/images/get_all_parallax'
+import { getParallaxImages } from '../redux/actions/initialActions'
+
+interface Image {
+    image_url: string
+}
 const imageData = {
     'imageData':[]
 }
-
+getParallaxImages().then( (response) => {
+    const parallaxImages = response.data['parallax_images']
+    console.log('im back with images!!!')
+    parallaxImages.map( (image: Image) => {
+        imageData.imageData.push({
+            'active': false,
+            'image': image.image_url
+        })
+    })
+})
 
 export { 
     imageData

@@ -11,21 +11,10 @@ const getProjects = () => {
 const getTeam = () => {
 
 }
-interface Image {
-    image_url: string
-}
 
 const getParallaxImages = () => {
     const parallaxImagesURL = '/images/get_all_parallax'
-    getFromBackend(parallaxImagesURL).then( (response) => {
-        const parallaxImages = response.data['parallax_images']
-        parallaxImages.map( (image: Image) => {
-            imageData.imageData.push({
-                'active': false,
-                'image': image.image_url
-            })
-        })
-    })
+    return getFromBackend(parallaxImagesURL)
 }
 
 const parallaxImagesSuccess = (initialData: any) => {
