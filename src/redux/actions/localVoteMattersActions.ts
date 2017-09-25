@@ -19,7 +19,7 @@ const getElectionWithaddress = (repResponseData: any, address: string, dispatch:
 
         dispatch(addressDataSuccess(addressLookupResponse, address))
     }).catch(function (error) {
-          console.log(error)
+          dispatch(addressDataFaied(error, address))
     })
 }
 const getAddressData = (address: string) => {
@@ -39,7 +39,7 @@ const getAddressData = (address: string) => {
                 getElectionWithaddress(repData, address, dispatch) 
 
             }).catch(function (error) {
-                  console.log(error)
+                  dispatch(addressDataFaied(error, address))
             })
         }
     }
@@ -48,6 +48,12 @@ const addressDataSuccess = (addressData: any, address: string) => {
     return {
         type: HANDLE_ADDRESS_LOOKUP,
         payload: addressData
+    }
+}
+const addressDataFaied = (error: any, address: string) => {
+    return {
+        type: HANDLE_ADDRESS_LOOKUP,
+        payload: error
     }
 }
 

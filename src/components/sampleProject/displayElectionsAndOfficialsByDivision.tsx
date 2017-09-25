@@ -16,12 +16,16 @@ const displayElectionsAndOfficialsByDivision = (division: any, offices: Array<Of
     })
 
     return sortedDivisionList.map( (division: Division, index: number) => {
-        const officeIndices = division.officeIndices
-        const officesInDivision = officeIndices.map( (index: number) => {
-            return offices[index]
-        })
-        if (division.name !== 'United States')
+        var officesInDivision = []
+        if (division.officeIndices) {
+            officesInDivision = division.officeIndices.map( (index: number) => {
+                return offices[index]
+            })
+        }
+        if (division.name !== 'United States' && officesInDivision.length != 0)
             return displayDivision(division, officesInDivision, officials, elections, index)
+        else
+            return 'No Officies for Division'
     })
 }
 
