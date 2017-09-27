@@ -6,7 +6,6 @@ const projectData = {
 
 getProjects().then( (response) => {
     const projects = response.data['projects']
-    console.log(projects)
     projectData['projects'] = projects
 })
 

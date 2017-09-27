@@ -35,17 +35,6 @@ const teamMemberDisplay = (teamMember: TeamMember, index: number) => {
         zIndex: 16
     })
 
-    const alterEgoProfileImage = style.create({
-        backgroundImage: 'url(${teamMember.alterEgoImageURL})',
-        height: '100px',
-        width: '100px',
-        borderRadius: '50px',
-        position: 'relative' as positionTypes,
-        zIndex: 3,
-        bottom: '30px',
-        left: '60px'
-    })
-
     return (
         <div key={index}>
             <div style={darkCard(TEAM_MEMBER_CONTAINER_WIDTH)}>
@@ -56,8 +45,7 @@ const teamMemberDisplay = (teamMember: TeamMember, index: number) => {
                         <div>{teamMember.description}</div>
                         <div>{ displayLinksWithIcons(teamMember.links) }</div>
                         <div style={imagesContainer()}>
-                            <img style={alterEgoProfileImage} src={teamMember.alterEgoImageURL} />
-                            <img style={teamMemberProfileImage} src={teamMember.imageURL} />
+                            <img style={teamMemberProfileImage} src={teamMember.image.image_url} />
                         </div>
                     </div>
                 </div>

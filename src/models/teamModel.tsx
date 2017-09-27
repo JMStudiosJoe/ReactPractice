@@ -3,7 +3,8 @@ import { getTeam } from '../redux/actions/initialActions'
 
 interface TeamMemberLink {
     name: string,
-    url: string
+    url: string,
+    position: number
 }
 
 interface TeamMember {
@@ -12,7 +13,9 @@ interface TeamMember {
     description: string,
     references: Array<string>,
     links:Array<TeamMemberLink>,
-    imageURL: string,
+    image: {
+        image_url: string
+    }
     alterEgoImageURL: string
 }
 

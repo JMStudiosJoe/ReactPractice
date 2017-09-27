@@ -4,7 +4,7 @@ from jmstudios_backend.database.session import Session
 
 
 class Image(Base):
-    __tablename__ = 'image'
+    __tablename__ = 'images'
 
     id = Column(Integer, primary_key=True)
     type = Column(String(60))
