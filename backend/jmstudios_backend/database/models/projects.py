@@ -4,7 +4,7 @@ from jmstudios_backend.database.session import Session
 
 
 class Project(Base):
-    __tablename__ = 'project'
+    __tablename__ = 'projects'
 
     id = Column(Integer, primary_key=True)
     name = Column(String(60))
@@ -25,8 +25,12 @@ class Project(Base):
         return project.id
 
     @classmethod
+    def session_query(cls):
+        return Session.get_session().query(cls)
+
+    @classmethod
     def get_all(cls):
-        all_projects = Session.get_session().query(cls).all()
+        all_projects = cls.session_query().all()
         projects = [project.json() for project in all_projects]
         return projects
 

@@ -3,36 +3,11 @@ import { CSSProperties } from 'react'
 import * as style from 'ts-style'
 import ParallaxComponent from './customReactParallax'
 import * as FA from 'react-icons/lib/fa'
-import {teamData} from '../models/teamModel'
+import { teamData, TeamMember, TeamMemberLink } from '../models/teamModel'
 import { darkCard, lightCard, cardsContainer, positionTypes } from './scss/common'
 const TEAM_MEMBER_CONTAINER_WIDTH = '500px'
 
 
-import { getFromBackend } from '../api/api'
-const moveToActionAndReducer = () => {
-    const teamURL: string = '/team_members/get_team'
-    getFromBackend(teamURL).then( (response) => {
-        console.log(response)
-    })
-}
-
-moveToActionAndReducer()
-
-
-
-interface TeamMemberLink {
-    name: string,
-    url: string
-}
-interface TeamMember {
-    name: string,
-    title: string,
-    description: string,
-    references: Array<string>,
-    links:Array<TeamMemberLink>,
-    imageURL: string,
-    alterEgoImageURL: string
-}
 interface TeamProps {
     name: string
 }

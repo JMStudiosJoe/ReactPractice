@@ -1,20 +1,33 @@
-export const teamData = {
-    "teamMembers":[{
-        "name": "Joseph Richardson",
-        "title": "CO Founder / Full Stack Software Engineer",
-        "description": "I make solutions for the challenges I take on.",
-        "links": [
-            {
-                "name": "github",
-                "url": "https://github.com/JMStudiosJoe"
-            },
-            {
-                "name": "linkedin",
-                "url": "https://www.linkedin.com/in/joseph-richardson-97206953"
-            }
-        ],
-        "references": [""],
-        "imageURL": "../src/images/profilepic.jpg",
-        "alterEgoImageURL": "../src/images/me.jpg"
-    }]
+
+import { getTeam } from '../redux/actions/initialActions'
+
+interface TeamMemberLink {
+    name: string,
+    url: string
+}
+
+interface TeamMember {
+    name: string,
+    title: string,
+    description: string,
+    references: Array<string>,
+    links:Array<TeamMemberLink>,
+    imageURL: string,
+    alterEgoImageURL: string
+}
+
+const teamData = {
+    "teamMembers":[]
+}
+
+getTeam().then( (response) => {
+    const members = response.data['team']
+    console.log(members)
+    teamData['teamMembers'] = members
+})
+
+export {
+    teamData,
+    TeamMember,
+    TeamMemberLink
 }
