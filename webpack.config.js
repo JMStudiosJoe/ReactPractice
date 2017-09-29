@@ -31,17 +31,6 @@ module.exports = [{
             { 
                 test: /\.json$/,
                 use: 'json-loader' 
-            },
-            {
-                test: /\.(png|jpg|svg)$/,
-                include: __dirname + '/src/images/',
-                use: {
-                    loader: 'file-loader',
-                    options: {
-                        name: '[name].[ext]',
-                        outputPath: './build/images/'
-                    }
-                }
             }
         ]
     },
@@ -62,5 +51,4 @@ module.exports = [{
         net: 'empty',
         tls: 'empty'
     }
-
 }];

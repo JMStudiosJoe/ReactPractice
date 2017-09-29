@@ -1,4 +1,3 @@
-
 import { getTeam } from '../redux/actions/initialActions'
 
 interface TeamMemberLink {

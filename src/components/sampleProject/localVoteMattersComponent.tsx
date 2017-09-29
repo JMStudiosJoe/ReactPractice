@@ -53,6 +53,14 @@ class LocalVoteMattersComponent extends React.Component<VoteSmartProps, VoteSmar
             })
         }
     }
+    handleKeyPress = (event: any) => {
+        if (event.key === 'Enter') {
+            console.log('do thing')
+            console.log(this.state)
+
+            this.lookupAddress(event)
+        }
+    }
 
     render() {
         return (
@@ -64,6 +72,7 @@ class LocalVoteMattersComponent extends React.Component<VoteSmartProps, VoteSmar
                         type='text' 
                         placeholder='Address'
                         onChange={ e => this.handleAddress(e) }
+                        onKeyPress={ e => this.handleKeyPress(e) }
                     />
                     <button
                         onClick={ e => this.lookupAddress(e) }
