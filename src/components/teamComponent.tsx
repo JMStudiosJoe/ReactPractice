@@ -3,36 +3,11 @@ import { CSSProperties } from 'react'
 import * as style from 'ts-style'
 import ParallaxComponent from './customReactParallax'
 import * as FA from 'react-icons/lib/fa'
-import {teamData} from '../models/teamModel'
+import { teamData, TeamMember, TeamMemberLink } from '../models/teamModel'
 import { darkCard, lightCard, cardsContainer, positionTypes } from './scss/common'
 const TEAM_MEMBER_CONTAINER_WIDTH = '500px'
 
 
-import { getFromBackend } from '../api/api'
-const moveToActionAndReducer = () => {
-    const teamURL: string = 'http://localhost:5000/api/team_members/get_team'
-    getFromBackend(teamURL).then( (response) => {
-        console.log(response)
-    })
-}
-
-moveToActionAndReducer()
-
-
-
-interface TeamMemberLink {
-    name: string,
-    url: string
-}
-interface TeamMember {
-    name: string,
-    title: string,
-    description: string,
-    references: Array<string>,
-    links:Array<TeamMemberLink>,
-    imageURL: string,
-    alterEgoImageURL: string
-}
 interface TeamProps {
     name: string
 }
@@ -60,17 +35,6 @@ const teamMemberDisplay = (teamMember: TeamMember, index: number) => {
         zIndex: 16
     })
 
-    const alterEgoProfileImage = style.create({
-        backgroundImage: 'url(${teamMember.alterEgoImageURL})',
-        height: '100px',
-        width: '100px',
-        borderRadius: '50px',
-        position: 'relative' as positionTypes,
-        zIndex: 3,
-        bottom: '30px',
-        left: '60px'
-    })
-
     return (
         <div key={index}>
             <div style={darkCard(TEAM_MEMBER_CONTAINER_WIDTH)}>
@@ -81,8 +45,7 @@ const teamMemberDisplay = (teamMember: TeamMember, index: number) => {
                         <div>{teamMember.description}</div>
                         <div>{ displayLinksWithIcons(teamMember.links) }</div>
                         <div style={imagesContainer()}>
-                            <img style={alterEgoProfileImage} src={teamMember.alterEgoImageURL} />
-                            <img style={teamMemberProfileImage} src={teamMember.imageURL} />
+                            <img style={teamMemberProfileImage} src={teamMember.image.image_url} />
                         </div>
                     </div>
                 </div>

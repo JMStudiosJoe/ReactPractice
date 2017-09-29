@@ -8,3 +8,8 @@ public/
 .*.swp
 **/__pycache__
 backend/venv
+.idea/
+backend/jmstudios_backend.egg-info/
+backend/jmstudios_backend/\\
+backend/jmstudios_backend/db_setup_scripts/setup_data/
+project.config.ts

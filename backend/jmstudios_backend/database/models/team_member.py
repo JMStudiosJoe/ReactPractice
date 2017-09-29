@@ -1,10 +1,12 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy.orm import relationship
 from jmstudios_backend.database.base import Base
+from jmstudios_backend.database.models.links import Link
 from jmstudios_backend.database.session import Session
 
 
 class TeamMember(Base):
-    __tablename__ = 'team_member'
+    __tablename__ = 'team_members'
 
     id = Column(Integer, primary_key=True)
     first_name = Column(String(30))
@@ -14,7 +16,9 @@ class TeamMember(Base):
     linked_in_url = Column(String(60))
     github_url = Column(String(60))
     image_name = Column(String(60))
-    image_id = Column(Integer, ForeignKey('image.id'))
+    image_id = Column(Integer, ForeignKey('images.id'))
+
+    links = relationship('Link', back_populates='team_member')
 
     @classmethod
     def create(cls, **args):
@@ -44,5 +48,6 @@ class TeamMember(Base):
             'description': self.description,
             'linked_in_url': self.linked_in_url,
             'github_url': self.github_url,
+            'links': [link.json() for link in self.links],
             'image': self.get_image()
         }

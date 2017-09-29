@@ -6,6 +6,8 @@ import {UIRouter, UIView, UISref, UISrefActive, pushStateLocationPlugin} from 'u
 import {teamState, aboutState, homeState, contactState, projectsState} from '../routes/routes'
 import MainHeaderComponent from './mainHeaderComponent'
 import Link from './linkComponent'
+
+
 interface NavigationProps {
     userType: string,
 }
@@ -22,6 +24,7 @@ interface NavigationBarState {
     projects?: NavigationBarItem
     team?: NavigationBarItem
 }
+
 const mainPageCSS = {
     textAlign: 'center'
 }

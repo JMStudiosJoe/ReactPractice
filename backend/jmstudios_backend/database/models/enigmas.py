@@ -4,7 +4,7 @@ from jmstudios_backend.database.session import Session
 
 
 class Enigma(Base):
-    __tablename__ = 'enigma'
+    __tablename__ = 'enigmas'
 
     id = Column(Integer, primary_key=True)
     intro = Column(String(300))

@@ -15,16 +15,17 @@ const officialImageCSS = (photoURL: string) => {
 }
 const NO_IMAGE_AVALABLE = '../src/images/no_image.jpeg'
 const handleOfficialImage = (official: Official) => {
+    var officialURL =  official.urls ? official.urls[0] : ''
     if (official.photoUrl) {
         return (
-            <a target={'_blank'} href={official.urls[0]}>
+            <a target={'_blank'} href={officialURL}>
                 <div style={officialImageCSS(official.photoUrl)}></div>
             </a>
         )
     }
     else {
         return (
-            <a target={'_blank'} href={official.urls[0]}>
+            <a target={'_blank'} href={officialURL}>
                 <div style={officialImageCSS(NO_IMAGE_AVALABLE)}>
                 </div>
             </a>

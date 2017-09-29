@@ -4,7 +4,7 @@ from jmstudios_backend.database.session import Session
 
 
 class Image(Base):
-    __tablename__ = 'image'
+    __tablename__ = 'images'
 
     id = Column(Integer, primary_key=True)
     type = Column(String(60))
@@ -22,9 +22,22 @@ class Image(Base):
         return new_image.id
 
     @classmethod
+    def get_cls_query(cls):
+        return Session.get_session().query(cls)
+
+    @classmethod
     def get_by_id(cls, image_id):
+        print(image_id)
         image = Session.get_session().query(cls).filter(cls.id == image_id).first()
-        return image.json()
+        if image:
+            return image.json()
+        else:
+            return {}
+
+
+    @classmethod
+    def get_all_parallax_query(cls):
+        return cls.get_cls_query().filter(cls.type == 'parallax')
 
     @classmethod
     def get_by_name(cls, name):

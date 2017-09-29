@@ -1,10 +1,11 @@
 from jmstudios_backend.database.base import Base
 from jmstudios_backend.database.models.team_member import TeamMember
+from jmstudios_backend.database.models.links import Link
 from jmstudios_backend.database.models.images import Image
 from jmstudios_backend.database.models.projects import Project
 from jmstudios_backend.database.db import Database
-from jmstudios_backend.db_setup_scripts.setup_data.image_data import images
-from jmstudios_backend.db_setup_scripts.setup_data.projects_data import projects
+from setup_data.image_data import images
+from setup_data.projects_data import projects
 
 
 class InitialSetup():
@@ -31,7 +32,24 @@ class InitialSetup():
             image_name=image_name,
             image_id=Image.get_by_name(image_name)['id']
         )
-        TeamMember.create(**joseph)
+        member_id = TeamMember.create(**joseph)
+        cls.create_link_with_member_id(member_id)
+
+    @classmethod
+    def create_link_with_member_id(cls, member_id):
+        github_link = dict(
+                position=0,
+                name='github',
+                url='https://github.com/JMStudiosJoe',
+                team_member_id=member_id
+        )
+        linkedin_link = dict(
+                position=0,
+                name='linkedin',
+                url='https://www.linkedin.com/in/joseph-richardson-97206953',
+                team_member_id=member_id
+        )
+        Link.create_list([github_link, linkedin_link])
 
     @classmethod
     def initialize_images(cls):
