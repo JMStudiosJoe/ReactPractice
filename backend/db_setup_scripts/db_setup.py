@@ -21,7 +21,7 @@ class InitialSetup():
 
     @classmethod
     def initialize_team_members(cls):
-        image_name = 'me.jpg'
+        image_name = 'profilepic.jpg'
         joseph = dict(
             first_name='Joseph',
             last_name='Richardson',

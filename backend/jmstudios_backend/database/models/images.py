@@ -27,13 +27,11 @@ class Image(Base):
 
     @classmethod
     def get_by_id(cls, image_id):
-        print(image_id)
-        image = Session.get_session().query(cls).filter(cls.id == image_id).first()
+        image = cls.get_cls_query().filter(cls.id == image_id).first()
         if image:
             return image.json()
         else:
             return {}
-
 
     @classmethod
     def get_all_parallax_query(cls):
@@ -41,12 +39,12 @@ class Image(Base):
 
     @classmethod
     def get_by_name(cls, name):
-        image = Session.get_session().query(cls).filter(cls.name == name).first()
+        cls.get_cls_query().filter(cls.name == name).first()
         return image.json()
 
     @classmethod
     def get_all(cls):
-        images = Session.get_session().query(cls).all()
+        images = cls.get_cls_query().all()
         json_images = [image.json() for image in images]
         return json_images
 

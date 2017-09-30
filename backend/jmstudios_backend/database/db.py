@@ -10,6 +10,7 @@ class Database():
 
     @classmethod
     def connect_db(cls, user, password, db, host='localhost', port=5432):
+
         url = 'postgresql://{}:{}@{}:{}/{}'
         url = url.format(user, password, host, port, db)
 
