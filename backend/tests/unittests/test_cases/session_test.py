@@ -9,7 +9,6 @@ import unittest
 
 class SessionUnitTests(unittest.TestCase):
 
-
     def test_add_to_session(self):
         data = TeamMember(**MockData.get_team_member_mock())
 

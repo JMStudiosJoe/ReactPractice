@@ -15,7 +15,6 @@ class InitialSetup():
         self.con = con
 
     def reset_db(self):
-        print(self.meta)
         Base.metadata.drop_all(self.meta)
         Base.metadata.create_all(self.meta)
 
@@ -27,8 +26,6 @@ class InitialSetup():
             last_name='Richardson',
             title='Co Founder',
             description='I make solutions for the challenges I take on.',
-            linked_in_url='https://www.linkedin.com/in/joseph-richardson-97206953',
-            github_url='https://github.com/JMStudiosJoe',
             image_name=image_name,
             image_id=Image.get_by_name(image_name)['id']
         )
