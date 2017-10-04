@@ -37,6 +37,10 @@ class Link(Base):
 
         return link.id
 
+    @classmethod
+    def get_cls_query(cls):
+        return Session.get_session().query(cls)
+
     def json(self):
         return {
             'id': self.id,

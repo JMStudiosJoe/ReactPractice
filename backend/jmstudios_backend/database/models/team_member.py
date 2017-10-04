@@ -30,8 +30,12 @@ class TeamMember(Base):
         return member.id
 
     @classmethod
+    def get_cls_query(cls):
+        return Session.get_session().query(cls)
+
+    @classmethod
     def get_all(cls):
-        team_members = Session.get_session().query(cls).all()
+        team_members = get_cls_query().all()
         team = [member.json() for member in team_members]
         return team
 

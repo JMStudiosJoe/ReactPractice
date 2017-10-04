@@ -4,6 +4,8 @@ from sqlalchemy.ext.declarative import declarative_base
 from jmstudios_backend.database.db import Database
 from tests.unittests.test_cases.team_test import TeamUnitTests
 from tests.unittests.test_cases.session_test import SessionUnitTests
+from tests.unittests.test_cases.project_test import ProjectUnitTests
+from tests.unittests.test_cases.link_test import LinkUnitTests
 
 def reset_test_db(meta):
     Base = declarative_base()

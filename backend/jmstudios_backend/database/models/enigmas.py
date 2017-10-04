@@ -12,8 +12,12 @@ class Enigma(Base):
     explicit = Column(Boolean)
 
     @classmethod
+    def get_cls_query(cls):
+        return Session.get_session().query(cls)
+
+    @classmethod
     def query_for_all(cls):
-        return Session.get_session().query(cls).all()
+        return get_cls_query.all()
 
     @classmethod
     def get_all(cls):
