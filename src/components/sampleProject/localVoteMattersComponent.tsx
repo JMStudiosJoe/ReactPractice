@@ -2,7 +2,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import * as style from 'ts-style' //ts-style is correct one
 import { bindActionCreators } from 'redux'
-import { getAddressData } from '../../redux/actions/voteSmartActions'
+import { getAddressData } from '../../redux/actions/localVoteMattersActions'
 import store from "../../redux/store/store"
 import { Office, Official, Division, Election } from '../types/voteSmartTypes'
 import { displayElectionsAndOfficialsByDivision } from './displayElectionsAndOfficialsByDivision'
@@ -53,6 +53,14 @@ class LocalVoteMattersComponent extends React.Component<VoteSmartProps, VoteSmar
             })
         }
     }
+    handleKeyPress = (event: any) => {
+        if (event.key === 'Enter') {
+            console.log('do thing')
+            console.log(this.state)
+
+            this.lookupAddress(event)
+        }
+    }
 
     render() {
         return (
@@ -64,6 +72,7 @@ class LocalVoteMattersComponent extends React.Component<VoteSmartProps, VoteSmar
                         type='text' 
                         placeholder='Address'
                         onChange={ e => this.handleAddress(e) }
+                        onKeyPress={ e => this.handleKeyPress(e) }
                     />
                     <button
                         onClick={ e => this.lookupAddress(e) }

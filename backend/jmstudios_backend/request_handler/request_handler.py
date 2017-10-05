@@ -10,5 +10,4 @@ class RequestHandler():
         req = request.Request(url)
         response = request.urlopen(req)
         json_response = json.loads(response.read().decode(self.encoder))
-
         return json_response

@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux'
-import voteSmartReducer from './voteSmartReducers'
+import LocalVoteMattersReducer from './localVoteMattersReducer'
+import InitialDataReducer from './initalDataReducer'
 
 const rootReducer = combineReducers({
-    userAddressData: voteSmartReducer
+    userAddressData: LocalVoteMattersReducer,
+    InitialDataReducer
 })
 
 export default rootReducer

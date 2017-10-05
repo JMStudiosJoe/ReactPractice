@@ -10,7 +10,7 @@ interface ParralaxImage {
     image: string
 }
 
-let background = imageNameData[0].image
+let background = 'https://s3-us-west-2.amazonaws.com/jmstudiosimages/space-earth-stratosphere-wallpaper-1.jpg'
 
 
 interface ParallaxComponentState {
@@ -28,13 +28,15 @@ class ParallaxComponent extends React.Component<{}, ParallaxComponentState> {
         this.getBackgroundPath()
     }
     getBackgroundPath() {
-        for (const imageData of imageNameData) {
-            if (!imageData.active) {
-                imageData.active = true
-                return imageData.image
+        if (imageNameData != null && imageNameData.length != 0) {
+            for (const imageData of imageNameData) {
+                if (!imageData.active) {
+                    imageData.active = true
+                    return imageData.image
+                }
             }
+            this.resetPathActivity()
         }
-        this.resetPathActivity()
     }
 
     getParallaxCSS() {
@@ -42,7 +44,7 @@ class ParallaxComponent extends React.Component<{}, ParallaxComponentState> {
             marginTop: '10px',
             marginBottom: '10px',
             backgroundImage: `url(${background})`,
-            height: '300px',
+            height: '400px',
             minWidth: '700px',
             backgroundAttachment:'fixed' as attachments,
             backgroundPosition: 'center',
