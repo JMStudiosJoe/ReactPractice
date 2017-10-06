@@ -1,6 +1,6 @@
 import * as style from 'ts-style'
 import * as React from 'react'
-import { Election, Office, Division, Official } from '../types/voteSmartTypes'
+import { Election, Office, Division, Official } from '../../types/voteSmartTypes'
 import { displayElection } from './displayElection'
 import { displayOfficialsForOffice } from './displayOfficialsForOffice'
 import { displayElectionForDivision } from './displayElectionForDivision'

@@ -4,6 +4,7 @@ const baseURL = 'http://' + projectConfig['baseURL'] + ':5000/api'
 //multipart/form-data
 //application/json
 //application/x-www-form-urlencoded
+// https://www.robinwieruch.de/local-storage-react/
 const defaultHeaders = {
     headers: {
         'Content-Type': 'application/x-www-form-urlencoded'    

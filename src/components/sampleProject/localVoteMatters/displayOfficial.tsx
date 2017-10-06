@@ -1,6 +1,6 @@
 import * as style from 'ts-style'
 import * as React from 'react'
-import { Official } from '../types/voteSmartTypes'
+import { Official } from '../../types/voteSmartTypes'
 import * as FA from 'react-icons/lib/fa'
 
 const officialImageCSS = (photoURL: string) => {
@@ -13,7 +13,7 @@ const officialImageCSS = (photoURL: string) => {
         borderRadius: '16px'
     })
 }
-const NO_IMAGE_AVALABLE = '../src/images/no_image.jpeg'
+const NO_IMAGE_AVALABLE = '../../src/images/no_image.jpeg'
 const handleOfficialImage = (official: Official) => {
     var officialURL =  official.urls ? official.urls[0] : ''
     if (official.photoUrl) {

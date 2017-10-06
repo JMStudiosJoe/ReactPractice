@@ -1,6 +1,6 @@
 import * as style from 'ts-style'
 import * as React from 'react'
-import { Election, Office, Division, Official } from '../types/voteSmartTypes'
+import { Election, Office, Division, Official } from '../../types/voteSmartTypes'
 import { displayDivision } from './displayDivision'
 
 const displayElectionsAndOfficialsByDivision = (division: any, offices: Array<Office>, officials: Array<Official>, elections: Array<Election>) => {

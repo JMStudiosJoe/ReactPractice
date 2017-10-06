@@ -1,9 +1,9 @@
 import * as React from 'react'
 import * as style from 'ts-style'
 
-import { Official, Office } from '../types/voteSmartTypes'
+import { Official, Office } from '../../types/voteSmartTypes'
 import { displayOfficial } from './displayOfficial'
-import { fontWeightTypes } from '../scss/common'
+import { fontWeightTypes } from '../../scss/common'
 
 const LIGHT_BLUE = '#99ccff'
 const LIGHT_RED = '#ff6666'

@@ -35,7 +35,7 @@ class TeamMember(Base):
 
     @classmethod
     def get_all(cls):
-        team_members = get_cls_query().all()
+        team_members = cls.get_cls_query().all()
         team = [member.json() for member in team_members]
         return team
 

@@ -1,6 +1,6 @@
 import * as style from 'ts-style'
 import * as React from 'react'
-import { Election } from '../types/voteSmartTypes'
+import { Election } from '../../types/voteSmartTypes'
 import InfiniteCalendar from 'react-infinite-calendar'
 import 'react-infinite-calendar/styles'
 

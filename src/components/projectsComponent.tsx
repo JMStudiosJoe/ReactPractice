@@ -4,7 +4,7 @@ import ParallaxComponent from "./customReactParallax"
 import * as FA from 'react-icons/lib/fa'
 import { darkCard, lightCard, cardsContainer, fontWeightTypes } from './scss/common'
 import {projectData} from "../models/projects"
-import LocalVoteMattersComponent from './sampleProject/localVoteMattersComponent'
+import LocalVoteMattersComponent from './sampleProject/localVoteMatters/localVoteMattersComponent'
 interface Project {
     name: string,
     description: string,
