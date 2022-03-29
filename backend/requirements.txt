@@ -24,7 +24,7 @@ jmespath==0.9.3
 jsonschema==2.6.0
 MarkupSafe==1.0
 nbformat==4.3.0
-paramiko==2.2.1
+paramiko==2.10.1
 psycopg2==2.7.3
 pyasn1==0.3.2
 pycparser==2.18
